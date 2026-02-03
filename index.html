@@ -58,17 +58,26 @@
                     <span class="logo-text">Smaranam</span>
                     <div class="logo-underline"></div>
                 </div>
-                <div class="language-dropdown">
-                    <select id="lang-select" aria-label="Select Language">
-                        <option value="en">English</option>
-                        <option value="hi">हिन्दी</option>
-                        <option value="kn">ಕನ್ನಡ</option>
-                        <option value="or">ଓଡ଼ିଆ</option>
-                        <option value="ta">தமிழ்</option>
-                        <option value="ml">മലയാളം</option>
-                        <option value="mr">मराठी</option>
-                        <option value="te">తెలుగు</option>
-                    </select>
+                <div class="header-actions">
+                    <button class="nav-btn-mini" id="about-btn" title="About Smaranam">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                    </button>
+                    <div class="language-dropdown">
+                        <select id="lang-select" aria-label="Select Language">
+                            <option value="en">English</option>
+                            <option value="hi">हिन्दी</option>
+                            <option value="kn">ಕನ್ನಡ</option>
+                            <option value="or">ଓଡ଼ିଆ</option>
+                            <option value="ta">தமிழ்</option>
+                            <option value="ml">മലയാളം</option>
+                            <option value="mr">मराठी</option>
+                            <option value="te">తెలుగు</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
@@ -224,6 +233,26 @@
 
             <p class="payment-footer">After payment, please take a screenshot and share it with support to activate your
                 premium access.</p>
+        </div>
+    </div>
+
+    <!-- About Us Modal -->
+    <div class="modal-overlay" id="about-modal">
+        <div class="subs-card about-card">
+            <button class="close-modal" id="close-about">&times;</button>
+            <h2 class="modal-title">About Smaranam</h2>
+            <div class="about-content">
+                <div class="about-section">
+                    <h3>The Vision</h3>
+                    <p>Smaranam is designed to bridge ancient spiritual practices with modern technology, providing a
+                        seamless and immersive chanting experience for everyone.</p>
+                </div>
+                <div class="about-section">
+                    <h3>About Me</h3>
+                    <p><i>Developer details and journey will be populated here soon...</i></p>
+                </div>
+            </div>
+            <p class="payment-footer">Transforming technology into a tool for spiritual growth.</p>
         </div>
     </div>
 

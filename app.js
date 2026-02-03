@@ -440,6 +440,14 @@ function setupEventListeners() {
         });
     });
 
+    const aboutModal = document.getElementById('about-modal');
+    const aboutBtn = document.getElementById('about-btn');
+    const closeAbout = document.getElementById('close-about');
+
+    aboutBtn.addEventListener('click', () => aboutModal.classList.add('active'));
+    closeAbout.addEventListener('click', () => aboutModal.classList.remove('active'));
+    aboutModal.addEventListener('click', (e) => { if (e.target === aboutModal) aboutModal.classList.remove('active'); });
+
     closePayment.addEventListener('click', () => paymentModal.classList.remove('active'));
     paymentModal.addEventListener('click', (e) => { if (e.target === paymentModal) paymentModal.classList.remove('active'); });
 
