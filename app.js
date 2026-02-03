@@ -203,8 +203,11 @@ const lblChants = document.getElementById('lbl-chants');
 const MALA_SIZE = 108;
 const CIRCUMFERENCE = 2 * Math.PI * 45;
 const MALA_SOUND_URL = 'https://indiemusicbox.s3.amazonaws.com/downloads/meditation-bell-pack/Meditation+Bell+2.mp3';
+const SHANKH_SOUND_URL = 'https://indiemusicbox.s3.amazonaws.com/downloads/meditation-bell-pack/Meditation+Bell+3.mp3'; // Using a deeper spiritual bell as placeholder for Shankh
 const malaSound = new Audio(MALA_SOUND_URL);
+const shankhSound = new Audio(SHANKH_SOUND_URL);
 malaSound.volume = 0.5;
+shankhSound.volume = 0.7;
 
 // Web Speech API Setup
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -348,9 +351,9 @@ function handleIncrement() {
 
     if (state.sessionCount % MALA_SIZE === 0) {
         state.sessionRound++;
-        malaSound.currentTime = 0;
-        malaSound.play().catch(e => console.log("Audio play blocked:", e));
-        if ('vibrate' in navigator) navigator.vibrate([30, 50, 30]);
+        shankhSound.currentTime = 0;
+        shankhSound.play().catch(e => console.log("Shankh play blocked:", e));
+        if ('vibrate' in navigator) navigator.vibrate([100, 50, 100, 50, 100]); // Stronger vibration for Shankh
         createMalaBlast();
     }
     saveState();

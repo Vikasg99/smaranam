@@ -6,7 +6,9 @@ const ASSETS = [
     './app.js',
     './manifest.json',
     './icon-512.png',
-    './upi_payment_qr.jpg'
+    './upi_payment_qr.jpg',
+    'https://indiemusicbox.s3.amazonaws.com/downloads/meditation-bell-pack/Meditation+Bell+2.mp3',
+    'https://indiemusicbox.s3.amazonaws.com/downloads/meditation-bell-pack/Meditation+Bell+3.mp3'
 ];
 
 // Install Event
