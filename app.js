@@ -381,8 +381,6 @@ function completeSession(msg) {
     state.sessionStartTime = null;
 }
 
-init();
-
 function loadState() {
     const saved = localStorage.getItem('chant_gravity_state');
     if (saved) {
@@ -627,9 +625,9 @@ function setupEventListeners() {
             div.innerHTML = `
                 <div>
                     <div class="mantra-option-title">${title}</div>
-                    <div class="mantra-option-hindi">${m.hi.substring(0, 30)}...</div>
+                    <div class="mantra-option-hindi">${(m.hi || m.en).substring(0, 40)}...</div>
                 </div>
-                ${index === state.currentIndex ? '<span style="color:var(--accent-primary)">Running</span>' : ''}
+                ${index === state.currentIndex ? '<span style="color:var(--accent-primary)">✓ Active</span>' : ''}
             `;
 
             div.addEventListener('click', () => {
@@ -670,5 +668,26 @@ cssStyle.textContent = `
     .pulse { animation: pulse-text 0.15s cubic-bezier(0.1, 0.9, 0.2, 1); }
 `;
 document.head.appendChild(cssStyle);
+
+// Initialize the app
+function init() {
+    loadState();
+    state.sessionRound = 0;
+    initAudio();
+    updateUI(true);
+    setupEventListeners();
+    checkDailyReset();
+    progressRing.style.strokeDasharray = `${CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+
+    // Load voices eagerly for speech synthesis
+    window.speechSynthesis.getVoices();
+
+    // Ensure voices are loaded (some browsers need this)
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+        speechSynthesis.onvoiceschanged = () => {
+            window.speechSynthesis.getVoices();
+        };
+    }
+}
 
 init();
