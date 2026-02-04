@@ -606,13 +606,105 @@ function setupEventListeners() {
     if (closePayment) closePayment.addEventListener('click', () => paymentModal.classList.remove('active'));
     if (paymentModal) paymentModal.addEventListener('click', (e) => { if (e.target === paymentModal) paymentModal.classList.remove('active'); });
 
+    // --- Hamburger Menu System ---
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+
+    if (hamburgerBtn && dropdownMenu) {
+        hamburgerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            hamburgerBtn.classList.toggle('active');
+            dropdownMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!hamburgerBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                hamburgerBtn.classList.remove('active');
+                dropdownMenu.classList.remove('active');
+            }
+        });
+    }
+
+    const menuAbout = document.getElementById('menu-about');
+    const menuTheme = document.getElementById('menu-theme');
+    const menuLanguage = document.getElementById('menu-language');
     const aboutModal = document.getElementById('about-modal');
-    const aboutBtn = document.getElementById('about-btn');
+    const themeModal = document.getElementById('theme-modal');
+    const languageModal = document.getElementById('language-modal');
     const closeAbout = document.getElementById('close-about');
 
-    if (aboutBtn) aboutBtn.addEventListener('click', () => aboutModal.classList.add('active'));
-    if (closeAbout) closeAbout.addEventListener('click', () => aboutModal.classList.remove('active'));
-    if (aboutModal) aboutModal.addEventListener('click', (e) => { if (e.target === aboutModal) aboutModal.classList.remove('active'); });
+    function closeDropdown() {
+        if (dropdownMenu) dropdownMenu.classList.remove('active');
+        if (hamburgerBtn) hamburgerBtn.classList.remove('active');
+    }
+
+    if (menuAbout && aboutModal) {
+        menuAbout.addEventListener('click', () => {
+            aboutModal.classList.add('active');
+            closeDropdown();
+        });
+    }
+
+    if (menuTheme && themeModal) {
+        menuTheme.addEventListener('click', () => {
+            themeModal.classList.add('active');
+            closeDropdown();
+        });
+    }
+
+    if (menuLanguage && languageModal) {
+        menuLanguage.addEventListener('click', () => {
+            languageModal.classList.add('active');
+            closeDropdown();
+        });
+    }
+
+    const closeThemeModal = document.getElementById('close-theme-modal');
+    const themeOptions = document.querySelectorAll('.theme-option');
+
+    themeOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const theme = option.getAttribute('data-theme');
+            state.theme = theme;
+            applyTheme(theme);
+            saveState();
+            if (themeModal) themeModal.classList.remove('active');
+        });
+    });
+
+    if (closeThemeModal && themeModal) {
+        closeThemeModal.addEventListener('click', () => themeModal.classList.remove('active'));
+        themeModal.addEventListener('click', (e) => {
+            if (e.target === themeModal) themeModal.classList.remove('active');
+        });
+    }
+
+    const closeLanguageModal = document.getElementById('close-language-modal');
+    const languageOptions = document.querySelectorAll('.language-option');
+
+    languageOptions.forEach(option => {
+        option.addEventListener('click', () => {
+            const lang = option.getAttribute('data-lang');
+            state.language = lang;
+            saveState();
+            updateUI(true);
+            if (languageModal) languageModal.classList.remove('active');
+        });
+    });
+
+    if (closeLanguageModal && languageModal) {
+        closeLanguageModal.addEventListener('click', () => languageModal.classList.remove('active'));
+        languageModal.addEventListener('click', (e) => {
+            if (e.target === languageModal) languageModal.classList.remove('active');
+        });
+    }
+
+    if (closeAbout && aboutModal) {
+        closeAbout.addEventListener('click', () => aboutModal.classList.remove('active'));
+        aboutModal.addEventListener('click', (e) => {
+            if (e.target === aboutModal) aboutModal.classList.remove('active');
+        });
+    }
 
     // --- Mantra Selection Modal Logic ---
     const mantraModal = document.getElementById('mantra-modal');
@@ -675,6 +767,15 @@ cssStyle.textContent = `
     .pulse { animation: pulse-text 0.15s cubic-bezier(0.1, 0.9, 0.2, 1); }
 `;
 document.head.appendChild(cssStyle);
+
+// Apply theme to body
+function applyTheme(theme) {
+    document.body.className = `theme-${theme}`;
+    // Update active state in theme modal
+    document.querySelectorAll('.theme-option').forEach(opt => {
+        opt.classList.toggle('active', opt.getAttribute('data-theme') === theme);
+    });
+}
 
 // Initialize the app
 function init() {

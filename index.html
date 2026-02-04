@@ -51,33 +51,41 @@
                     <div class="logo-underline"></div>
                 </div>
                 <div class="header-actions">
-                    <button class="nav-btn-mini" id="about-btn" title="About Smaranam">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="12" y1="16" x2="12" y2="12"></line>
-                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                        </svg>
+                    <!-- Hamburger Menu -->
+                    <button class="hamburger-menu" id="hamburger-btn" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </button>
-                    <div class="theme-dropdown">
-                        <select id="theme-select" aria-label="Select Theme">
-                            <option value="cosmic">🌌 Cosmic</option>
-                            <option value="light">☀️ Light</option>
-                            <option value="classic">🌙 Classic</option>
-                        </select>
-                    </div>
-                    <div class="language-dropdown">
-                        <select id="lang-select" aria-label="Select Language">
-                            <option value="en">English</option>
-                            <option value="hi">हिन्दी</option>
-                            <option value="kn">ಕನ್ನಡ</option>
-                            <option value="or">ଓଡ଼ିଆ</option>
-                            <option value="ta">தமிழ்</option>
-                            <option value="ml">മലയാളം</option>
-                            <option value="mr">मराठी</option>
-                            <option value="te">తెలుగు</option>
-                        </select>
-                    </div>
                 </div>
+            </div>
+
+            <!-- Dropdown Menu -->
+            <div class="dropdown-menu" id="dropdown-menu">
+                <button class="menu-item" id="menu-about">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    About
+                </button>
+                <button class="menu-item" id="menu-theme">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    Theme
+                </button>
+                <button class="menu-item" id="menu-language">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                        </path>
+                    </svg>
+                    Language
+                </button>
             </div>
 
             <div class="stats-bar">
@@ -282,6 +290,54 @@
             <div class="mantra-list-container" id="mantra-list-container"
                 style="max-height: 50vh; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
                 <!-- Mantras injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Selection Modal -->
+    <div class="modal-overlay" id="theme-modal">
+        <div class="subs-card">
+            <div class="modal-header"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 class="modal-title" style="margin:0;">Select Theme</h2>
+                <button class="close-modal-plain" id="close-theme-modal"
+                    style="background:none; border:none; color:inherit; font-size:1.5rem; cursor:pointer;">&times;</button>
+            </div>
+            <div class="theme-options">
+                <button class="theme-option" data-theme="cosmic">
+                    <span class="theme-icon">🌌</span>
+                    <span class="theme-name">Dark Cosmic</span>
+                </button>
+                <button class="theme-option" data-theme="light">
+                    <span class="theme-icon">☀️</span>
+                    <span class="theme-name">Light</span>
+                </button>
+                <button class="theme-option" data-theme="classic">
+                    <span class="theme-icon">🌙</span>
+                    <span class="theme-name">Classic</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Language Selection Modal -->
+    <div class="modal-overlay" id="language-modal">
+        <div class="subs-card">
+            <div class="modal-header"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 class="modal-title" style="margin:0;">Select Language</h2>
+                <button class="close-modal-plain" id="close-language-modal"
+                    style="background:none; border:none; color:inherit; font-size:1.5rem; cursor:pointer;">&times;</button>
+            </div>
+            <div class="language-options">
+                <button class="language-option" data-lang="en">English</button>
+                <button class="language-option" data-lang="hi">हिन्दी</button>
+                <button class="language-option" data-lang="kn">ಕನ್ನಡ</button>
+                <button class="language-option" data-lang="or">ଓଡ଼ିଆ</button>
+                <button class="language-option" data-lang="ta">தமிழ்</button>
+                <button class="language-option" data-lang="ml">മലയാളം</button>
+                <button class="language-option" data-lang="mr">मराठी</button>
+                <button class="language-option" data-lang="te">తెలుగు</button>
             </div>
         </div>
     </div>
