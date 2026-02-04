@@ -47,13 +47,6 @@
     <div class="app-container">
         <header>
             <div class="header-top">
-                <button class="voice-toggle-btn" id="voice-toggle" title="Voice Counting">
-                    <svg viewBox="0 0 24 24" id="mic-icon" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
-                        <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" />
-                    </svg>
-                    <span id="voice-status">Voice Off</span>
-                </button>
                 <div class="logo-area">
                     <span class="logo-text">Smaranam</span>
                     <div class="logo-underline"></div>
@@ -116,42 +109,56 @@
                             <circle class="ring-fill" id="progress-ring" cx="50" cy="50" r="45"></circle>
                         </svg>
                     </div>
-                    <button class="counter-orb" id="counter-btn" aria-label="Chant">
+                    <div class="counter-orb" id="orb-display">
                         <div class="orb-inner">
                             <span class="count-number" id="current-count">0</span>
                             <span class="count-label" id="lbl-chants">Chants</span>
                         </div>
                         <div class="orb-glow"></div>
-                    </button>
+                    </div>
                     <div class="ripple-container" id="ripple-container"></div>
                 </div>
-            </div>
 
-            <div class="navigation-controls">
-                <button class="nav-btn" id="prev-mantra" title="Previous">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M15 18l-6-6 6-6" />
-                    </svg>
-                </button>
-                <button class="nav-btn main-action" id="reset-btn" title="Reset Session">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-                        <path d="M3 3v5h5" />
-                    </svg>
-                </button>
-                <button class="nav-btn" id="clear-all-btn" title="Clear All Data">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path
-                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                    </svg>
-                </button>
-                <button class="nav-btn" id="next-mantra" title="Next">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M9 18l6-6-6-6" />
-                    </svg>
-                </button>
+                <div class="audio-controls">
+                    <button class="play-btn" id="play-pause-btn" aria-label="Play Mantra">
+                        <svg viewBox="0 0 24 24" fill="currentColor" id="play-icon">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="currentColor" id="pause-icon" style="display: none;">
+                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                        </svg>
+                    </button>
+                    <span class="status-text" id="play-status">Start Sadhana</span>
+                </div>
+
             </div>
-        </main>
+    </div>
+
+    <div class="navigation-controls">
+        <button class="nav-btn" id="prev-mantra" title="Previous">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M15 18l-6-6 6-6" />
+            </svg>
+        </button>
+        <button class="nav-btn main-action" id="reset-btn" title="Reset Session">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                <path d="M3 3v5h5" />
+            </svg>
+        </button>
+        <button class="nav-btn" id="clear-all-btn" title="Clear All Data">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+        </button>
+        <button class="nav-btn" id="next-mantra" title="Next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M9 18l6-6-6-6" />
+            </svg>
+        </button>
+    </div>
+    </main>
     </div>
 
     <!-- Subscription Modal -->

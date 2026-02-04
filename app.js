@@ -10,7 +10,8 @@ const mantras = [
         mr: "ॐ नमः शिवाय",
         te: "ఓం నమః ಶಿವాయ",
         en: "Om Namah Shivaya",
-        keywords: ["namah shivay", "shiva", "shivaya", "un namah shivay"]
+        keywords: ["namah shivay", "shiva", "shivaya", "un namah shivay"],
+        audio: "audio/om_namah_shivaya.mp3"
     },
     {
         hi: "ॐ नमो भगवते वासुदेवाय",
@@ -21,7 +22,8 @@ const mantras = [
         mr: "ॐ नमो भगवते वासुदेवाय",
         te: "ఓం నమో భగవతే వాసుదేవాయ",
         en: "Om Namo Bhagavate Vasudevaya",
-        keywords: ["vasudev", "namo bhagavate", "vasudevaya", "un namo"]
+        keywords: ["vasudev", "namo bhagavate", "vasudevaya", "un namo"],
+        audio: "audio/om_namo_bhagavate_vasudevaya.mp3"
     },
     {
         hi: "ॐ गं गणपतये नमः",
@@ -32,7 +34,8 @@ const mantras = [
         mr: "ॐ गं गणपतಯೇ ನಮಃ",
         te: "ఓం గం గణపతయే నమః",
         en: "Om Gam Ganapataye Namah",
-        keywords: ["ganpataye", "ganpati", "ganesha", "ganapataye"]
+        keywords: ["ganpataye", "ganpati", "ganesha", "ganapataye"],
+        audio: "audio/om_gan_ganapataye_namah.mp3"
     },
     {
         hi: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे",
@@ -43,7 +46,8 @@ const mantras = [
         mr: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे",
         te: "హరే కృష్ణ ಹರೇ ಕೃಷ್ಣ ಕೃಷ್ಣ ಕృష్ణ ಹರೇ ಹರೇ",
         en: "Hare Krishna Hare Krishna Krishna Krishna Hare Hare",
-        keywords: ["hare krishna", "krishna krishna", "rama rama", "hare hare"]
+        keywords: ["hare krishna", "krishna krishna", "rama rama", "hare hare"],
+        audio: "audio/hare_krishna_mahamantra.mp3"
     },
     {
         hi: "राम हरे कृष्ण हरे राम हरे कृष्ण हरे राम हरे कृष्ण हरे अनंत माधव हरे",
@@ -54,7 +58,8 @@ const mantras = [
         mr: "राम हरे कृष्ण हरे राम हरे कृष्ण हरे राम हरे कृष्ण हरे अनंत माधव हरे",
         te: "రామ హరే కృష్ణ ಹರೇ ರಾಮ ಹರೇ ಕೃಷ್ಣ ಹರೇ ರಾಮ ಹರೇ ಕೃಷ್ಣ ಹರೇ ಅನಂತ ಮಾಧವ ಹರೇ",
         en: "Rama Hare Krishna Hare Rama Hare Krishna Hare Rama Hare Krishna Hare Ananta Madhav Hare",
-        keywords: ["rama hare", "krsna hare", "ananta", "madhav", "hare rama", "maadhava", "ananta madhav"]
+        keywords: ["rama hare", "krsna hare", "ananta", "madhav", "hare rama", "maadhava", "ananta madhav"],
+        audio: "audio/rama_hare_krishna.mp3"
     }
 ];
 
@@ -209,44 +214,90 @@ const shankhSound = new Audio(SHANKH_SOUND_URL);
 malaSound.volume = 0.5;
 shankhSound.volume = 0.7;
 
-// Web Speech API Setup
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-let recognition = null;
+// Audio Logic
+let isPlaying = false;
+let mantraAudio = new Audio();
+const PLAY_ICON = `<path d="M8 5v14l11-7z"/>`;
+const PAUSE_ICON = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
 
-if (SpeechRecognition) {
-    recognition = new SpeechRecognition();
-    recognition.continuous = true;
-    recognition.interimResults = false;
-    recognition.lang = 'en-US';
+// DOM Elements
+const playPauseBtn = document.getElementById('play-pause-btn');
+const playIcon = document.getElementById('play-icon');
+const pauseIcon = document.getElementById('pause-icon');
+const playStatus = document.getElementById('play-status');
 
-    recognition.onresult = (event) => {
-        const result = event.results[event.results.length - 1][0].transcript.toLowerCase();
-        const currentMantra = mantras[state.currentIndex];
-        if (currentMantra.keywords.some(keyword => result.includes(keyword))) {
-            handleIncrement();
+function initAudio() {
+    mantraAudio.addEventListener('ended', () => {
+        handleIncrement();
+        if (state.sessionCount % MALA_SIZE !== 0 && isPlaying) {
+            mantraAudio.currentTime = 0;
+            mantraAudio.play().catch(e => console.error("Playback error", e));
+        } else if (state.sessionCount % MALA_SIZE === 0) {
+            togglePlay(false); // Stop after 108
+            // Shankh handled in handleIncrement
         }
-    };
+    });
 
-    recognition.onend = () => { if (state.isVoiceActive) recognition.start(); };
-    recognition.onerror = (event) => {
-        if (event.error === 'not-allowed') {
-            alert(translations[state.language].micAccess);
-            toggleVoice(false);
+    // Error handling - Fallback to Bell if file not found
+    mantraAudio.addEventListener('error', (e) => {
+        if (mantraAudio.src !== MALA_SOUND_URL) {
+            console.warn("Mantra audio missing, falling back to default bell.");
+            // Prevent infinite loop if fallback also fails (though unlikely for CDN)
+            if (!mantraAudio.src.includes('indiemusicbox')) {
+                mantraAudio.src = MALA_SOUND_URL;
+                if (isPlaying) mantraAudio.play();
+            }
         }
-    };
+    });
 }
 
-// Security: Input Sanitizer
-function sanitize(str) {
-    const div = document.createElement('div');
-    div.textContent = str;
-    return div.innerHTML;
+function togglePlay(forceState) {
+    if (forceState !== undefined) isPlaying = !forceState; // If forcing false, we want isPlaying to be true to flip it? No.
+
+    if (forceState !== undefined) {
+        isPlaying = forceState;
+    } else {
+        isPlaying = !isPlaying;
+    }
+
+    if (isPlaying) {
+        // Start
+        const currentMantra = mantras[state.currentIndex];
+        mantraAudio.src = currentMantra.audio || MALA_SOUND_URL;
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+        playStatus.textContent = translations[state.language].chanting || "Chanting...";
+        mantraAudio.play().catch(e => {
+            console.error(e);
+            isPlaying = false;
+            updatePlayUI();
+        });
+    } else {
+        // Pause
+        mantraAudio.pause();
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        playStatus.textContent = translations[state.language].resume || "Resume Sadhana";
+    }
+}
+
+function updatePlayUI() {
+    if (isPlaying) {
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'block';
+        playStatus.textContent = translations[state.language].chanting || "Chanting...";
+    } else {
+        playIcon.style.display = 'block';
+        pauseIcon.style.display = 'none';
+        playStatus.textContent = translations[state.language]?.start || "Start Sadhana";
+    }
 }
 
 // Logic Functions
 function init() {
     loadState();
     state.sessionRound = 0;
+    initAudio();
     updateUI(true);
     setupEventListeners();
     checkDailyReset();
@@ -296,6 +347,8 @@ function updateUI(silent = false) {
     lblLifetime.textContent = t.lifetime;
     lblChants.textContent = t.chants;
 
+    if (!isPlaying) playStatus.textContent = (state.sessionCount > 0) ? (t.resume || "Resume") : (t.start || "Start Sadhana");
+
     // Progress
     const progress = (state.sessionCount % MALA_SIZE) / MALA_SIZE;
     const offset = CIRCUMFERENCE - (progress * CIRCUMFERENCE);
@@ -307,25 +360,7 @@ function updateUI(silent = false) {
         mantraDisplay.style.animation = 'slideUp 0.8s cubic-bezier(0.2, 1, 0.3, 1)';
     }
 
-    voiceToggle.classList.toggle('active', state.isVoiceActive);
-    voiceStatus.textContent = state.isVoiceActive ? t.voiceOn : t.voiceOff;
     langSelect.value = state.language;
-}
-
-function toggleVoice() {
-    if (!SpeechRecognition) {
-        alert("Speech recognition not supported in this browser.");
-        return;
-    }
-    state.isVoiceActive = !state.isVoiceActive;
-    if (state.isVoiceActive) {
-        recognition.start();
-        voiceToggle.classList.add('listening');
-    } else {
-        recognition.stop();
-        voiceToggle.classList.remove('listening');
-    }
-    updateUI(true);
 }
 
 function animateValue(obj, value) {
@@ -353,8 +388,9 @@ function handleIncrement() {
         state.sessionRound++;
         shankhSound.currentTime = 0;
         shankhSound.play().catch(e => console.log("Shankh play blocked:", e));
-        if ('vibrate' in navigator) navigator.vibrate([100, 50, 100, 50, 100]); // Stronger vibration for Shankh
+        if ('vibrate' in navigator) navigator.vibrate([100, 50, 100, 50, 100]);
         createMalaBlast();
+        // UI Update for stopping is handled in audio ended event or togglePlay helper
     }
     saveState();
     updateUI(true);
@@ -394,33 +430,19 @@ function handleClearAll() {
 }
 
 function switchMantra(direction) {
+    if (isPlaying) togglePlay(false);
     state.currentIndex = (state.currentIndex + direction + mantras.length) % mantras.length;
     saveState();
     updateUI();
 }
 
 function setupEventListeners() {
-    let lastEventTime = 0;
-    counterBtn.addEventListener('click', () => {
-        if (Date.now() - lastEventTime < 300) return;
-        lastEventTime = Date.now();
-        handleIncrement();
-    });
+    playPauseBtn.addEventListener('click', () => togglePlay());
 
-    counterBtn.addEventListener('touchstart', (e) => {
-        if (Date.now() - lastEventTime < 300) {
-            e.preventDefault();
-            return;
-        }
-        lastEventTime = Date.now();
-        handleIncrement();
-    }, { passive: false });
-
-    resetBtn.addEventListener('click', handleReset);
-    clearAllBtn.addEventListener('click', handleClearAll);
+    resetBtn.addEventListener('click', () => { handleReset(); if (isPlaying) togglePlay(false); });
+    clearAllBtn.addEventListener('click', () => { handleClearAll(); if (isPlaying) togglePlay(false); });
     prevBtn.addEventListener('click', () => switchMantra(-1));
     nextBtn.addEventListener('click', () => switchMantra(1));
-    voiceToggle.addEventListener('click', toggleVoice);
 
     langSelect.addEventListener('change', (e) => {
         state.language = e.target.value;

@@ -507,7 +507,8 @@ main {
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #2a3a5a 0%, #050811 100%);
   border: none;
-  cursor: pointer;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #2a3a5a 0%, #050811 100%);
   position: relative;
   overflow: hidden;
   box-shadow:
@@ -519,10 +520,54 @@ main {
   align-items: center;
   justify-content: center;
   z-index: 2;
+  user-select: none;
 }
 
-.counter-orb:active {
+/* Audio Controls */
+.audio-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 2rem;
+  z-index: 10;
+}
+
+.play-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  border: none;
+  color: white;
+  box-shadow: 0 4px 20px rgba(255, 119, 34, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.play-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(255, 119, 34, 0.6);
+}
+
+.play-btn:active {
   transform: scale(0.95);
+}
+
+.play-btn svg {
+  width: 32px;
+  height: 32px;
+  fill: white;
+}
+
+.status-text {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  font-weight: 500;
 }
 
 .orb-in.counter-orb {
