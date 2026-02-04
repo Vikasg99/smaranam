@@ -1,15 +1,18 @@
 :root {
-  --prime-bg: #050811;
+  --prime-bg: #110500;
+  /* Deep Dark Void */
   --accent-primary: #FF7722;
-  /* Kesari Orange */
-  --accent-secondary: #FF9933;
-  /* Warm Saffron */
+  /* Kesari Saffron */
+  --accent-secondary: #FFD700;
+  /* Gold */
   --text-main: #FFFFFF;
-  --text-dim: rgba(255, 255, 255, 0.6);
-  --glass: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.08);
-  --font-display: 'Playfair Display', serif;
-  --font-sans: 'Inter', sans-serif;
+  --text-dim: rgba(255, 255, 255, 0.7);
+  --glass: rgba(255, 119, 34, 0.05);
+  /* Saffron tint */
+  --glass-border: rgba(255, 119, 34, 0.2);
+  --font-display: 'Cinzel', serif;
+  /* Sacred/Royal */
+  --font-sans: 'Lato', sans-serif;
   --font-hindi: 'Noto Serif Devanagari', serif;
 }
 

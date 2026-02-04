@@ -56,15 +56,23 @@ const mantras = [
     {
         hi: "राम हरे कृष्ण हरे राम हरे कृष्ण हरे राम हरे कृष्ण हरे अनंत माधव हरे",
         kn: "ರಾಮ ಹರೇ ಕೃಷ್ಣ ಹರೇ ರಾಮ ಹರೇ ಕೃಷ್ಣ ಹರೇ ರಾಮ ಹರೇ ಕೃಷ್ಣ ಹರೇ ಅನಂತ ಮಾಧವ ಹರೇ",
-        or: "ରାମ ହରେ କୃଷ୍ଣ ହରେ ରାମ ହରେ କୃଷ୍ଣ ହରେ ରାମ ହରେ କୃଷ୍ଣ ହରେ ଅନନ୍ତ ମାଧବ ହରେ",
-        ta: "ராம ஹரே கிருஷ்ண ஹரே ராம ஹரே கிருஷ்ண ஹரே ராம ஹரே கிருஷ்ண ஹரே அனந்த மாதவ ஹரே",
-        ml: "രാമ ഹരേ കൃഷ്ണ ഹരേ രാമ ഹരേ കൃഷ്ണ ഹരേ രാമ ഹരേ കൃഷ്ണ ഹരേ അനಂತ ಮಾಧವ ಹರೇ",
-        mr: "राम हरे कृष्ण हरे राम हरे कृष्ण हरे राम हरे कृष्ण हरे अनंत माधव हरे",
-        te: "రామ హరే కృష్ణ ಹರೇ ರಾಮ హరే కృష్ణ ಹರೇ ರಾಮ హరే కృష్ణ ಹರೇ ಅನంత మాధవ హరే",
+        te: "రామ హరే కృష్ణ హరే రామా హరే కృష్ణ హరే రామా హరే కృష్ణ హరే అనంత మాధవ హరే",
         en: "Rama Hare Krishna Hare Rama Hare Krishna Hare Rama Hare Krishna Hare Ananta Madhav Hare",
-        keywords: ["rama hare", "krsna hare", "ananta", "madhav", "hare rama", "maadhava", "ananta madhav"],
-        audio: "audio/rama_hare_krishna.mp3",
-        speechText: "Rama Hare Krishna Hare Rama Hare Krishna, Hare Rama Hare Krishna Hare Ananta Madhav Hare"
+        speechText: "Rama Hare Krishna, Hare Rama Hare Krishna, Hare Rama Hare Krishna, Hare Ananta Madhav Hare"
+    },
+    {
+        hi: "ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्",
+        en: "Om Bhur Bhuvah Svah Tat Savitur Varenyam Bhargo Devasya Dhimahi Dhiyo Yo Nah Prachodayat",
+        speechText: "Om Bhur Bhuvah Svah, Tat Savitur Varenyam, Bhargo Devasya Dhimahi, Dhiyo Yo Nah Prachodayat",
+        keywords: ["gayatri", "savitur"],
+        label: "Gayatri Mantra"
+    },
+    {
+        hi: "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम् उर्वारुकमिव बन्धनान् मृत्योर्मुक्षीय मामृतात्",
+        en: "Om Tryambakam Yajamahe Sugandhim Pushti Vardhanam Urvarukamiva Bandhanat Mrityor Mukshiya Mamritat",
+        speechText: "Om Tryambakam Yajamahe Sugandhim Pushti Vardhanam, Urvarukamiva Bandhanat Mrityor Mukshiya Mamritat",
+        keywords: ["mahamrityunjaya", "tryambakam", "shiva"],
+        label: "Mahamrityunjaya Mantra"
     }
 ];
 
@@ -600,6 +608,48 @@ function setupEventListeners() {
     if (aboutBtn) aboutBtn.addEventListener('click', () => aboutModal.classList.add('active'));
     if (closeAbout) closeAbout.addEventListener('click', () => aboutModal.classList.remove('active'));
     if (aboutModal) aboutModal.addEventListener('click', (e) => { if (e.target === aboutModal) aboutModal.classList.remove('active'); });
+
+    // --- Mantra Selection Modal Logic ---
+    const mantraModal = document.getElementById('mantra-modal');
+    const openMantraBtn = document.getElementById('open-mantra-list');
+    const closeMantraBtn = document.getElementById('close-mantra-list');
+    const mantraListContainer = document.getElementById('mantra-list-container');
+
+    function openMantraSelection() {
+        if (!mantraListContainer) return;
+        mantraListContainer.innerHTML = ''; // Clear existing
+
+        mantras.forEach((m, index) => {
+            const div = document.createElement('div');
+            div.className = `mantra-option ${index === state.currentIndex ? 'selected' : ''}`;
+            const title = m.label || m.en.split(' ').slice(0, 3).join(' ') + '...';
+
+            div.innerHTML = `
+                <div>
+                    <div class="mantra-option-title">${title}</div>
+                    <div class="mantra-option-hindi">${m.hi.substring(0, 30)}...</div>
+                </div>
+                ${index === state.currentIndex ? '<span style="color:var(--accent-primary)">Running</span>' : ''}
+            `;
+
+            div.addEventListener('click', () => {
+                state.currentIndex = index;
+                saveState();
+                updateUI();
+                if (isPlaying) togglePlay(false); // Stop if playing
+                if (mantraModal) mantraModal.classList.remove('active');
+            });
+
+            mantraListContainer.appendChild(div);
+        });
+
+        if (mantraModal) mantraModal.classList.add('active');
+    }
+
+    if (openMantraBtn) openMantraBtn.addEventListener('click', openMantraSelection);
+    if (closeMantraBtn) closeMantraBtn.addEventListener('click', () => mantraModal.classList.remove('active'));
+    if (mantraModal) mantraModal.addEventListener('click', (e) => { if (e.target === mantraModal) mantraModal.classList.remove('active'); });
+
 
     document.addEventListener('keydown', (e) => {
         if (e.code === 'Space' || e.code === 'Enter') {

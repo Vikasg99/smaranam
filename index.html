@@ -12,8 +12,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Noto+Serif+Devanagari:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
@@ -94,6 +93,14 @@
             <div class="mantra-container">
                 <div class="mantra-card" id="mantra-display">
                     <div class="mantra-hindi" id="hindi-mantra">ॐ नमः शिवाय</div>
+                    <button class="nav-btn-mini mantra-select-btn" id="open-mantra-list"
+                        style="margin-top: 15px; background: rgba(255,119,34,0.15); border: 1px solid rgba(255,119,34,0.4); color: #ffad77; font-family: 'Lato', sans-serif;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"
+                            style="margin-right:5px; vertical-align:middle;">
+                            <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
+                        </svg>
+                        Change Mantra
+                    </button>
                 </div>
             </div>
 
@@ -253,6 +260,22 @@
 
             <p class="payment-footer">After payment, please take a screenshot and share it with support to activate your
                 premium access.</p>
+        </div>
+    </div>
+
+    <!-- Mantra Selection Modal -->
+    <div class="modal-overlay" id="mantra-modal">
+        <div class="subs-card mantra-list-card">
+            <div class="modal-header"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 class="modal-title" style="margin:0;">Select Mantra</h2>
+                <button class="close-modal-plain" id="close-mantra-list"
+                    style="background:none; border:none; color:inherit; font-size:1.5rem; cursor:pointer;">&times;</button>
+            </div>
+            <div class="mantra-list-container" id="mantra-list-container"
+                style="max-height: 50vh; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+                <!-- Mantras injected via JS -->
+            </div>
         </div>
     </div>
 
