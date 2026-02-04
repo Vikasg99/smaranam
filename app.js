@@ -54,13 +54,6 @@ const mantras = [
         speechText: "Hare Krishna Hare Krishna, Krishna Krishna Hare Hare. Hare Rama Hare Rama, Rama Rama Hare Hare"
     },
     {
-        hi: "राम हरे कृष्ण हरे राम हरे कृष्ण हरे राम हरे कृष्ण हरे अनंत माधव हरे",
-        kn: "ರಾಮ ಹರೇ ಕೃಷ್ಣ ಹರೇ ರಾಮ ಹರೇ ಕೃಷ್ಣ ಹರೇ ರಾಮ ಹರೇ ಕೃಷ್ಣ ಹರೇ ಅನಂತ ಮಾಧವ ಹರೇ",
-        te: "రామ హరే కృష్ణ హరే రామా హరే కృష్ణ హరే రామా హరే కృష్ణ హరే అనంత మాధవ హరే",
-        en: "Rama Hare Krishna Hare Rama Hare Krishna Hare Rama Hare Krishna Hare Ananta Madhav Hare",
-        speechText: "Rama Hare Krishna, Hare Rama Hare Krishna, Hare Rama Hare Krishna, Hare Ananta Madhav Hare"
-    },
-    {
         hi: "ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्",
         en: "Om Bhur Bhuvah Svah Tat Savitur Varenyam Bhargo Devasya Dhimahi Dhiyo Yo Nah Prachodayat",
         speechText: "Om Bhur Bhuvah Svah, Tat Savitur Varenyam, Bhargo Devasya Dhimahi, Dhiyo Yo Nah Prachodayat",
