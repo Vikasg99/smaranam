@@ -533,6 +533,36 @@ main {
   z-index: 10;
 }
 
+.session-goal-control {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.goal-select {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  backdrop-filter: blur(5px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.goal-select:hover,
+.goal-select:focus {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.goal-select option {
+  background: #FF7722;
+  color: white;
+}
+
 .play-btn {
   width: 64px;
   height: 64px;
@@ -1138,4 +1168,34 @@ main {
     padding: 0.3rem 0.6rem;
     font-size: 0.75rem;
   }
+}
+
+/* --- Zen Mode Prediction --- */
+.zen-card {
+  max-width: 380px;
+  padding: 2rem 1.5rem;
+}
+
+.zen-actions {
+  margin-top: 1.5rem;
+}
+
+#skip-zen:hover {
+  color: var(--accent-primary);
+  opacity: 1;
+}
+
+/* --- Completion Modal --- */
+.completion-card {
+  max-width: 400px;
+  padding: 2.5rem 1.5rem;
+  background: radial-gradient(circle at top right, #1a1f35 0%, #0a0f1e 100%);
+  border: 1px solid var(--accent-primary);
+  box-shadow: 0 0 30px rgba(255, 119, 34, 0.2);
+}
+
+.completion-card .modal-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 10px rgba(255, 119, 34, 0.5);
 }

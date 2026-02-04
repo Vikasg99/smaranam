@@ -1,4 +1,4 @@
-// Smaranam Core Logic - Audio Edition
+// Smaranam Core Logic - Audio & Speech Edition
 
 const mantras = [
     {
@@ -11,7 +11,8 @@ const mantras = [
         te: "ఓం నమః ಶಿವాయ",
         en: "Om Namah Shivaya",
         keywords: ["namah shivay", "shiva", "shivaya", "un namah shivay"],
-        audio: "audio/om_namah_shivaya.mp3"
+        audio: "audio/om_namah_shivaya.mp3",
+        speechText: "Om Namah Shivaya"
     },
     {
         hi: "ॐ नमो भगवते वासुदेवाय",
@@ -23,7 +24,8 @@ const mantras = [
         te: "ఓం నమో భగవతే వాసుదేవాయ",
         en: "Om Namo Bhagavate Vasudevaya",
         keywords: ["vasudev", "namo bhagavate", "vasudevaya", "un namo"],
-        audio: "audio/om_namo_bhagavate_vasudevaya.mp3"
+        audio: "audio/om_namo_bhagavate_vasudevaya.mp3",
+        speechText: "Om Namo Bhagavate Vasudevaya"
     },
     {
         hi: "ॐ गं गणपतये नमः",
@@ -35,7 +37,8 @@ const mantras = [
         te: "ఓం గం గణపతయే నమః",
         en: "Om Gam Ganapataye Namah",
         keywords: ["ganpataye", "ganpati", "ganesha", "ganapataye"],
-        audio: "audio/om_gan_ganapataye_namah.mp3"
+        audio: "audio/om_gan_ganapataye_namah.mp3",
+        speechText: "Om Gam Ganapataye Namah"
     },
     {
         hi: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे",
@@ -45,9 +48,10 @@ const mantras = [
         ml: "ഹരേ കൃഷ്ണ ഹരേ കൃഷ്ണ കൃഷ്ണ കൃഷ്ണ ഹരേ ഹരേ",
         mr: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे",
         te: "హరే కృష్ణ ಹರೇ ಕೃಷ್ಣ కృష్ణ కృష్ణ ಹರೇ ಹರೇ",
-        en: "Hare Krishna Hare Krishna Krishna Krishna Hare Hare",
+        en: "Hare Krishna Hare Krishna Krishna Krishna Hare Hare\nHare Rama Hare Rama Rama Rama Hare Hare",
         keywords: ["hare krishna", "krishna krishna", "rama rama", "hare hare"],
-        audio: "audio/hare_krishna_mahamantra.mp3"
+        audio: "audio/hare_krishna_mahamantra.mp3",
+        speechText: "Hare Krishna Hare Krishna, Krishna Krishna Hare Hare. Hare Rama Hare Rama, Rama Rama Hare Hare"
     },
     {
         hi: "राम हरे कृष्ण हरे राम हरे कृष्ण हरे राम हरे कृष्ण हरे अनंत माधव हरे",
@@ -59,7 +63,8 @@ const mantras = [
         te: "రామ హరే కృష్ణ ಹರೇ ರಾಮ హరే కృష్ణ ಹರೇ ರಾಮ హరే కృష్ణ ಹರೇ ಅನంత మాధవ హరే",
         en: "Rama Hare Krishna Hare Rama Hare Krishna Hare Rama Hare Krishna Hare Ananta Madhav Hare",
         keywords: ["rama hare", "krsna hare", "ananta", "madhav", "hare rama", "maadhava", "ananta madhav"],
-        audio: "audio/rama_hare_krishna.mp3"
+        audio: "audio/rama_hare_krishna.mp3",
+        speechText: "Rama Hare Krishna Hare Rama Hare Krishna, Hare Rama Hare Krishna Hare Ananta Madhav Hare"
     }
 ];
 
@@ -71,7 +76,8 @@ const translations = {
         session: "Session",
         lifetime: "Lifetime",
         resetConfirm: "Peacefully reset session count and rounds?",
-        clearConfirm: "CRITICAL: This will permanently wipe ALL chanting data. Are you sure?"
+        clearConfirm: "CRITICAL: This will permanently wipe ALL chanting data. Are you sure?",
+        goalReached: "Session Goal Reached! Hari Om."
     },
     hi: {
         today: "आज",
@@ -80,61 +86,8 @@ const translations = {
         lifetime: "कुल",
         chats: "जाप",
         resetConfirm: "क्या आप सत्र सुधारना चाहते हैं?",
-        clearConfirm: "सावधानी: क्या आप सारा डेटा मिटाना चाहते हैं?"
-    },
-    kn: {
-        today: "ಇಂದು",
-        malas: "ಮಾಲೆಗಳು",
-        session: "ಸೆಷನ್",
-        lifetime: "ಒಟ್ಟು",
-        chats: "ಜಪ",
-        resetConfirm: "ಸೆಷನ್ ಮರುಹೊಂದಿಸಬೇಕೆ?",
-        clearConfirm: "ಎಚ್ಚರಿಕೆ: ಎಲ್ಲಾ ಡೇಟಾವನ್ನು ಅಳಿಸಬೇಕೆ?"
-    },
-    or: {
-        today: "ଆଜି",
-        malas: "ମାଳା",
-        session: "ସେସନ୍",
-        lifetime: "ମୋଟ",
-        chats: "ଜପ",
-        resetConfirm: "ସେସନ୍ ରିସେଟ୍ କରିବେ କି?",
-        clearConfirm: "ସତର୍କତା: ସମସ୍ତ ଡାଟା ଲିଭାଇ ଦେବେ କି?"
-    },
-    ta: {
-        today: "இன்று",
-        malas: "மாலைகள்",
-        session: "அமர்வு",
-        lifetime: "மொத்தம்",
-        chats: "ஜெபம்",
-        resetConfirm: "அமர்வை மீட்டமைக்க வேண்டுமா?",
-        clearConfirm: "எச்சரிக்கை: அனைத்து தரவையும் அழிக்க வேண்டுமா?"
-    },
-    ml: {
-        today: "ഇന്ന്",
-        malas: "മാലകൾ",
-        session: "സെഷൻ",
-        lifetime: "ആകെ",
-        chats: "ജപം",
-        resetConfirm: "സെഷൻ റീസെറ്റ് ചെയ്യണോ?",
-        clearConfirm: "മുന്നറിയിപ്പ്: എല്ലാ ഡാറ്റയും മായ്ക്കണോ?"
-    },
-    mr: {
-        today: "आज",
-        malas: "माळ",
-        session: "सत्र",
-        lifetime: "एकूण",
-        chats: "जाप",
-        resetConfirm: "सत्र रिसेट करायचे आहे का?",
-        clearConfirm: "सावधान: तुम्ही सर्व डेटा हटवू इच्छिता का?"
-    },
-    te: {
-        today: "ఈరోజు",
-        malas: "మాలలు",
-        session: "సెషన్",
-        lifetime: "మొత్తం",
-        chats: "జపం",
-        resetConfirm: "సెషన్‌ను రీసెట్ చేయాలా?",
-        clearConfirm: "అప్రమత్తత: మీరు మొత్తం డేటాను తొలగించాలనుకుంటున్నారా?"
+        clearConfirm: "सावधानी: क्या आप सारा डेटा मिटाना चाहते हैं?",
+        goalReached: "सत्र लक्ष्य पूरा हुआ! हरि ओम।"
     }
 };
 
@@ -146,7 +99,9 @@ let state = {
     sessionRound: 0,
     language: 'en',
     isPremium: false,
-    lastUpdate: null
+    lastUpdate: null,
+    sessionGoal: '108', // Default 1 Mala
+    sessionStartTime: null
 };
 
 // DOM Elements
@@ -164,12 +119,7 @@ const nextBtn = document.getElementById('next-mantra');
 const resetBtn = document.getElementById('reset-btn');
 const clearAllBtn = document.getElementById('clear-all-btn');
 const langSelect = document.getElementById('lang-select');
-const subsModal = document.getElementById('subs-modal');
-const openSubs = document.getElementById('open-subs');
-const closeSubs = document.getElementById('close-subs');
-const paymentModal = document.getElementById('payment-modal');
-const closePayment = document.getElementById('close-payment');
-const planBtns = document.querySelectorAll('.plan-btn');
+const sessionGoalSelect = document.getElementById('session-goal'); // New Element
 
 // Labels
 const lblToday = document.getElementById('lbl-today');
@@ -187,9 +137,13 @@ const shankhSound = new Audio(SHANKH_SOUND_URL);
 malaSound.volume = 0.5;
 shankhSound.volume = 0.7;
 
-// Audio Logic
+// Audio & Speech Logic
 let isPlaying = false;
 let mantraAudio = new Audio();
+let speechSynth = window.speechSynthesis;
+let speechUtterance = null;
+let timerInterval = null;
+
 const PLAY_ICON = `<path d="M8 5v14l11-7z"/>`;
 const PAUSE_ICON = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
 
@@ -199,31 +153,100 @@ const pauseIcon = document.getElementById('pause-icon');
 const playStatus = document.getElementById('play-status');
 
 
-
-
 function initAudio() {
     mantraAudio.addEventListener('ended', () => {
         handleIncrement();
-        if (state.sessionCount % MALA_SIZE !== 0 && isPlaying) {
-            mantraAudio.currentTime = 0;
-            mantraAudio.play().catch(e => console.error("Playback error", e));
-        } else if (state.sessionCount % MALA_SIZE === 0) {
-            togglePlay(false); // Stop after 108
-        }
+        checkAudioLoop();
     });
 
-    // Error handling - Fallback to Bell if file not found
     mantraAudio.addEventListener('error', (e) => {
-        if (mantraAudio.src !== MALA_SOUND_URL) {
-            console.warn("Mantra audio missing, falling back to default bell.");
-            if (!mantraAudio.src.includes('indiemusicbox')) {
-                mantraAudio.src = MALA_SOUND_URL;
-                if (isPlaying) mantraAudio.play();
-            }
+        console.warn("Audio failed, switching to Speech mode");
+        useSpeechFallback = true;
+        // If it failed during play, restart with speech
+        if (isPlaying) {
+            speakMantra();
         }
     });
 }
 
+function speakMantra() {
+    if (!isPlaying) return;
+
+    if (speechSynth.speaking) {
+        speechSynth.cancel();
+    }
+
+    const currentMantra = mantras[state.currentIndex];
+    const textToSpeak = currentMantra.speechText || currentMantra.en;
+
+    speechUtterance = new SpeechSynthesisUtterance(textToSpeak);
+
+    // Select Voice (Prefer Indian English or Hindi)
+    const voices = speechSynth.getVoices();
+    const indianVoice = voices.find(v => v.lang.includes('IN') || v.lang.includes('hi'));
+    if (indianVoice) speechUtterance.voice = indianVoice;
+
+    speechUtterance.rate = 0.85; // Slightly slower for chanting feel
+    speechUtterance.pitch = 0.9; // Slightly deeper
+
+    speechUtterance.onend = () => {
+        if (isPlaying) {
+            handleIncrement();
+            // Small pause before next chant
+            setTimeout(() => {
+                if (isPlaying) speakMantra();
+            }, 300);
+        }
+    };
+
+    speechUtterance.onerror = (e) => {
+        console.error("Speech error", e);
+        isPlaying = false;
+        updatePlayUI();
+    };
+
+    speechSynth.speak(speechUtterance);
+}
+
+
+// --- Wake Lock Logic (Screen Keep Awake) ---
+let wakeLock = null;
+
+async function requestWakeLock() {
+    try {
+        if ('wakeLock' in navigator) {
+            wakeLock = await navigator.wakeLock.request('screen');
+            console.log('Wake Lock active');
+            wakeLock.addEventListener('release', () => {
+                console.log('Wake Lock released');
+            });
+        }
+    } catch (err) {
+        console.warn(`${err.name}, ${err.message}`);
+    }
+}
+
+function releaseWakeLock() {
+    if (wakeLock !== null) {
+        wakeLock.release().then(() => {
+            wakeLock = null;
+        });
+    }
+}
+
+// Global handleVisibilityChange (Combined with Zen Mode)
+document.addEventListener('visibilitychange', async () => {
+    if (document.hidden && isPlaying) {
+        console.log("App interrupted - Pausing");
+        togglePlay(false);
+    } else if (!document.hidden && isPlaying) {
+        // Re-acquire lock if we come back and are supposedly playing (though we pause usually)
+        await requestWakeLock();
+    }
+});
+
+
+// Updated togglePlay to use Wake Lock
 function togglePlay(forceState) {
     if (forceState !== undefined) {
         isPlaying = forceState;
@@ -232,57 +255,141 @@ function togglePlay(forceState) {
     }
 
     if (isPlaying) {
+        // Start Session
+        if (!state.sessionStartTime) state.sessionStartTime = Date.now();
+        startTimerLogic();
+
+        requestWakeLock(); // <--- Wake Lock ON
+
         const currentMantra = mantras[state.currentIndex];
-        mantraAudio.src = currentMantra.audio || MALA_SOUND_URL;
+        speakMantra();
+
         playIcon.style.display = 'none';
         pauseIcon.style.display = 'block';
-        playStatus.textContent = translations[state.language].chanting || "Chanting...";
-        mantraAudio.play().catch(e => {
-            console.error(e);
-            isPlaying = false;
-            updatePlayUI();
-        });
+        playStatus.textContent = "Chanting...";
+        if (sessionGoalSelect) sessionGoalSelect.disabled = true;
+
     } else {
+        // Stop Session
+        if (speechSynth.speaking) speechSynth.cancel();
         mantraAudio.pause();
+        stopTimerLogic();
+
+        releaseWakeLock(); // <--- Wake Lock OFF
+
         playIcon.style.display = 'block';
         pauseIcon.style.display = 'none';
-        playStatus.textContent = translations[state.language].resume || "Resume Sadhana";
+        playStatus.textContent = "Resume Sadhana";
+        if (sessionGoalSelect) sessionGoalSelect.disabled = false;
+    }
+}
+
+function startTimerLogic() {
+    if (state.sessionGoal.endsWith('m')) {
+        const minutes = parseInt(state.sessionGoal);
+        const durationMs = minutes * 60 * 1000;
+
+        // Clear any existing timer
+        if (timerInterval) clearInterval(timerInterval);
+
+        timerInterval = setInterval(() => {
+            const elapsed = Date.now() - state.sessionStartTime;
+            if (elapsed >= durationMs) {
+                completeSession("Time Completed");
+            }
+        }, 1000);
+    }
+}
+
+function stopTimerLogic() {
+    if (timerInterval) clearInterval(timerInterval);
+    state.sessionStartTime = null;
+}
+
+function checkGoalCompletion() {
+    if (state.sessionGoal === 'inf') return;
+
+    if (!state.sessionGoal.endsWith('m')) {
+        // Count based
+        const targetCount = parseInt(state.sessionGoal);
+
+        // Simple logic: If we hit exactly the target (modulo or total), stop.
+        if (targetCount === 108) {
+            // Standard Mala logic handled in handleIncrement (mod 108)
+            // If they selected 1 Mala, we stop at 108 (or multiple of).
+            if (state.sessionCount > 0 && state.sessionCount % 108 === 0) {
+                completeSession("1 Mala Completed");
+            }
+        } else {
+            // Specific count like 1008
+            if (state.sessionCount >= targetCount) {
+                completeSession("Target Count Reached");
+            }
+        }
     }
 }
 
 function updatePlayUI() {
     if (isPlaying) {
-        playIcon.style.display = 'none';
-        pauseIcon.style.display = 'block';
-        playStatus.textContent = translations[state.language].chanting || "Chanting...";
+        if (playIcon) playIcon.style.display = 'none';
+        if (pauseIcon) pauseIcon.style.display = 'block';
+        if (playStatus) playStatus.textContent = "Chanting...";
     } else {
-        playIcon.style.display = 'block';
-        pauseIcon.style.display = 'none';
-        playStatus.textContent = translations[state.language]?.start || "Start Sadhana";
+        if (playIcon) playIcon.style.display = 'block';
+        if (pauseIcon) pauseIcon.style.display = 'none';
+        if (playStatus) playStatus.textContent = "Start Sadhana";
     }
 }
 
-function init() {
-    loadState();
-    state.sessionRound = 0;
-    initAudio();
-    updateUI(true);
-    setupEventListeners();
-    checkDailyReset();
-    progressRing.style.strokeDasharray = `${CIRCUMFERENCE} ${CIRCUMFERENCE}`;
+// Updated completeSession to use Modal instead of Alert
+const completionModal = document.getElementById('completion-modal');
+const completionMsg = document.getElementById('completion-msg');
+const closeCompletionBtn = document.getElementById('close-completion');
+const restartCompletionBtn = document.getElementById('restart-completion');
+
+if (closeCompletionBtn) closeCompletionBtn.addEventListener('click', () => {
+    if (completionModal) completionModal.classList.remove('active');
+    // Ensure we are stopped
+    if (isPlaying) togglePlay(false);
+});
+
+if (restartCompletionBtn) restartCompletionBtn.addEventListener('click', () => {
+    if (completionModal) completionModal.classList.remove('active');
+    handleReset();
+    // Maybe auto-start? Let's let user click start for intention.
+});
+
+
+function completeSession(msg) {
+    togglePlay(false);
+    shankhSound.currentTime = 0;
+    shankhSound.play();
+
+    // Show Modal
+    if (completionMsg) completionMsg.textContent = translations[state.language].goalReached || msg;
+    if (completionModal) completionModal.classList.add('active');
+
+    // Reset session start to allow new session
+    state.sessionStartTime = null;
 }
+
+init();
 
 function loadState() {
     const saved = localStorage.getItem('chant_gravity_state');
     if (saved) {
         state = { ...state, ...JSON.parse(saved) };
     }
-    if (state.sessionRound === undefined) state.sessionRound = 0;
-    if (state.language === undefined) state.language = 'en';
+    // Set defaults if new fields missing
+    if (!state.sessionGoal) state.sessionGoal = '108';
+
+    // Restore UI state
+    sessionGoalSelect.value = state.sessionGoal;
 }
 
 function saveState() {
     state.lastUpdate = new Date().toISOString();
+    state.sessionGoal = sessionGoalSelect.value;
     localStorage.setItem('chant_gravity_state', JSON.stringify(state));
 }
 
@@ -298,10 +405,10 @@ function checkDailyReset() {
 }
 
 function updateUI(silent = false) {
-    const t = translations[state.language];
+    const t = translations[state.language] || translations['en']; // Fallback
     const mantra = mantras[state.currentIndex];
 
-    hindiMantraEl.textContent = mantra[state.language] || mantra.hi;
+    hindiMantraEl.textContent = mantra[state.language] || mantra.hi || mantra.en;
     animateValue(currentCountEl, state.sessionCount);
     dailyTotalEl.textContent = state.dailyTotal;
 
@@ -312,13 +419,7 @@ function updateUI(silent = false) {
     lblToday.textContent = t.today;
     lblMalas.textContent = `${t.malas} (${t.session})`;
     lblLifetime.textContent = t.lifetime;
-    lblChants.textContent = t.chats; // Note: 'chants' key in translation is 'chats' in some cleanups, let's stick to 'chats' or 'chants'. The initial object had 'chants'. I used 'chats' in translations above. Let me correct translations to 'chants' if I can or use 'chats'. The original code had 'chants'. I'll use 'chants' in the code.
-
-    // Fixing my own typo in the translations object above: 'chats' -> 'chants'
-    if (t.chants) lblChants.textContent = t.chants;
-    else if (t.chats) lblChants.textContent = t.chats;
-
-    if (!isPlaying) playStatus.textContent = (state.sessionCount > 0) ? (t.resume || "Resume") : (t.start || "Start Sadhana");
+    lblChants.textContent = t.chats || "Chants";
 
     const progress = (state.sessionCount % MALA_SIZE) / MALA_SIZE;
     const offset = CIRCUMFERENCE - (progress * CIRCUMFERENCE);
@@ -354,15 +455,17 @@ function handleIncrement() {
     createRipple();
     if ('vibrate' in navigator) navigator.vibrate(15);
 
-    if (state.sessionCount % MALA_SIZE === 0) {
+    if (state.sessionCount > 0 && state.sessionCount % MALA_SIZE === 0) {
         state.sessionRound++;
         shankhSound.currentTime = 0;
         shankhSound.play().catch(e => console.log("Shankh play blocked:", e));
         if ('vibrate' in navigator) navigator.vibrate([100, 50, 100, 50, 100]);
         createMalaBlast();
     }
+
     saveState();
     updateUI(true);
+    checkGoalCompletion();
 }
 
 function createMalaBlast() {
@@ -375,6 +478,7 @@ function handleReset() {
     if (confirm(translations[state.language].resetConfirm)) {
         state.sessionCount = 0;
         state.sessionRound = 0;
+        state.sessionStartTime = null;
         saveState();
         updateUI();
     }
@@ -383,17 +487,8 @@ function handleReset() {
 function handleClearAll() {
     if (confirm(translations[state.language].clearConfirm)) {
         localStorage.removeItem('chant_gravity_state');
-        state = {
-            currentIndex: 0,
-            sessionCount: 0,
-            dailyTotal: 0,
-            lifetimeTotal: 0,
-            sessionRound: 0,
-            language: state.language,
-            isPremium: false,
-            lastUpdate: new Date().toISOString()
-        };
-        updateUI();
+        // Reload page to reset everything cleanly or re-init
+        location.reload();
     }
 }
 
@@ -404,8 +499,58 @@ function switchMantra(direction) {
     updateUI();
 }
 
+// --- Zen Mode & Interruption Handling ---
+const zenModal = document.getElementById('zen-modal');
+const confirmZenBtn = document.getElementById('confirm-zen');
+const skipZenBtn = document.getElementById('skip-zen');
+
+function initZenMode() {
+    // Check if user has already seen the message this session
+    const zenSeen = sessionStorage.getItem('zen_mode_seen');
+    if (!zenSeen) {
+        if (zenModal) zenModal.classList.add('active');
+        return true; // Zen mode triggered
+    }
+    return false; // Already seen, safe to play
+}
+
+function handleZenConfirm() {
+    sessionStorage.setItem('zen_mode_seen', 'true');
+    if (zenModal) zenModal.classList.remove('active');
+    togglePlay(true); // Start playing
+}
+
+function handleZenSkip() {
+    sessionStorage.setItem('zen_mode_seen', 'true');
+    if (zenModal) zenModal.classList.remove('active');
+    togglePlay(true); // Start playing
+}
+
+// Visibility API for Interruption Handling (Calls/App Switch)
+document.addEventListener('visibilitychange', () => {
+    if (document.hidden && isPlaying) {
+        console.log("App interrupted/backgrounded - Pausing for Zen");
+        togglePlay(false); // Auto-pause
+    }
+});
+
 function setupEventListeners() {
-    playPauseBtn.addEventListener('click', () => togglePlay());
+    playPauseBtn.addEventListener('click', () => {
+        if (!isPlaying) {
+            // Trying to play
+            const triggered = initZenMode();
+            if (!triggered) {
+                togglePlay();
+            }
+        } else {
+            // Trying to pause
+            togglePlay();
+        }
+    });
+
+    if (confirmZenBtn) confirmZenBtn.addEventListener('click', handleZenConfirm);
+    if (skipZenBtn) skipZenBtn.addEventListener('click', handleZenSkip);
+    if (zenModal) zenModal.addEventListener('click', (e) => { if (e.target === zenModal) handleZenSkip(); });
 
     resetBtn.addEventListener('click', () => { handleReset(); if (isPlaying) togglePlay(false); });
     clearAllBtn.addEventListener('click', () => { handleClearAll(); if (isPlaying) togglePlay(false); });
@@ -418,27 +563,43 @@ function setupEventListeners() {
         updateUI(true);
     });
 
-    openSubs.addEventListener('click', () => subsModal.classList.add('active'));
-    closeSubs.addEventListener('click', () => subsModal.classList.remove('active'));
-    subsModal.addEventListener('click', (e) => { if (e.target === subsModal) subsModal.classList.remove('active'); });
+    // Handle session goal if element exists
+    if (sessionGoalSelect) {
+        sessionGoalSelect.addEventListener('change', (e) => {
+            state.sessionGoal = e.target.value;
+            saveState();
+        });
+    }
+
+    const openSubs = document.getElementById('open-subs');
+    const closeSubs = document.getElementById('close-subs');
+    const subsModal = document.getElementById('subs-modal');
+    if (openSubs) openSubs.addEventListener('click', () => subsModal.classList.add('active'));
+    if (closeSubs) closeSubs.addEventListener('click', () => subsModal.classList.remove('active'));
+    if (subsModal) subsModal.addEventListener('click', (e) => { if (e.target === subsModal) subsModal.classList.remove('active'); });
+
+    // Payment modals
+    const paymentModal = document.getElementById('payment-modal');
+    const closePayment = document.getElementById('close-payment');
+    const planBtns = document.querySelectorAll('.plan-btn');
 
     planBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            subsModal.classList.remove('active');
-            paymentModal.classList.add('active');
+            if (subsModal) subsModal.classList.remove('active');
+            if (paymentModal) paymentModal.classList.add('active');
         });
     });
+
+    if (closePayment) closePayment.addEventListener('click', () => paymentModal.classList.remove('active'));
+    if (paymentModal) paymentModal.addEventListener('click', (e) => { if (e.target === paymentModal) paymentModal.classList.remove('active'); });
 
     const aboutModal = document.getElementById('about-modal');
     const aboutBtn = document.getElementById('about-btn');
     const closeAbout = document.getElementById('close-about');
 
-    aboutBtn.addEventListener('click', () => aboutModal.classList.add('active'));
-    closeAbout.addEventListener('click', () => aboutModal.classList.remove('active'));
-    aboutModal.addEventListener('click', (e) => { if (e.target === aboutModal) aboutModal.classList.remove('active'); });
-
-    closePayment.addEventListener('click', () => paymentModal.classList.remove('active'));
-    paymentModal.addEventListener('click', (e) => { if (e.target === paymentModal) paymentModal.classList.remove('active'); });
+    if (aboutBtn) aboutBtn.addEventListener('click', () => aboutModal.classList.add('active'));
+    if (closeAbout) closeAbout.addEventListener('click', () => aboutModal.classList.remove('active'));
+    if (aboutModal) aboutModal.addEventListener('click', (e) => { if (e.target === aboutModal) aboutModal.classList.remove('active'); });
 
     document.addEventListener('keydown', (e) => {
         if (e.code === 'Space' || e.code === 'Enter') {
@@ -449,8 +610,8 @@ function setupEventListeners() {
 }
 
 // CSS injection for counting pulse
-const style = document.createElement('style');
-style.textContent = `
+const cssStyle = document.createElement('style');
+cssStyle.textContent = `
     @keyframes pulse-text {
         0% { transform: scale(1); }
         50% { transform: scale(1.15); color: #FF7722; filter: brightness(1.5); }
@@ -458,6 +619,6 @@ style.textContent = `
     }
     .pulse { animation: pulse-text 0.15s cubic-bezier(0.1, 0.9, 0.2, 1); }
 `;
-document.head.appendChild(style);
+document.head.appendChild(cssStyle);
 
 init();

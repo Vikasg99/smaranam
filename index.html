@@ -122,6 +122,17 @@
 
 
                 <div class="audio-controls">
+                    <div class="session-goal-control">
+                        <select id="session-goal" class="goal-select" aria-label="Session Goal">
+                            <option value="108">1 Mala (108)</option>
+                            <option value="1008">1008 Chants</option>
+                            <option value="inf">Unlimited</option>
+                            <option value="5m">5 Minutes</option>
+                            <option value="15m">15 Minutes</option>
+                            <option value="30m">30 Minutes</option>
+                            <option value="60m">1 Hour</option>
+                        </select>
+                    </div>
                     <button class="play-btn" id="play-pause-btn" aria-label="Play Mantra">
                         <svg viewBox="0 0 24 24" fill="currentColor" id="play-icon">
                             <path d="M8 5v14l11-7z" />
@@ -242,6 +253,39 @@
 
             <p class="payment-footer">After payment, please take a screenshot and share it with support to activate your
                 premium access.</p>
+        </div>
+    </div>
+
+    <!-- Zen Mode Suggestion Modal -->
+    <div class="modal-overlay" id="zen-modal">
+        <div class="subs-card zen-card">
+            <h2 class="modal-title">🔔 Deep Focus Recommended</h2>
+            <p class="modal-desc" style="margin-bottom: 20px;">
+                To avoid interruptions from calls or notifications during your sadhana, we recommend enabling
+                <b>"Do Not Disturb"</b> mode on your device.
+            </p>
+            <div class="zen-actions" style="display: flex; flex-direction: column; gap: 10px;">
+                <button class="plan-btn" id="confirm-zen">I've Enabled It</button>
+                <button class="nav-btn-mini" id="skip-zen"
+                    style="width: auto; margin: 0 auto; border: none; background: none; text-decoration: underline; opacity: 0.7;">I'll
+                    do it later</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Completion Modal -->
+    <div class="modal-overlay" id="completion-modal">
+        <div class="subs-card completion-card">
+            <h2 class="modal-title">✨ Hari Om ✨</h2>
+            <p class="modal-desc" id="completion-msg" style="margin-bottom: 20px;">
+                Session Completed Successfully.
+            </p>
+            <div class="zen-actions" style="display: flex; flex-direction: column; gap: 10px;">
+                <button class="plan-btn" id="close-completion">Done</button>
+                <button class="nav-btn-mini" id="restart-completion"
+                    style="width: auto; margin: 0 auto; border: none; background: none; text-decoration: underline; opacity: 0.7;">Chant
+                    Again</button>
+            </div>
         </div>
     </div>
 
