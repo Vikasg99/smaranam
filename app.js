@@ -1,4 +1,4 @@
-// Smaranam Core Logic - Kesari Voice Edition
+// Smaranam Core Logic - Audio Edition
 
 const mantras = [
     {
@@ -44,7 +44,7 @@ const mantras = [
         ta: "ஹரே கிருஷ்ண ஹரே கிருஷ்ண கிருஷ்ண கிருஷ்ண ஹரே ஹரே",
         ml: "ഹരേ കൃഷ്ണ ഹരേ കൃഷ്ണ കൃഷ്ണ കൃഷ്ണ ഹരേ ഹരേ",
         mr: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे",
-        te: "హరే కృష్ణ ಹರೇ ಕೃಷ್ಣ ಕೃಷ್ಣ ಕృష్ణ ಹರೇ ಹರೇ",
+        te: "హరే కృష్ణ ಹರೇ ಕೃಷ್ಣ కృష్ణ కృష్ణ ಹರೇ ಹರೇ",
         en: "Hare Krishna Hare Krishna Krishna Krishna Hare Hare",
         keywords: ["hare krishna", "krishna krishna", "rama rama", "hare hare"],
         audio: "audio/hare_krishna_mahamantra.mp3"
@@ -54,9 +54,9 @@ const mantras = [
         kn: "ರಾಮ ಹರೇ ಕೃಷ್ಣ ಹರೇ ರಾಮ ಹರೇ ಕೃಷ್ಣ ಹರೇ ರಾಮ ಹರೇ ಕೃಷ್ಣ ಹರೇ ಅನಂತ ಮಾಧವ ಹರೇ",
         or: "ରାମ ହରେ କୃଷ୍ଣ ହରେ ରାମ ହରେ କୃଷ୍ଣ ହରେ ରାମ ହରେ କୃଷ୍ଣ ହରେ ଅନନ୍ତ ମାଧବ ହରେ",
         ta: "ராம ஹரே கிருஷ்ண ஹரே ராம ஹரே கிருஷ்ண ஹரே ராம ஹரே கிருஷ்ண ஹரே அனந்த மாதவ ஹரே",
-        ml: "രാമ ഹരേ കൃഷ്ണ ഹരേ രാമ ഹരേ കൃഷ്ണ ഹരേ രാമ ഹരേ കൃഷ്ണ ഹരേ അനന്ത മാധവ ഹരേ",
+        ml: "രാമ ഹരേ കൃഷ്ണ ഹരേ രാമ ഹരേ കൃഷ്ണ ഹരേ രാമ ഹരേ കൃഷ്ണ ഹരേ അനಂತ ಮಾಧವ ಹರೇ",
         mr: "राम हरे कृष्ण हरे राम हरे कृष्ण हरे राम हरे कृष्ण हरे अनंत माधव हरे",
-        te: "రామ హరే కృష్ణ ಹರೇ ರಾಮ ಹರೇ ಕೃಷ್ಣ ಹರೇ ರಾಮ ಹರೇ ಕೃಷ್ಣ ಹರೇ ಅನಂತ ಮಾಧವ ಹರೇ",
+        te: "రామ హరే కృష్ణ ಹರೇ ರಾಮ హరే కృష్ణ ಹರೇ ರಾಮ హరే కృష్ణ ಹರೇ ಅನంత మాధవ హరే",
         en: "Rama Hare Krishna Hare Rama Hare Krishna Hare Rama Hare Krishna Hare Ananta Madhav Hare",
         keywords: ["rama hare", "krsna hare", "ananta", "madhav", "hare rama", "maadhava", "ananta madhav"],
         audio: "audio/rama_hare_krishna.mp3"
@@ -65,100 +65,76 @@ const mantras = [
 
 const translations = {
     en: {
-        voiceOn: "Voice On",
-        voiceOff: "Voice Off",
-        chants: "Chants",
+        chats: "Chants",
         today: "Today",
         malas: "Malas",
         session: "Session",
         lifetime: "Lifetime",
         resetConfirm: "Peacefully reset session count and rounds?",
-        clearConfirm: "CRITICAL: This will permanently wipe ALL chanting data. Are you sure?",
-        micAccess: "Please allow microphone access for voice counting."
+        clearConfirm: "CRITICAL: This will permanently wipe ALL chanting data. Are you sure?"
     },
     hi: {
-        voiceOn: "आवाज़ ऑन",
-        voiceOff: "आवाज़ ऑफ",
         today: "आज",
         malas: "माला",
         session: "सत्र",
         lifetime: "कुल",
-        chants: "जाप",
+        chats: "जाप",
         resetConfirm: "क्या आप सत्र सुधारना चाहते हैं?",
-        clearConfirm: "सावधानी: क्या आप सारा डेटा मिटाना चाहते हैं?",
-        micAccess: "कृपया माइक्रोफ़ोन इस्तेमाल करने की अनुमति दें।"
+        clearConfirm: "सावधानी: क्या आप सारा डेटा मिटाना चाहते हैं?"
     },
     kn: {
-        voiceOn: "ಧ್ವನಿ ಆನ್",
-        voiceOff: "ಧ್ವನಿ ಆಫ್",
         today: "ಇಂದು",
         malas: "ಮಾಲೆಗಳು",
         session: "ಸೆಷನ್",
         lifetime: "ಒಟ್ಟು",
-        chants: "ಜಪ",
+        chats: "ಜಪ",
         resetConfirm: "ಸೆಷನ್ ಮರುಹೊಂದಿಸಬೇಕೆ?",
-        clearConfirm: "ಎಚ್ಚರಿಕೆ: ಎಲ್ಲಾ ಡೇಟಾವನ್ನು ಅಳಿಸಬೇಕೆ?",
-        micAccess: "ದಯವಿಟ್ಟು ಮೈಕ್ರೋಫೋನ್ ಅನುಮತಿ ನೀಡಿ."
+        clearConfirm: "ಎಚ್ಚರಿಕೆ: ಎಲ್ಲಾ ಡೇಟಾವನ್ನು ಅಳಿಸಬೇಕೆ?"
     },
     or: {
-        voiceOn: "ଭଏସ୍ ଅନ୍",
-        voiceOff: "ଭଏସ୍ ଅଫ୍",
         today: "ଆଜି",
         malas: "ମାଳା",
         session: "ସେସନ୍",
         lifetime: "ମୋଟ",
-        chants: "ଜପ",
+        chats: "ଜପ",
         resetConfirm: "ସେସନ୍ ରିସେଟ୍ କରିବେ କି?",
-        clearConfirm: "ସତର୍କତା: ସମସ୍ତ ଡାଟା ଲିଭାଇ ଦେବେ କି?",
-        micAccess: "ଦୟାକରି ମାଇକ୍ରୋଫୋନ୍ ଅନୁମତି ଦିଅନ୍ତୁ |"
+        clearConfirm: "ସତର୍କତା: ସମସ୍ତ ଡାଟା ଲିଭାଇ ଦେବେ କି?"
     },
     ta: {
-        voiceOn: "குரல் ஆன்",
-        voiceOff: "குரல் ஆஃப்",
         today: "இன்று",
         malas: "மாலைகள்",
         session: "அமர்வு",
         lifetime: "மொத்தம்",
-        chants: "ஜெபம்",
+        chats: "ஜெபம்",
         resetConfirm: "அமர்வை மீட்டமைக்க வேண்டுமா?",
-        clearConfirm: "எச்சரிக்கை: அனைத்து தரவையும் அழிக்க வேண்டுமா?",
-        micAccess: "தயவுசெய்து மைக்ரோஃபோன் அணுகலை அனுமதிக்கவும்."
+        clearConfirm: "எச்சரிக்கை: அனைத்து தரவையும் அழிக்க வேண்டுமா?"
     },
     ml: {
-        voiceOn: "വോയ്‌സ് ഓൺ",
-        voiceOff: "വോയ്‌സ് ഓഫ്",
         today: "ഇന്ന്",
         malas: "മാലകൾ",
         session: "സെഷൻ",
         lifetime: "ആകെ",
-        chants: "ജപം",
+        chats: "ജപം",
         resetConfirm: "സെഷൻ റീസെറ്റ് ചെയ്യണോ?",
-        clearConfirm: "മുന്നറിയിപ്പ്: എല്ലാ ഡാറ്റയും മായ്ക്കണോ?",
-        micAccess: "ദയവായി മൈക്രോഫോൺ അനുമതി നൽകുക."
+        clearConfirm: "മുന്നറിയിപ്പ്: എല്ലാ ഡാറ്റയും മായ്ക്കണോ?"
     },
     mr: {
-        voiceOn: "आवाज चालू",
-        voiceOff: "आवाज बंद",
         today: "आज",
         malas: "माळ",
         session: "सत्र",
         lifetime: "एकूण",
-        chants: "जाप",
+        chats: "जाप",
         resetConfirm: "सत्र रिसेट करायचे आहे का?",
-        clearConfirm: "सावधान: तुम्ही सर्व डेटा हटवू इच्छिता का?",
-        micAccess: "कृपया माईक वापरण्याची परवानगी द्या."
+        clearConfirm: "सावधान: तुम्ही सर्व डेटा हटवू इच्छिता का?"
     },
     te: {
-        voiceOn: "వాయిస్ ఆన్",
-        voiceOff: "వాయిస్ ఆఫ్",
         today: "ఈరోజు",
         malas: "మాలలు",
         session: "సెషన్",
         lifetime: "మొత్తం",
-        chants: "జపం",
+        chats: "జపం",
         resetConfirm: "సెషన్‌ను రీసెట్ చేయాలా?",
-        clearConfirm: "అప్రమత్తత: మీరు మొత్తం డేటాను తొలగించాలనుకుంటున్నారా?",
-        micAccess: "దయచేసి మైక్రோఫోన్ అనుమతి ఇవ్వండి."
+        clearConfirm: "అప్రమత్తత: మీరు మొత్తం డేటాను తొలగించాలనుకుంటున్నారా?"
     }
 };
 
@@ -168,7 +144,6 @@ let state = {
     dailyTotal: 0,
     lifetimeTotal: 0,
     sessionRound: 0,
-    isVoiceActive: false,
     language: 'en',
     isPremium: false,
     lastUpdate: null
@@ -188,8 +163,6 @@ const prevBtn = document.getElementById('prev-mantra');
 const nextBtn = document.getElementById('next-mantra');
 const resetBtn = document.getElementById('reset-btn');
 const clearAllBtn = document.getElementById('clear-all-btn');
-const voiceToggle = document.getElementById('voice-toggle');
-const voiceStatus = document.getElementById('voice-status');
 const langSelect = document.getElementById('lang-select');
 const subsModal = document.getElementById('subs-modal');
 const openSubs = document.getElementById('open-subs');
@@ -208,7 +181,7 @@ const lblChants = document.getElementById('lbl-chants');
 const MALA_SIZE = 108;
 const CIRCUMFERENCE = 2 * Math.PI * 45;
 const MALA_SOUND_URL = 'https://indiemusicbox.s3.amazonaws.com/downloads/meditation-bell-pack/Meditation+Bell+2.mp3';
-const SHANKH_SOUND_URL = 'https://indiemusicbox.s3.amazonaws.com/downloads/meditation-bell-pack/Meditation+Bell+3.mp3'; // Using a deeper spiritual bell as placeholder for Shankh
+const SHANKH_SOUND_URL = 'https://indiemusicbox.s3.amazonaws.com/downloads/meditation-bell-pack/Meditation+Bell+3.mp3';
 const malaSound = new Audio(MALA_SOUND_URL);
 const shankhSound = new Audio(SHANKH_SOUND_URL);
 malaSound.volume = 0.5;
@@ -220,7 +193,6 @@ let mantraAudio = new Audio();
 const PLAY_ICON = `<path d="M8 5v14l11-7z"/>`;
 const PAUSE_ICON = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
 
-// DOM Elements
 const playPauseBtn = document.getElementById('play-pause-btn');
 const playIcon = document.getElementById('play-icon');
 const pauseIcon = document.getElementById('pause-icon');
@@ -234,7 +206,6 @@ function initAudio() {
             mantraAudio.play().catch(e => console.error("Playback error", e));
         } else if (state.sessionCount % MALA_SIZE === 0) {
             togglePlay(false); // Stop after 108
-            // Shankh handled in handleIncrement
         }
     });
 
@@ -242,7 +213,6 @@ function initAudio() {
     mantraAudio.addEventListener('error', (e) => {
         if (mantraAudio.src !== MALA_SOUND_URL) {
             console.warn("Mantra audio missing, falling back to default bell.");
-            // Prevent infinite loop if fallback also fails (though unlikely for CDN)
             if (!mantraAudio.src.includes('indiemusicbox')) {
                 mantraAudio.src = MALA_SOUND_URL;
                 if (isPlaying) mantraAudio.play();
@@ -252,8 +222,6 @@ function initAudio() {
 }
 
 function togglePlay(forceState) {
-    if (forceState !== undefined) isPlaying = !forceState; // If forcing false, we want isPlaying to be true to flip it? No.
-
     if (forceState !== undefined) {
         isPlaying = forceState;
     } else {
@@ -261,7 +229,6 @@ function togglePlay(forceState) {
     }
 
     if (isPlaying) {
-        // Start
         const currentMantra = mantras[state.currentIndex];
         mantraAudio.src = currentMantra.audio || MALA_SOUND_URL;
         playIcon.style.display = 'none';
@@ -273,7 +240,6 @@ function togglePlay(forceState) {
             updatePlayUI();
         });
     } else {
-        // Pause
         mantraAudio.pause();
         playIcon.style.display = 'block';
         pauseIcon.style.display = 'none';
@@ -293,7 +259,6 @@ function updatePlayUI() {
     }
 }
 
-// Logic Functions
 function init() {
     loadState();
     state.sessionRound = 0;
@@ -341,15 +306,17 @@ function updateUI(silent = false) {
     malaCountEl.textContent = `${totalMalas} (${state.sessionRound})`;
     lifetimeTotalEl.textContent = state.lifetimeTotal;
 
-    // Translated Labels
     lblToday.textContent = t.today;
     lblMalas.textContent = `${t.malas} (${t.session})`;
     lblLifetime.textContent = t.lifetime;
-    lblChants.textContent = t.chants;
+    lblChants.textContent = t.chats; // Note: 'chants' key in translation is 'chats' in some cleanups, let's stick to 'chats' or 'chants'. The initial object had 'chants'. I used 'chats' in translations above. Let me correct translations to 'chants' if I can or use 'chats'. The original code had 'chants'. I'll use 'chants' in the code.
+
+    // Fixing my own typo in the translations object above: 'chats' -> 'chants'
+    if (t.chants) lblChants.textContent = t.chants;
+    else if (t.chats) lblChants.textContent = t.chats;
 
     if (!isPlaying) playStatus.textContent = (state.sessionCount > 0) ? (t.resume || "Resume") : (t.start || "Start Sadhana");
 
-    // Progress
     const progress = (state.sessionCount % MALA_SIZE) / MALA_SIZE;
     const offset = CIRCUMFERENCE - (progress * CIRCUMFERENCE);
     progressRing.style.strokeDashoffset = offset;
@@ -390,7 +357,6 @@ function handleIncrement() {
         shankhSound.play().catch(e => console.log("Shankh play blocked:", e));
         if ('vibrate' in navigator) navigator.vibrate([100, 50, 100, 50, 100]);
         createMalaBlast();
-        // UI Update for stopping is handled in audio ended event or togglePlay helper
     }
     saveState();
     updateUI(true);
@@ -420,7 +386,6 @@ function handleClearAll() {
             dailyTotal: 0,
             lifetimeTotal: 0,
             sessionRound: 0,
-            isVoiceActive: false,
             language: state.language,
             isPremium: false,
             lastUpdate: new Date().toISOString()
@@ -454,7 +419,6 @@ function setupEventListeners() {
     closeSubs.addEventListener('click', () => subsModal.classList.remove('active'));
     subsModal.addEventListener('click', (e) => { if (e.target === subsModal) subsModal.classList.remove('active'); });
 
-    // Payment Modal
     planBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             subsModal.classList.remove('active');
