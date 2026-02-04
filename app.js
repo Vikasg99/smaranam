@@ -99,6 +99,7 @@ let state = {
     lifetimeTotal: 0,
     sessionRound: 0,
     language: 'en',
+    theme: 'cosmic', // Default theme
     isPremium: false,
     lastUpdate: null,
     sessionGoal: '108', // Default 1 Mala
@@ -407,7 +408,10 @@ function updateUI(silent = false) {
     const t = translations[state.language] || translations['en']; // Fallback
     const mantra = mantras[state.currentIndex];
 
-    hindiMantraEl.textContent = mantra[state.language] || mantra.hi || mantra.en;
+    // Update mantra text in selected language
+    const mantraText = mantra[state.language] || mantra.hi || mantra.en;
+    hindiMantraEl.textContent = mantraText;
+
     animateValue(currentCountEl, state.sessionCount);
     dailyTotalEl.textContent = state.dailyTotal;
 
@@ -561,6 +565,16 @@ function setupEventListeners() {
         saveState();
         updateUI(true);
     });
+
+    // Theme selector
+    const themeSelect = document.getElementById('theme-select');
+    if (themeSelect) {
+        themeSelect.addEventListener('change', (e) => {
+            state.theme = e.target.value;
+            applyTheme(state.theme);
+            saveState();
+        });
+    }
 
     // Handle session goal if element exists
     if (sessionGoalSelect) {
