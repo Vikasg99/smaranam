@@ -1,0 +1,12 @@
+{
+  "name": "smaranam-chanting-app",
+  "version": "1.0.0",
+  "description": "Voice-activated chanting app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
