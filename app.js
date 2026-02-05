@@ -186,6 +186,20 @@ function initAudio() {
         }
     });
 
+    // Handle 10-second trimming logic requested by user
+    mantraAudio.addEventListener('timeupdate', () => {
+        if (isPlaying && mantraAudio.duration > 10 && mantraAudio.currentTime >= 10) {
+            console.log("10s limit reached - looping early");
+            mantraAudio.pause();
+            mantraAudio.currentTime = 0; // Reset for next play
+
+            handleIncrement();
+            setTimeout(() => {
+                if (isPlaying) nextChant();
+            }, 800);
+        }
+    });
+
     mantraAudio.addEventListener('error', (e) => {
         console.warn("Audio failed, switching to Speech mode");
         if (isPlaying) {
