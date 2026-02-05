@@ -1350,6 +1350,39 @@ main {
   border: 1px solid var(--glass-border);
 }
 
+.count-label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: -5px;
+}
+
+.session-reset-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: var(--accent-primary);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-top: 15px;
+  transition: all 0.3s;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.session-reset-btn:hover {
+  background: var(--accent-primary);
+  color: #000;
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 119, 34, 0.3);
+}
+
 .field-label {
   font-size: 0.7rem;
   color: var(--text-dim);

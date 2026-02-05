@@ -55,13 +55,15 @@ const mantras = [
     },
     {
         hi: "ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्",
+        kn: "ಓಂ ಭೂರ್ಭುವಃ ಸ್ವಃ ತತ್ಸವಿತುರ್ವರೇಣ್ಯಂ ಭರ್ಗೋ ದೇವಸ್ಯ ಧೀಮಹಿ ಧಿಯೋ ಯೋ ನಃ ಪ್ರಚೋದಯಾತ್",
         en: "Om Bhur Bhuvah Svah Tat Savitur Varenyam Bhargo Devasya Dhimahi Dhiyo Yo Nah Prachodayat",
-        speechText: "Om Bhoor Boovuh Suvuh, Tut Su-vi-toor Vu-reyn-yum, Bhur-go Dey-vus-ya Dhee-mu-hee, Dhi-yo Yo Nuh Pru-cho-du-yaat",
+        speechText: "Om Bhoor Bhoovuh Suvuh, Tut Su-vi-toor Vu-reyn-yum, Bhur-go Dey-vus-ya Dhee-mu-hee, Dhi-yo Yo Nuh Pru-cho-du-yaat",
         keywords: ["gayatri", "savitur"],
         label: "Gayatri Mantra"
     },
     {
         hi: "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम् उर्वारुकमिव बन्धनान् मृत्योर्मुक्षीय मामृतात्",
+        kn: "ಓಂ ತ್ರ್ಯಂಬಕಂ ಯಜಾಮಹೇ ಸುಗಂಧಿಂ ಪುಷ್ಟಿವರ್ಧನಮ್ ಉರ್ವಾರುಕಮಿವ ಬಂಧನಾನ್ ಮೃತ್ಯೋರ್ಮುಕ್ಷೀಯ ಮಾಮೃತಾತ್",
         en: "Om Tryambakam Yajamahe Sugandhim Pushti Vardhanam Urvarukamiva Bandhanat Mrityor Mukshiya Mamritat",
         speechText: "Om Try-um-bu-kum Yu-jaa-mu-hey, Soo-gun-dhim Poosh-ti-vur-dhu-num, Oor-vaa-roo-ku-mi-vuh Bun-dhu-naat, Mrit-yor Mook-shee-yu Maa-mri-taat",
         keywords: ["mahamrityunjaya", "tryambakam", "shiva"],
@@ -612,6 +614,14 @@ function handleReset() {
     }
 }
 
+function handleSessionReset() {
+    if (confirm("Reset current session count?")) {
+        state.sessionCount = 0;
+        saveState();
+        updateUI(true);
+    }
+}
+
 function handleClearAll() {
     if (confirm(translations[state.language].clearConfirm)) {
         localStorage.removeItem('chant_gravity_state');
@@ -699,6 +709,12 @@ function setupEventListeners() {
             saveState();
             updateUI(true);
         }
+    });
+
+    const resetSessionBtn = document.getElementById('reset-session');
+    if (resetSessionBtn) resetSessionBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        handleSessionReset();
     });
 
     if (langSelect) {
