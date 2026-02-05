@@ -12,7 +12,7 @@ const mantras = [
         en: "Om Namah Shivaya",
         keywords: ["namah shivay", "shiva", "shivaya", "un namah shivay"],
         audio: "audio/om_namah_shivaya.mp3",
-        speechText: "Om Num-uh Shi-vaay"
+        speechText: "Om Namah Shivaaya"
     },
     {
         hi: "ॐ नमो भगवते वासुदेवाय",
@@ -25,7 +25,7 @@ const mantras = [
         en: "Om Namo Bhagavate Vasudevaya",
         keywords: ["vasudev", "namo bhagavate", "vasudevaya", "un namo"],
         audio: "audio/om_namo_bhagavate_vasudevaya.mp3",
-        speechText: "Om Num-oh Bhuh-guh-vuh-te Vaa-su-dey-vaa-ya"
+        speechText: "Om Namo Bhagavaté Vaasudevaaya"
     },
     {
         hi: "ॐ गं गणपतये नमः",
@@ -38,7 +38,7 @@ const mantras = [
         en: "Om Gam Ganapataye Namah",
         keywords: ["ganpataye", "ganpati", "ganesha", "ganapataye"],
         audio: "audio/om_gan_ganapataye_namah.mp3",
-        speechText: "Om Gum Gu-nuh-puh-tuh-ye Num-oh"
+        speechText: "Om Gam Ganapatayé Namaha"
     },
     {
         hi: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे",
@@ -51,7 +51,7 @@ const mantras = [
         en: "Hare Krishna Hare Krishna Krishna Krishna Hare Hare\nHare Rama Hare Rama Rama Rama Hare Hare",
         keywords: ["hare krishna", "krishna krishna", "rama rama", "hare hare"],
         audio: "audio/hare_krishna_mahamantra.mp3",
-        speechText: "Hu-ray Krish-nuh, Hu-ray Krish-nuh, Krish-nuh Krish-nuh, Hu-ray Hu-ray. Hu-ray Raa-muh, Hu-ray Raa-muh, Raa-muh Raa-muh, Hu-ray Hu-ray"
+        speechText: "Hare Krishna Hare Krishna, Krishna Krishna Hare Hare. Hare Rama Hare Rama, Rama Rama Hare Hare"
     },
     {
         hi: "ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्",
@@ -108,8 +108,8 @@ let state = {
     sessionStartTime: null,
     voiceSettings: {
         voiceURI: 'default',
-        rate: 0.75,
-        pitch: 0.85,
+        rate: 0.8,
+        pitch: 1.0,
         mode: 'native'
     }
 };

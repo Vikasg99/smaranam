@@ -426,8 +426,7 @@ header {
 }
 
 .language-dropdown {
-  position: absolute;
-  right: 0;
+  position: relative;
   z-index: 100;
 }
 
@@ -1133,8 +1132,7 @@ main {
 
 /* --- Language Dropdown --- */
 .language-dropdown {
-  position: absolute;
-  right: 0;
+  position: relative;
   z-index: 100;
 }
 
