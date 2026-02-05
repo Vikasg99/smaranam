@@ -89,17 +89,19 @@
             </div>
 
             <div class="stats-bar">
-                <div class="stat-card">
+                <div class="stat-card" id="stat-today-card">
                     <span class="dash-lbl" id="lbl-today">Today</span>
                     <span class="stat-value" id="daily-total">0</span>
+                    <button class="mini-reset-btn" id="reset-daily" title="Reset Today's Count">↺</button>
                 </div>
                 <div class="stat-card">
                     <span class="dash-lbl" id="lbl-malas">Malas (Session)</span>
                     <span class="stat-value" id="mala-count">0 (0)</span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" id="stat-lifetime-card">
                     <span class="dash-lbl" id="lbl-lifetime">Lifetime</span>
                     <span class="stat-value" id="lifetime-total">0</span>
+                    <button class="mini-reset-btn" id="reset-lifetime" title="Reset Lifetime Count">↺</button>
                 </div>
             </div>
         </header>
@@ -155,6 +157,27 @@
                             <option value="60m">1 Hour</option>
                         </select>
                     </div>
+                    <div class="user-controls">
+                        <button class="icon-btn" id="open-settings" title="Voice Settings">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+                                <path
+                                    d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
+                            </svg>
+                        </button>
+                        <div class="language-dropdown">
+                            <select id="language-select">
+                                <option value="en">English</option>
+                                <option value="hi">हिन्दी</option>
+                                <option value="kn">ಕನ್ನಡ</option>
+                                <option value="or">ଓଡ଼ିଆ</option>
+                                <option value="ta">தமிழ்</option>
+                                <option value="ml">മലയാളം</option>
+                                <option value="mr">मराठी</option>
+                                <option value="te">తెలుగు</option>
+                            </select>
+                        </div>
+                    </div>
                     <button class="play-btn" id="play-pause-btn" aria-label="Play Mantra">
                         <svg viewBox="0 0 24 24" fill="currentColor" id="play-icon">
                             <path d="M8 5v14l11-7z" />
@@ -169,29 +192,31 @@
             </div>
     </div>
 
-    <div class="navigation-controls">
-        <button class="nav-btn" id="prev-mantra" title="Previous">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M15 18l-6-6 6-6" />
-            </svg>
-        </button>
-        <button class="nav-btn main-action" id="reset-btn" title="Reset Session">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-                <path d="M3 3v5h5" />
-            </svg>
-        </button>
-        <button class="nav-btn" id="clear-all-btn" title="Clear All Data">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path
-                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-            </svg>
-        </button>
-        <button class="nav-btn" id="next-mantra" title="Next">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M9 18l6-6-6-6" />
-            </svg>
-        </button>
+    <div class="navigation-controls-wrapper">
+        <div class="navigation-controls">
+            <button class="nav-btn" id="prev-mantra" title="Previous">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </button>
+            <button class="nav-btn main-action" id="reset-btn" title="Reset Session">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                    <path d="M3 3v5h5" />
+                </svg>
+            </button>
+            <button class="nav-btn" id="clear-all-btn" title="Clear All Data">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+            </button>
+            <button class="nav-btn" id="next-mantra" title="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M9 18l6-6-6-6" />
+                </svg>
+            </button>
+        </div>
     </div>
     </main>
     </div>
@@ -375,8 +400,65 @@
         </div>
     </div>
 
+    <!-- Initial Language Selection Modal -->
+    <div class="modal-overlay" id="initial-language-modal">
+        <div class="subs-card">
+            <h2 class="modal-title">🙏 Welcome to Smaranam</h2>
+            <p class="modal-desc" style="margin-bottom: 20px;">Please select your preferred language to begin your
+                spiritual journey.</p>
+            <div class="language-options">
+                <button class="language-option initial-lang-btn" data-lang="en">English</button>
+                <button class="language-option initial-lang-btn" data-lang="hi">हिन्दी</button>
+                <button class="language-option initial-lang-btn" data-lang="kn">ಕನ್ನಡ</button>
+                <button class="language-option initial-lang-btn" data-lang="or">ଓଡ଼ିଆ</button>
+                <button class="language-option initial-lang-btn" data-lang="ta">தமிழ்</button>
+                <button class="language-option initial-lang-btn" data-lang="ml">മലയാളം</button>
+                <button class="language-option initial-lang-btn" data-lang="mr">मराठी</button>
+                <button class="language-option initial-lang-btn" data-lang="te">తెలుగు</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Voice Settings Modal -->
+    <div class="modal-overlay" id="voice-settings-modal">
+        <div class="subs-card voice-settings-card">
+            <button class="close-modal" id="close-voice-settings">&times;</button>
+            <h2 class="modal-title">Voice Settings</h2>
+            <p class="modal-desc">Fine-tune your chanting experience</p>
+
+            <div class="settings-form">
+                <div class="setting-item">
+                    <label for="voice-select">Select Voice</label>
+                    <select id="voice-select" class="full-select">
+                        <option value="default">System Default</option>
+                    </select>
+                </div>
+
+                <div class="setting-item">
+                    <label for="voice-rate">Speed: <span id="rate-val">0.75</span></label>
+                    <input type="range" id="voice-rate" min="0.5" max="1.5" step="0.05" value="0.75">
+                </div>
+
+                <div class="setting-item">
+                    <label for="voice-pitch">Depth: <span id="pitch-val">0.85</span></label>
+                    <input type="range" id="voice-pitch" min="0.5" max="1.5" step="0.05" value="0.85">
+                </div>
+
+                <div class="setting-item">
+                    <label for="pronunciation-mode">Mode</label>
+                    <select id="pronunciation-mode" class="full-select">
+                        <option value="native">Authentic (Native Script)</option>
+                        <option value="phonetic">Guide (English Phonetic)</option>
+                    </select>
+                </div>
+
+                <button class="plan-btn" id="save-voice-settings">Apply Changes</button>
+            </div>
+        </div>
+    </div>
+
     <!-- About Us Modal -->
-    <div class="modal-overlay" id="about-modal">
+    <div class="modal-overlay" id="about-us-modal">
         <div class="subs-card about-card">
             <button class="close-modal" id="close-about">&times;</button>
             <h2 class="modal-title">About Smaranam</h2>

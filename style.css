@@ -577,6 +577,73 @@ main {
   border: 1px solid var(--glass-border);
   text-align: center;
   transition: transform 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-reset-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
+  color: var(--accent-primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 1;
+  transition: all 0.2s;
+  padding: 4px 8px;
+  border-radius: 8px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.mini-reset-btn:hover {
+  background: var(--accent-primary);
+  color: #000;
+  transform: scale(1.1);
+}
+
+.stat-card:hover .mini-reset-btn {
+  opacity: 1;
+}
+
+.user-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-btn {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-dim);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 6px;
+  transition: all 0.3s;
+}
+
+.icon-btn:hover {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  transform: rotate(45deg);
+}
+
+.icon-btn svg {
+  width: 100%;
+  height: 100%;
 }
 
 .stat-card:hover {
@@ -937,11 +1004,21 @@ main {
 }
 
 /* --- Control Bar --- */
+.navigation-controls-wrapper {
+  padding: 1.5rem 0 2.5rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+}
+
 .navigation-controls {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 400px;
 }
 
 .nav-btn {
@@ -1412,17 +1489,53 @@ main {
   opacity: 1;
 }
 
-/* --- Completion Modal --- */
-.completion-card {
-  max-width: 400px;
-  padding: 2.5rem 1.5rem;
-  background: radial-gradient(circle at top right, #1a1f35 0%, #0a0f1e 100%);
-  border: 1px solid var(--accent-primary);
-  box-shadow: 0 0 30px rgba(255, 119, 34, 0.2);
+/* --- Voice Settings Modal & Form --- */
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-align: left;
+  margin-top: 1rem;
 }
 
-.completion-card .modal-title {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 0 10px rgba(255, 119, 34, 0.5);
+.setting-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.setting-item label {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.setting-item label span {
+  color: var(--accent-primary);
+  font-weight: 600;
+  font-family: monospace;
+}
+
+.full-select {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: #fff;
+  padding: 0.8rem;
+  border-radius: 12px;
+  outline: none;
+  cursor: pointer;
+}
+
+.settings-form input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent-primary);
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+}
+
+.voice-settings-card {
+  max-width: 420px;
 }

@@ -8,11 +8,11 @@ const mantras = [
         ta: "ஓம் நம சிவாய",
         ml: "ഓം നമ: ശിവായ",
         mr: "ॐ नमः शिवाय",
-        te: "ఓం నమః ಶಿವాయ",
+        te: "ఓం నమః ಶಿವಾಯ",
         en: "Om Namah Shivaya",
         keywords: ["namah shivay", "shiva", "shivaya", "un namah shivay"],
         audio: "audio/om_namah_shivaya.mp3",
-        speechText: "Om Namah Shivaya"
+        speechText: "Om Num-uh Shi-vaay"
     },
     {
         hi: "ॐ नमो भगवते वासुदेवाय",
@@ -21,24 +21,24 @@ const mantras = [
         ta: "ஓம நமோ பகவதே வாசுதேவாய",
         ml: "ഓം നമോ ഭഗവതേ വാസുദേവായ",
         mr: "ॐ नमो भगवते वासुदेवाय",
-        te: "ఓం నమో భగవతే వాసుదేవాయ",
+        te: "ఓಂ నమో భగವತೇ వాసుదేవಾಯ",
         en: "Om Namo Bhagavate Vasudevaya",
         keywords: ["vasudev", "namo bhagavate", "vasudevaya", "un namo"],
         audio: "audio/om_namo_bhagavate_vasudevaya.mp3",
-        speechText: "Om Namo Bhagavate Vasudevaya"
+        speechText: "Om Num-oh Bhuh-guh-vuh-te Vaa-su-dey-vaa-ya"
     },
     {
         hi: "ॐ गं गणपतये नमः",
         kn: "ಓಂ ಗಂ ಗಣಪತಯೇ ನಮಃ",
-        or: "ଓଁ ଗଂ ଗଣପତୟେ ନମଃ",
+        or: "ଓଁ ଗଂ ଗಣପତୟେ ନମଃ",
         ta: "ஓம் கம் கணபதயே நம",
         ml: "ഓം ഗം ഗണപതയേ നമഃ",
-        mr: "ॐ गं गणपतಯೇ ನಮಃ",
-        te: "ఓం గం గణపతయే నమః",
+        mr: "ॐ गं गणपतये ನಮಃ",
+        te: "ఓం గం గణpతయే నమః",
         en: "Om Gam Ganapataye Namah",
         keywords: ["ganpataye", "ganpati", "ganesha", "ganapataye"],
         audio: "audio/om_gan_ganapataye_namah.mp3",
-        speechText: "Om Gam Ganapataye Namah"
+        speechText: "Om Gum Gu-nuh-puh-tuh-ye Num-oh"
     },
     {
         hi: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे",
@@ -47,23 +47,23 @@ const mantras = [
         ta: "ஹரே கிருஷ்ண ஹரே கிருஷ்ண கிருஷ்ண கிருஷ்ண ஹரே ஹரே",
         ml: "ഹരേ കൃഷ്ണ ഹരേ കൃഷ്ണ കൃഷ്ണ കൃഷ്ണ ഹരേ ഹരേ",
         mr: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे",
-        te: "హరే కృష్ణ ಹರೇ ಕೃಷ್ಣ కృష్ణ కృష్ణ ಹರೇ ಹರೇ",
+        te: "హరే కృష్ణ ಹರೇ ಕೃಷ್ಣ ಕృష్ణ ಕృష్ణ ಹರೇ ಹರೇ",
         en: "Hare Krishna Hare Krishna Krishna Krishna Hare Hare\nHare Rama Hare Rama Rama Rama Hare Hare",
         keywords: ["hare krishna", "krishna krishna", "rama rama", "hare hare"],
         audio: "audio/hare_krishna_mahamantra.mp3",
-        speechText: "Hare Krishna Hare Krishna, Krishna Krishna Hare Hare. Hare Rama Hare Rama, Rama Rama Hare Hare"
+        speechText: "Hu-ray Krish-nuh, Hu-ray Krish-nuh, Krish-nuh Krish-nuh, Hu-ray Hu-ray. Hu-ray Raa-muh, Hu-ray Raa-muh, Raa-muh Raa-muh, Hu-ray Hu-ray"
     },
     {
         hi: "ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्",
         en: "Om Bhur Bhuvah Svah Tat Savitur Varenyam Bhargo Devasya Dhimahi Dhiyo Yo Nah Prachodayat",
-        speechText: "Om Bhur Bhuvah Svah, Tat Savitur Varenyam, Bhargo Devasya Dhimahi, Dhiyo Yo Nah Prachodayat",
+        speechText: "Om Bhoor Boovuh Suvuh, Tut Su-vi-toor Vu-reyn-yum, Bhur-go Dey-vus-ya Dhee-mu-hee, Dhi-yo Yo Nuh Pru-cho-du-yaat",
         keywords: ["gayatri", "savitur"],
         label: "Gayatri Mantra"
     },
     {
         hi: "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम् उर्वारुकमिव बन्धनान् मृत्योर्मुक्षीय मामृतात्",
         en: "Om Tryambakam Yajamahe Sugandhim Pushti Vardhanam Urvarukamiva Bandhanat Mrityor Mukshiya Mamritat",
-        speechText: "Om Tryambakam Yajamahe Sugandhim Pushti Vardhanam, Urvarukamiva Bandhanat Mrityor Mukshiya Mamritat",
+        speechText: "Om Try-um-bu-kum Yu-jaa-mu-hey, Soo-gun-dhim Poosh-ti-vur-dhu-num, Oor-vaa-roo-ku-mi-vuh Bun-dhu-naat, Mrit-yor Mook-shee-yu Maa-mri-taat",
         keywords: ["mahamrityunjaya", "tryambakam", "shiva"],
         label: "Mahamrityunjaya Mantra"
     }
@@ -103,7 +103,13 @@ let state = {
     isPremium: false,
     lastUpdate: null,
     sessionGoal: '108', // Default 1 Mala
-    sessionStartTime: null
+    sessionStartTime: null,
+    voiceSettings: {
+        voiceURI: 'default',
+        rate: 0.75,
+        pitch: 0.85,
+        mode: 'native'
+    }
 };
 
 // DOM Elements
@@ -129,6 +135,18 @@ const lblMalas = document.getElementById('lbl-malas');
 const lblLifetime = document.getElementById('lbl-lifetime');
 const lblChants = document.getElementById('lbl-chants');
 
+// Voice Settings Elements
+const voiceSettingsModal = document.getElementById('voice-settings-modal');
+const voiceSelect = document.getElementById('voice-select');
+const voiceRate = document.getElementById('voice-rate');
+const voicePitch = document.getElementById('voice-pitch');
+const rateVal = document.getElementById('rate-val');
+const pitchVal = document.getElementById('pitch-val');
+const pronunciationMode = document.getElementById('pronunciation-mode');
+const openSettingsBtn = document.getElementById('open-settings');
+const closeSettingsBtn = document.getElementById('close-voice-settings');
+const saveSettingsBtn = document.getElementById('save-voice-settings');
+
 // Constants & Audio
 const MALA_SIZE = 108;
 const CIRCUMFERENCE = 2 * Math.PI * 45;
@@ -144,6 +162,7 @@ let isPlaying = false;
 let mantraAudio = new Audio();
 let speechSynth = window.speechSynthesis;
 let speechUtterance = null;
+let speechWatchdog = null;
 let timerInterval = null;
 
 const PLAY_ICON = `<path d="M8 5v14l11-7z"/>`;
@@ -179,35 +198,131 @@ function speakMantra() {
     }
 
     const currentMantra = mantras[state.currentIndex];
-    const textToSpeak = currentMantra.speechText || currentMantra.en;
+
+    // 🕉️ VOICE SETTINGS SELECTION 🕉️
+    const voices = speechSynth.getVoices();
+    let selectedVoice = null;
+
+    // First, check if user has a manually selected voice
+    if (state.voiceSettings && state.voiceSettings.voiceURI !== 'default') {
+        selectedVoice = voices.find(v => v.voiceURI === state.voiceSettings.voiceURI);
+    }
+
+    // Fallback to automatic selection if no manual selection or voice not found
+    if (!selectedVoice) {
+        const langMap = {
+            'hi': ['hi-IN', 'hi'],
+            'kn': ['kn-IN', 'kn'],
+            'or': ['or-IN', 'or'],
+            'ta': ['ta-IN', 'ta'],
+            'ml': ['ml-IN', 'ml'],
+            'mr': ['mr-IN', 'mr'],
+            'te': ['te-IN', 'te'],
+            'en': ['en-IN', 'en-US', 'en-GB', 'en']
+        };
+        const preferredLangs = langMap[state.language] || ['en-IN', 'en'];
+        for (const langCode of preferredLangs) {
+            selectedVoice = voices.find(v => v.lang.startsWith(langCode));
+            if (selectedVoice) break;
+        }
+        if (!selectedVoice) selectedVoice = voices.find(v => v.lang.includes('-IN'));
+        if (!selectedVoice && (state.language === 'hi' || state.language === 'mr')) {
+            selectedVoice = voices.find(v => v.lang.includes('hi'));
+        }
+    }
+
+    // 🕉️ AUTHENTIC SCRIPT SELECTION 🕉️
+    let textToSpeak;
+    const voiceLang = selectedVoice ? selectedVoice.lang.toLowerCase() : '';
+    const isPhoneticMode = state.voiceSettings && state.voiceSettings.mode === 'phonetic';
+
+    if (!isPhoneticMode) {
+        if (voiceLang.startsWith('hi') || voiceLang.startsWith('mr')) {
+            textToSpeak = currentMantra.hi;
+        } else if (voiceLang.startsWith('kn')) {
+            textToSpeak = currentMantra.kn;
+        } else if (voiceLang.startsWith('or')) {
+            textToSpeak = currentMantra.or;
+        } else if (voiceLang.startsWith('ta')) {
+            textToSpeak = currentMantra.ta;
+        } else if (voiceLang.startsWith('ml')) {
+            textToSpeak = currentMantra.ml;
+        } else if (voiceLang.startsWith('te')) {
+            textToSpeak = currentMantra.te;
+        }
+    }
+
+    if (!textToSpeak) {
+        textToSpeak = currentMantra.speechText || currentMantra.en;
+    }
 
     speechUtterance = new SpeechSynthesisUtterance(textToSpeak);
+    window.currentUtterance = speechUtterance;
 
-    // Select Voice (Prefer Indian English or Hindi)
-    const voices = speechSynth.getVoices();
-    const indianVoice = voices.find(v => v.lang.includes('IN') || v.lang.includes('hi'));
-    if (indianVoice) speechUtterance.voice = indianVoice;
+    if (selectedVoice) {
+        speechUtterance.voice = selectedVoice;
+        console.log(`🕉️ Chanting: ${selectedVoice.name} speaking [${textToSpeak}]`);
+    }
 
-    speechUtterance.rate = 0.85; // Slightly slower for chanting feel
-    speechUtterance.pitch = 0.9; // Slightly deeper
+    // Apply User Parameters
+    speechUtterance.rate = state.voiceSettings?.rate || 0.75;
+    speechUtterance.pitch = state.voiceSettings?.pitch || 0.85;
+    speechUtterance.volume = 1.0;
+
+    // Add natural pauses for breath and contemplation
+    // This creates a more devotional, meditative rhythm
+
+    // --- 🛡️ SPEECH WATCHDOG 🛡️ ---
+    // Detect if engine hangs (common in Chrome/Android)
+    if (speechWatchdog) clearTimeout(speechWatchdog);
+    speechWatchdog = setTimeout(() => {
+        if (isPlaying && speechSynth.speaking) {
+            console.warn("Speech watchdog triggered - restarting engine");
+            resetSpeechSynthesis();
+            speakMantra();
+        }
+    }, 10000); // 10 second safety net
+
+    speechUtterance.onstart = () => {
+        // Some browsers need a resume() call to actually start
+        speechSynth.resume();
+    };
 
     speechUtterance.onend = () => {
+        if (speechWatchdog) clearTimeout(speechWatchdog);
         if (isPlaying) {
             handleIncrement();
-            // Small pause before next chant
+            // Longer pause between chants for reflection and bhakti feeling
+            // This allows the mantra to resonate in the mind
             setTimeout(() => {
                 if (isPlaying) speakMantra();
-            }, 300);
+            }, 800); // Increased from 300ms to 800ms for deeper meditation
         }
     };
 
     speechUtterance.onerror = (e) => {
+        if (speechWatchdog) clearTimeout(speechWatchdog);
         console.error("Speech error", e);
-        isPlaying = false;
-        updatePlayUI();
+        if (e.error !== 'interrupted') {
+            isPlaying = false;
+            updatePlayUI();
+        }
     };
 
-    speechSynth.speak(speechUtterance);
+    // Force a cancel and resume before speaking to clear internal state
+    speechSynth.cancel();
+    setTimeout(() => {
+        speechSynth.resume();
+        speechSynth.speak(speechUtterance);
+    }, 50);
+}
+
+function resetSpeechSynthesis() {
+    console.log("Resetting Speech Engine...");
+    speechSynth.cancel();
+    if (speechWatchdog) clearTimeout(speechWatchdog);
+    // Force resume state
+    speechSynth.resume();
 }
 
 
@@ -378,13 +493,23 @@ function completeSession(msg) {
 function loadState() {
     const saved = localStorage.getItem('chant_gravity_state');
     if (saved) {
-        state = { ...state, ...JSON.parse(saved) };
+        try {
+            const parsed = JSON.parse(saved);
+            state = { ...state, ...parsed };
+            // Ensure nested voiceSettings are also merged if missing
+            if (parsed.voiceSettings) {
+                state.voiceSettings = { ...state.voiceSettings, ...parsed.voiceSettings };
+            }
+            updateUI(true); // Update UI after loading state
+        } catch (e) {
+            console.error("Load failed", e);
+        }
     }
     // Set defaults if new fields missing
     if (!state.sessionGoal) state.sessionGoal = '108';
 
     // Restore UI state
-    sessionGoalSelect.value = state.sessionGoal;
+    if (sessionGoalSelect) sessionGoalSelect.value = state.sessionGoal;
 }
 
 function saveState() {
@@ -434,7 +559,7 @@ function updateUI(silent = false) {
         mantraDisplay.style.animation = 'slideUp 0.8s cubic-bezier(0.2, 1, 0.3, 1)';
     }
 
-    langSelect.value = state.language;
+    if (langSelect) langSelect.value = state.language;
 }
 
 function animateValue(obj, value) {
@@ -529,13 +654,7 @@ function handleZenSkip() {
     togglePlay(true); // Start playing
 }
 
-// Visibility API for Interruption Handling (Calls/App Switch)
-document.addEventListener('visibilitychange', () => {
-    if (document.hidden && isPlaying) {
-        console.log("App interrupted/backgrounded - Pausing for Zen");
-        togglePlay(false); // Auto-pause
-    }
-});
+// Visibility API for Interruption Handling (Calls/App Switch) - Already defined above at line 240
 
 function setupEventListeners() {
     playPauseBtn.addEventListener('click', () => {
@@ -560,11 +679,35 @@ function setupEventListeners() {
     prevBtn.addEventListener('click', () => switchMantra(-1));
     nextBtn.addEventListener('click', () => switchMantra(1));
 
-    langSelect.addEventListener('change', (e) => {
-        state.language = e.target.value;
-        saveState();
-        updateUI(true);
+    // New Mini Resets
+    const resetDailyBtn = document.getElementById('reset-daily');
+    const resetLifetimeBtn = document.getElementById('reset-lifetime');
+
+    if (resetDailyBtn) resetDailyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (confirm("Reset today's count to zero?")) {
+            state.dailyTotal = 0;
+            saveState();
+            updateUI(true);
+        }
     });
+
+    if (resetLifetimeBtn) resetLifetimeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (confirm("DANGER: Permanently reset LIFETIME count?")) {
+            state.lifetimeTotal = 0;
+            saveState();
+            updateUI(true);
+        }
+    });
+
+    if (langSelect) {
+        langSelect.addEventListener('change', (e) => {
+            state.language = e.target.value;
+            saveState();
+            updateUI(true);
+        });
+    }
 
     // Theme selector
     const themeSelect = document.getElementById('theme-select');
@@ -754,6 +897,65 @@ function setupEventListeners() {
             handleIncrement();
         }
     });
+
+    // --- Voice Settings Listeners ---
+    if (openSettingsBtn) openSettingsBtn.addEventListener('click', () => {
+        populateVoices();
+        updateSettingsUI();
+        voiceSettingsModal.classList.add('active');
+    });
+
+    if (closeSettingsBtn) closeSettingsBtn.addEventListener('click', () => {
+        voiceSettingsModal.classList.remove('active');
+    });
+
+    if (voiceSettingsModal) voiceSettingsModal.addEventListener('click', (e) => {
+        if (e.target === voiceSettingsModal) voiceSettingsModal.classList.remove('active');
+    });
+
+    if (voiceRate) voiceRate.addEventListener('input', (e) => rateVal.textContent = e.target.value);
+    if (voicePitch) voicePitch.addEventListener('input', (e) => pitchVal.textContent = e.target.value);
+
+    if (saveSettingsBtn) saveSettingsBtn.addEventListener('click', () => {
+        state.voiceSettings = {
+            voiceURI: voiceSelect.value,
+            rate: parseFloat(voiceRate.value),
+            pitch: parseFloat(voicePitch.value),
+            mode: pronunciationMode.value
+        };
+        saveState();
+        voiceSettingsModal.classList.remove('active');
+        // Restart speech if playing to apply immediately
+        if (isPlaying) {
+            speechSynth.cancel();
+            speakMantra();
+        }
+    });
+}
+
+function populateVoices() {
+    if (!voiceSelect) return;
+    const voices = speechSynth.getVoices();
+    const currentURI = state.voiceSettings?.voiceURI || 'default';
+
+    voiceSelect.innerHTML = `<option value="default">System Default (Smart Match)</option>`;
+
+    voices.forEach(voice => {
+        const option = document.createElement('option');
+        option.value = voice.voiceURI;
+        option.textContent = `${voice.name} (${voice.lang})`;
+        if (voice.voiceURI === currentURI) option.selected = true;
+        voiceSelect.appendChild(option);
+    });
+}
+
+function updateSettingsUI() {
+    if (!state.voiceSettings) return;
+    voiceRate.value = state.voiceSettings.rate;
+    voicePitch.value = state.voiceSettings.pitch;
+    rateVal.textContent = state.voiceSettings.rate;
+    pitchVal.textContent = state.voiceSettings.pitch;
+    pronunciationMode.value = state.voiceSettings.mode || 'native';
 }
 
 // CSS injection for counting pulse
@@ -777,11 +979,56 @@ function applyTheme(theme) {
     });
 }
 
+// --- Initial Language Selection ---
+function showInitialLanguageSelection() {
+    const hasSelectedLanguage = localStorage.getItem('language_selected');
+    const initialLangModal = document.getElementById('initial-language-modal');
+
+    if (!hasSelectedLanguage && initialLangModal) {
+        // Show the modal on first load
+        initialLangModal.classList.add('active');
+
+        // Set up event listeners for language selection
+        const initialLangButtons = document.querySelectorAll('.initial-lang-btn');
+        initialLangButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const selectedLang = btn.getAttribute('data-lang');
+                state.language = selectedLang;
+                localStorage.setItem('language_selected', 'true');
+                saveState();
+                updateUI(true);
+                initialLangModal.classList.remove('active');
+            });
+        });
+    }
+}
+
+// --- Voice Debugging Helper ---
+function logAvailableVoices() {
+    const voices = speechSynthesis.getVoices();
+    console.log('=== Available Voices ===');
+    console.log(`Total voices: ${voices.length}`);
+
+    // Group by language
+    const indianVoices = voices.filter(v => v.lang.includes('-IN') || v.lang.includes('hi') || v.lang.includes('ta') || v.lang.includes('te') || v.lang.includes('kn') || v.lang.includes('ml') || v.lang.includes('mr') || v.lang.includes('or'));
+
+    if (indianVoices.length > 0) {
+        console.log('\n🇮🇳 Indian Voices:');
+        indianVoices.forEach(v => {
+            console.log(`  - ${v.name} (${v.lang}) ${v.default ? '[DEFAULT]' : ''}`);
+        });
+    }
+
+    console.log('\nAll voices:', voices.map(v => `${v.name} (${v.lang})`).join(', '));
+    console.log('======================');
+}
+
 // Initialize the app
 function init() {
     loadState();
     state.sessionRound = 0;
     initAudio();
+    applyTheme(state.theme); // Apply saved theme
     updateUI(true);
     setupEventListeners();
     checkDailyReset();
@@ -794,8 +1041,15 @@ function init() {
     if (speechSynthesis.onvoiceschanged !== undefined) {
         speechSynthesis.onvoiceschanged = () => {
             window.speechSynthesis.getVoices();
+            logAvailableVoices(); // Log voices when they're loaded
         };
     }
+
+    // Log available voices on init
+    setTimeout(() => logAvailableVoices(), 500);
+
+    // Show initial language selection if first time
+    showInitialLanguageSelection();
 }
 
 init();
