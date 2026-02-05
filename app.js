@@ -12,7 +12,8 @@ const mantras = [
         en: "Om Namah Shivaya",
         keywords: ["namah shivay", "shiva", "shivaya", "un namah shivay"],
         audio: "audio/om_namah_shivaya.mp3",
-        speechText: "Om Namah Shivaaya"
+        speechText: "Om Namah Shivaaya",
+        image: "images/shiva.jpg"
     },
     {
         hi: "ॐ नमो भगवते वासुदेवाय",
@@ -25,7 +26,8 @@ const mantras = [
         en: "Om Namo Bhagavate Vasudevaya",
         keywords: ["vasudev", "namo bhagavate", "vasudevaya", "un namo"],
         audio: "audio/om_namo_bhagavate_vasudevaya.mp3",
-        speechText: "Om Namo Bhagavaté Vaasudevaaya"
+        speechText: "Om Namo Bhagavaté Vaasudevaaya",
+        image: "images/vishnu.jpg"
     },
     {
         hi: "ॐ गं गणपतये नमः",
@@ -38,7 +40,8 @@ const mantras = [
         en: "Om Gam Ganapataye Namah",
         keywords: ["ganpataye", "ganpati", "ganesha", "ganapataye"],
         audio: "audio/om_gan_ganapataye_namah.mp3",
-        speechText: "Om Gam Ganapatayé Namaha"
+        speechText: "Om Gam Ganapatayé Namaha",
+        image: "images/ganesha.jpg"
     },
     {
         hi: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे",
@@ -51,7 +54,8 @@ const mantras = [
         en: "Hare Krishna Hare Krishna Krishna Krishna Hare Hare\nHare Rama Hare Rama Rama Rama Hare Hare",
         keywords: ["hare krishna", "krishna krishna", "rama rama", "hare hare"],
         audio: "audio/hare_krishna_mahamantra.mp3",
-        speechText: "Hare Krishna Hare Krishna, Krishna Krishna Hare Hare. Hare Rama Hare Rama, Rama Rama Hare Hare"
+        speechText: "Hare Krishna Hare Krishna, Krishna Krishna Hare Hare. Hare Rama Hare Rama, Rama Rama Hare Hare",
+        image: "images/krishna.jpg"
     },
     {
         hi: "ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्",
@@ -59,7 +63,8 @@ const mantras = [
         en: "Om Bhur Bhuvah Svah Tat Savitur Varenyam Bhargo Devasya Dhimahi Dhiyo Yo Nah Prachodayat",
         speechText: "Om Bhoor Bhoovuh Suvuh, Tut Su-vi-toor Vu-reyn-yum, Bhur-go Dey-vus-ya Dhee-mu-hee, Dhi-yo Yo Nuh Pru-cho-du-yaat",
         keywords: ["gayatri", "savitur"],
-        label: "Gayatri Mantra"
+        label: "Gayatri Mantra",
+        image: "images/gayatri.jpg"
     },
     {
         hi: "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम् उर्वारुकमिव बन्धनान् मृत्योर्मुक्षीय मामृतात्",
@@ -67,7 +72,8 @@ const mantras = [
         en: "Om Tryambakam Yajamahe Sugandhim Pushti Vardhanam Urvarukamiva Bandhanat Mrityor Mukshiya Mamritat",
         speechText: "Om Try-um-bu-kum Yu-jaa-mu-hey, Soo-gun-dhim Poosh-ti-vur-dhu-num, Oor-vaa-roo-ku-mi-vuh Bun-dhu-naat, Mrit-yor Mook-shee-yu Maa-mri-taat",
         keywords: ["mahamrityunjaya", "tryambakam", "shiva"],
-        label: "Mahamrityunjaya Mantra"
+        label: "Mahamrityunjaya Mantra",
+        image: "images/shiva_mahadev.jpg"
     }
 ];
 
@@ -123,6 +129,7 @@ const dailyTotalEl = document.getElementById('daily-total');
 const malaCountEl = document.getElementById('mala-count');
 const lifetimeTotalEl = document.getElementById('lifetime-total');
 const hindiMantraEl = document.getElementById('hindi-mantra');
+const deityImageEl = document.getElementById('deity-image');
 const mantraDisplay = document.getElementById('mantra-display');
 const prevBtn = document.getElementById('prev-mantra');
 const nextBtn = document.getElementById('next-mantra');
@@ -179,20 +186,6 @@ const playStatus = document.getElementById('play-status');
 function initAudio() {
     mantraAudio.addEventListener('ended', () => {
         if (isPlaying) {
-            handleIncrement();
-            setTimeout(() => {
-                if (isPlaying) nextChant();
-            }, 800);
-        }
-    });
-
-    // Handle 10-second trimming logic requested by user
-    mantraAudio.addEventListener('timeupdate', () => {
-        if (isPlaying && mantraAudio.duration > 10 && mantraAudio.currentTime >= 10) {
-            console.log("10s limit reached - looping early");
-            mantraAudio.pause();
-            mantraAudio.currentTime = 0; // Reset for next play
-
             handleIncrement();
             setTimeout(() => {
                 if (isPlaying) nextChant();
@@ -573,6 +566,11 @@ function updateUI(silent = false) {
     // Update mantra text in selected language
     const mantraText = mantra[state.language] || mantra.hi || mantra.en;
     hindiMantraEl.textContent = mantraText;
+
+    if (deityImageEl && mantra.image) {
+        deityImageEl.src = mantra.image;
+        deityImageEl.alt = mantra.label || mantra.en;
+    }
 
     animateValue(currentCountEl, state.sessionCount);
     dailyTotalEl.textContent = state.dailyTotal;

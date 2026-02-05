@@ -467,12 +467,69 @@ main {
 }
 
 .mantra-card {
-  padding: 2rem 1.5rem;
-  background: transparent;
-  border: none;
+  padding: 30px 20px;
+  background: rgba(var(--card-bg-rgb), 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(var(--accent-glow-rgb), 0.2);
+  border-radius: 24px;
   text-align: center;
   animation: fadeIn 1.5s ease-out;
   position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.deity-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin-bottom: 5px;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  box-shadow: 0 0 25px rgba(255, 119, 34, 0.4);
+}
+
+.deity-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.deity-aura {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  filter: blur(20px);
+  opacity: 0.3;
+  animation: aura-pulse 3s infinite ease-in-out;
+  z-index: 1;
+}
+
+@keyframes aura-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: scale(1.2);
+    opacity: 0.5;
+  }
 }
 
 .mantra-hindi {
