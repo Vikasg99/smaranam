@@ -178,14 +178,16 @@ const playStatus = document.getElementById('play-status');
 
 function initAudio() {
     mantraAudio.addEventListener('ended', () => {
-        handleIncrement();
-        checkAudioLoop();
+        if (isPlaying) {
+            handleIncrement();
+            setTimeout(() => {
+                if (isPlaying) nextChant();
+            }, 800);
+        }
     });
 
     mantraAudio.addEventListener('error', (e) => {
         console.warn("Audio failed, switching to Speech mode");
-        useSpeechFallback = true;
-        // If it failed during play, restart with speech
         if (isPlaying) {
             speakMantra();
         }
@@ -294,11 +296,9 @@ function speakMantra() {
         if (speechWatchdog) clearTimeout(speechWatchdog);
         if (isPlaying) {
             handleIncrement();
-            // Longer pause between chants for reflection and bhakti feeling
-            // This allows the mantra to resonate in the mind
             setTimeout(() => {
-                if (isPlaying) speakMantra();
-            }, 800); // Increased from 300ms to 800ms for deeper meditation
+                if (isPlaying) nextChant();
+            }, 800);
         }
     };
 
@@ -325,6 +325,28 @@ function resetSpeechSynthesis() {
     if (speechWatchdog) clearTimeout(speechWatchdog);
     // Force resume state
     speechSynth.resume();
+}
+
+/**
+ * Unified logic to decide whether to play audio file or use speech synth
+ */
+function nextChant() {
+    if (!isPlaying) return;
+
+    const currentMantra = mantras[state.currentIndex];
+
+    // Priority 1: High quality looping audio if available
+    if (currentMantra.audio) {
+        // Check if file exists (simple way: just try to play)
+        mantraAudio.src = currentMantra.audio;
+        mantraAudio.play().catch(err => {
+            console.warn("Audio file playback blocked or missing:", currentMantra.audio);
+            speakMantra(); // Fallback to speech
+        });
+    } else {
+        // Priority 2: Standard Speech Synthesis
+        speakMantra();
+    }
 }
 
 
@@ -380,8 +402,7 @@ function togglePlay(forceState) {
 
         requestWakeLock(); // <--- Wake Lock ON
 
-        const currentMantra = mantras[state.currentIndex];
-        speakMantra();
+        nextChant();
 
         playIcon.style.display = 'none';
         pauseIcon.style.display = 'block';
