@@ -21,8 +21,7 @@
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('./sw.js')
-                    .then(reg => console.log('Smaranam Service Worker Active'))
-                    .catch(err => console.log('SW Registration Failed', err));
+                    .catch(err => { }); // Silent fail for SW in dev
             });
         }
     </script>
@@ -86,31 +85,42 @@
                     </svg>
                     Language
                 </button>
-            </div>
-
-            <div class="stats-bar">
-                <div class="stat-card" id="stat-today-card">
-                    <span class="dash-lbl" id="lbl-today">Today</span>
-                    <span class="stat-value" id="daily-total">0</span>
-                    <button class="mini-reset-btn" id="reset-daily" title="Reset Today's Count">↺</button>
-                </div>
-                <div class="stat-card">
-                    <span class="dash-lbl" id="lbl-malas">Malas (Session)</span>
-                    <span class="stat-value" id="mala-count">0 (0)</span>
-                </div>
-                <div class="stat-card" id="stat-lifetime-card">
-                    <span class="dash-lbl" id="lbl-lifetime">Lifetime</span>
-                    <span class="stat-value" id="lifetime-total">0</span>
-                    <button class="mini-reset-btn" id="reset-lifetime" title="Reset Lifetime Count">↺</button>
-                </div>
+                <button class="menu-item" id="menu-share">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path>
+                        <polyline points="16 6 12 2 8 6"></polyline>
+                        <line x1="12" y1="2" x2="12" y2="15"></line>
+                    </svg>
+                    Share App
+                </button>
             </div>
         </header>
+
+        <div class="stats-bar glass-stats" id="stats-summary">
+            <div class="stat-item" title="Lifetime Chants">
+                <span class="stat-label" id="lbl-lifetime">Lifetime</span>
+                <span class="stat-value" id="lifetime-total">0</span>
+                <button class="mini-reset-btn-v2" id="reset-lifetime" title="Reset Lifetime">↺</button>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item" id="reset-daily-trigger" title="Today's count">
+                <span class="stat-label" id="lbl-today">Today</span>
+                <span class="stat-value" id="daily-total">0</span>
+                <button class="mini-reset-btn-v2" id="reset-daily" title="Reset Today">↺</button>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item" title="Current Session Duration">
+                <span class="stat-label" id="lbl-session-time">Focus</span>
+                <span class="stat-value" id="session-time">0m</span>
+            </div>
+        </div>
 
         <main>
             <div class="mantra-container">
                 <div class="mantra-card" id="mantra-display">
                     <div class="deity-container">
-                        <img id="deity-image" src="" alt="Deity" class="deity-img">
+                        <img id="deity-image" src="" alt="Deity" class="deity-img"
+                            onerror="this.src='images/shiva.svg'; this.onerror=null;">
                         <div class="deity-aura"></div>
                     </div>
                     <div class="mantra-hindi" id="hindi-mantra">ॐ नमः शिवाय</div>
@@ -311,16 +321,13 @@
 
     <!-- Mantra Selection Modal -->
     <div class="modal-overlay" id="mantra-modal">
-        <div class="subs-card mantra-list-card">
-            <div class="modal-header"
-                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h2 class="modal-title" style="margin:0;">Select Mantra</h2>
-                <button class="close-modal-plain" id="close-mantra-list"
-                    style="background:none; border:none; color:inherit; font-size:1.5rem; cursor:pointer;">&times;</button>
+        <div class="subs-card mantra-list-card glass-heavy">
+            <div class="modal-header">
+                <h2 class="modal-title cinzel">Sacred Mantras</h2>
+                <button class="close-modal-plain" id="close-mantra-list">&times;</button>
             </div>
-            <div class="mantra-list-container" id="mantra-list-container"
-                style="max-height: 50vh; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
-                <!-- Mantras injected via JS -->
+            <div class="mantra-selection-grid" id="mantra-list-container">
+                <!-- Mantra items with icons will be injected here via JS -->
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'smaranam-v1';
+const CACHE_NAME = 'smaranam-v2';
 const ASSETS = [
     './',
     './index.html',
@@ -7,8 +7,12 @@ const ASSETS = [
     './manifest.json',
     './icon-512.png',
     './upi_payment_qr.jpg',
-    'https://indiemusicbox.s3.amazonaws.com/downloads/meditation-bell-pack/Meditation+Bell+2.mp3',
-    'https://indiemusicbox.s3.amazonaws.com/downloads/meditation-bell-pack/Meditation+Bell+3.mp3'
+    './images/shiva.svg',
+    './images/vishnu.jpg',
+    './images/ganesha.svg',
+    './images/krishna.svg',
+    './images/shani.svg',
+    './images/shiva_mahadev.svg'
 ];
 
 // Install Event

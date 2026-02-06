@@ -1,0 +1,79 @@
+<svg viewBox="-5 -5 110 115" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Rich Gold Gradient System -->
+    <linearGradient id="gold-base" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFBAD;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#B8860B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5D4037;stop-opacity:1" />
+    </linearGradient>
+    
+    <radialGradient id="gold-shine" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Deep Shadow for 3D depth -->
+    <filter id="beauty-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="blur" />
+      <feOffset dx="0" dy="1.5" result="offsetBlur" />
+      <feSpecularLighting in="blur" surfaceScale="5" specularConstant=".75" specularExponent="20" lighting-color="#FFF5cc" result="spec">
+        <fePointLight x="-50" y="-100" z="200" />
+      </feSpecularLighting>
+      <feComposite in="spec" in2="SourceGraphic" operator="in" />
+      <feMerge>
+        <feMergeNode in="offsetBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Divine Background Aura -->
+  <circle cx="50" cy="50" r="48" fill="rgba(0,0,0,0.4)" stroke="url(#gold-base)" stroke-width="0.5" />
+
+  <g filter="url(#beauty-glow)">
+    <!-- Ears: Intricate Folds -->
+    <path d="M35 38 Q10 25 15 65 Q22 75 35 60" fill="url(#gold-base)" stroke="#310" stroke-width="0.2" />
+    <path d="M18 45 Q25 45 32 40 M20 52 Q28 52 33 48 M22 58 Q30 58 34 54" fill="none" stroke="#530" stroke-width="0.4" opacity="0.6"/>
+    
+    <path d="M65 38 Q90 25 85 65 Q78 75 65 60" fill="url(#gold-base)" stroke="#310" stroke-width="0.2" />
+    <path d="M82 45 Q75 45 68 40 M80 52 Q72 52 67 48 M78 58 Q70 58 66 54" fill="none" stroke="#530" stroke-width="0.4" opacity="0.6"/>
+
+    <!-- Face Shape: Soft Contours -->
+    <path d="M36 38 C36 28 64 28 64 38 C64 52 50 55 50 55 C50 55 36 52 36 38" fill="url(#gold-base)" stroke="#310" stroke-width="0.1" />
+
+    <!-- Crown: Traditional and Ornate -->
+    <path d="M40 28 L50 8 L60 28 Q50 24 40 28" fill="url(#gold-base)" stroke="#530" stroke-width="0.3" />
+    <path d="M43 24 L50 14 L57 24" fill="none" stroke="#FFF" stroke-width="0.2" opacity="0.4" />
+    <circle cx="50" cy="18" r="2.5" fill="#C00" /> <!-- Central Ruby -->
+
+    <!-- Forehead Detail: Tilak -->
+    <path d="M47 38 C47 34 53 34 53 38 L50 48 Z" fill="#C00" opacity="0.8"/>
+    <path d="M48 35 Q50 32 52 35" fill="none" stroke="#FFD700" stroke-width="0.8" />
+
+    <!-- Eyes: Serene and Detailed -->
+    <g fill="#000">
+      <!-- Left Eye -->
+      <path d="M40 43 Q45 38 49 43 Q45 45 40 43" fill="#FFF" />
+      <circle cx="45" cy="42.5" r="1.5" />
+      <!-- Right Eye -->
+      <path d="M51 43 Q55 38 60 43 Q55 45 51 43" fill="#FFF" />
+      <circle cx="55" cy="42.5" r="1.5" />
+    </g>
+
+    <!-- The Trunk: Elegant Curve -->
+    <path d="M50 55 L50 50" stroke="url(#gold-base)" stroke-width="8" stroke-linecap="round" />
+    <path d="M50 55 C55 80 40 95 30 90 C25 87 28 80 32 82 C36 84 38 88 43 85 C48 82 48 70 47 62" 
+          fill="none" stroke="url(#gold-base)" stroke-width="7" stroke-linecap="round" />
+    <!-- Trunk Inner Detail -->
+    <path d="M52 58 Q54 75 45 88" fill="none" stroke="#530" stroke-width="0.3" opacity="0.4" />
+
+    <!-- Tusks -->
+    <path d="M42 55 Q41 62 38 60" fill="#FFF" stroke="#CCC" stroke-width="0.2" /> <!-- Left Tusk -->
+    <path d="M58 55 Q59 62 61 63" fill="#FFF" stroke="#CCC" stroke-width="0.2" /> <!-- Right Tusk (Broken/Ekadanta look) -->
+
+    <!-- Highlights for Beauty -->
+    <ellipse cx="50" cy="35" rx="5" ry="3" fill="url(#gold-shine)" opacity="0.4" />
+    <ellipse cx="50" cy="65" rx="3" ry="8" fill="url(#gold-shine)" transform="rotate(-15, 50, 65)" opacity="0.3" />
+  </g>
+</svg>

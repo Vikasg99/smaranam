@@ -1,0 +1,42 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Deep Indigo/Black and Gold Gradient -->
+    <linearGradient id="shani-indigo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A237E;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="shani-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DAA520;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shani-glow">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Circle (Deep Space) -->
+  <circle cx="50" cy="50" r="48" fill="url(#shani-indigo)" stroke="url(#shani-gold)" stroke-width="0.5" />
+
+  <g filter="url(#shani-glow)">
+    <!-- Raven/Crow Vahana (Silhouette) -->
+    <path d="M30 60 Q40 45 50 60 Q60 55 70 70 Q55 75 40 70 Z" fill="#050505" />
+    <path d="M30 60 Q20 55 15 65 M70 70 Q80 65 85 75" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" />
+    
+    <!-- Shani's Bow (Pinaka-like) -->
+    <path d="M25 45 Q50 15 75 45" fill="none" stroke="url(#shani-gold)" stroke-width="4" stroke-linecap="round" />
+    <path d="M25 45 L75 45" fill="none" stroke="url(#shani-gold)" stroke-width="0.5" opacity="0.5" />
+    
+    <!-- Divine Weapon (Danda/Sword silhouette) -->
+    <path d="M50 40 L50 15" stroke="url(#shani-gold)" stroke-width="5" stroke-linecap="round" />
+    <circle cx="50" cy="12" r="2.5" fill="url(#shani-gold)" />
+
+    <!-- Saturn Rings (Symbolic) -->
+    <ellipse cx="50" cy="40" rx="35" ry="8" fill="none" stroke="url(#shani-gold)" stroke-width="1.5" transform="rotate(-15, 50, 40)" opacity="0.6" />
+    
+    <!-- Dark Blue Aura -->
+    <circle cx="50" cy="40" r="10" fill="rgba(26, 35, 126, 0.4)" filter="blur(5px)" />
+  </g>
+</svg>

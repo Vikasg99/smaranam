@@ -8,72 +8,62 @@ const mantras = [
         ta: "ஓம் நம சிவாய",
         ml: "ഓം നമ: ശിവായ",
         mr: "ॐ नमः शिवाय",
-        te: "ఓం నమః ಶಿವಾಯ",
+        te: "ಓಂ ನಮಃ ಶಿವಾಯ",
         en: "Om Namah Shivaya",
         keywords: ["namah shivay", "shiva", "shivaya", "un namah shivay"],
-        audio: "audio/om_namah_shivaya.mp3",
-        speechText: "Om Namah Shivaaya",
-        image: "images/shiva.jpg"
+        speechText: "Ohm, Na-mah Shi-vaa-ya.",
+        image: "images/shiva.svg",
+        audio: "audio/om_namah_shivaya.mp3"
     },
     {
         hi: "ॐ नमो भगवते वासुदेवाय",
         kn: "ಓಂ ನಮೋ ಭಗವತೇ ವಾಸುದೇವಾಯ",
         or: "ଓଁ ନମୋ ଭଗବତେ ବାସୁଦେବାୟ",
         ta: "ஓம நமோ பகவதே வாசுதேவாய",
-        ml: "ഓം നമോ ഭഗവതേ വാസുദേവായ",
+        ml: "ഓം നമോ ഭഗവതേ വാസുദേવાય",
         mr: "ॐ नमो भगवते वासुदेवाय",
-        te: "ఓಂ నమో భగವತೇ వాసుదేవಾಯ",
+        te: "ಓಂ ನಮೋ ಭಗವತೇ ವಾಸುದೇವಾಯ",
         en: "Om Namo Bhagavate Vasudevaya",
         keywords: ["vasudev", "namo bhagavate", "vasudevaya", "un namo"],
-        audio: "audio/om_namo_bhagavate_vasudevaya.mp3",
-        speechText: "Om Namo Bhagavaté Vaasudevaaya",
-        image: "images/vishnu.jpg"
+        speechText: "Ohm, Na-mo Bha-ga-va-tay, Vaa-su-day-vaaya.",
+        image: "images/vishnu.jpg",
+        audio: "https://archive.org/download/om-namo-bhagavate-vasudevaya-chanting/Om%20Namo%20Bhagavate%20Vasudevaya.mp3"
     },
     {
         hi: "ॐ गं गणपतये नमः",
         kn: "ಓಂ ಗಂ ಗಣಪತಯೇ ನಮಃ",
-        or: "ଓଁ ଗଂ ଗಣପତୟେ ନମଃ",
+        or: "ଓଁ ଗଂ ಗಣପତୟେ ନମଃ",
         ta: "ஓம் கம் கணபதயே நம",
         ml: "ഓം ഗം ഗണപതയേ നമഃ",
         mr: "ॐ गं गणपतये ನಮಃ",
-        te: "ఓం గం గణpతయే నమః",
+        te: "ಓಂ ಗಂ ಗಣಪತಯೇ ನಮಃ",
         en: "Om Gam Ganapataye Namah",
         keywords: ["ganpataye", "ganpati", "ganesha", "ganapataye"],
-        audio: "audio/om_gan_ganapataye_namah.mp3",
-        speechText: "Om Gam Ganapatayé Namaha",
-        image: "images/ganesha.jpg"
+        speechText: "Ohm, Gum, Guh-nuh-puh-tuh-yay, Nah-mah-hah.",
+        image: "images/ganesha.svg",
+        audio: "https://archive.org/download/03-shri-ganesh-mahamantra/03%20-%20Shri%20Ganesh%20Mahamantra.mp3"
     },
     {
-        hi: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे",
-        kn: "ಹರೇ ಕೃಷ್ಣ ಹರೇ ಕೃಷ್ಣ ಕೃಷ್ಣ ಕೃಷ್ಣ ಹರೇ ಹರೇ",
-        or: "ହରେ କୃଷ୍ଣ ହରେ କୃଷ୍ଣ କୃଷ୍ଣ କୃଷ୍ଣ ହରେ ହରେ",
-        ta: "ஹரே கிருஷ்ண ஹரே கிருஷ்ண கிருஷ்ண கிருஷ்ண ஹரே ஹரே",
-        ml: "ഹരേ കൃഷ്ണ ഹരേ കൃഷ്ണ കൃഷ്ണ കൃഷ്ണ ഹരേ ഹരേ",
-        mr: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे",
-        te: "హరే కృష్ణ ಹರೇ ಕೃಷ್ಣ ಕృష్ణ ಕృష్ణ ಹರೇ ಹರೇ",
+        hi: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे\nहरे राम हरे राम राम राम हरे हरे",
+        kn: "ಹರೇ ಕೃಷ್ಣ ಹರೇ ಕೃಷ್ಣ ಕೃಷ್ಣ ಕೃಷ್ಣ ಹರೇ ಹರೇ\nಹರೇ ರಾಮ ಹರೇ ರಾಮ ರಾಮ ರಾಮ ಹರೇ ಹರೇ",
+        or: "ହରେ କୃଷ୍ଣ ହରେ କୃଷ୍ଣ କୃଷ୍ଣ କୃଷ୍ଣ ହରେ ହରେ\nହରେ ରାମ ହରେ ରାମ ରାମ ରାମ ହରେ ହରେ",
+        ta: "ஹரே கிருஷ்ண ஹரே கிருஷ்ண கிருஷ்ண கிருஷ்ண ஹரே ஹரே\nஹரே ராம ஹரே ராம ராம ராம ஹரே ஹரே",
+        ml: "ഹരേ കൃഷ്ണ ഹരേ കൃഷ്ണ കൃഷ്ണ കൃഷ്ണ ഹരേ ഹരേ\nഹരേ രാമ ഹരേ രാമ രാമ രാമ ഹരേ ഹരേ",
+        mr: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे\nहरे राम हरे राम राम राम हरे हरे",
+        te: "ಹರೇ ಕೃಷ್ಣ ಹರೇ ಕೃಷ್ಣ ಕೃಷ್ಣ ಕೃಷ್ಣ ಹರೇ ಹರೇ\nಹರೇ ರಾಮ ಹರೇ ರಾಮ ರಾಮ ರಾಮ ಹರೇ ಹರೇ",
         en: "Hare Krishna Hare Krishna Krishna Krishna Hare Hare\nHare Rama Hare Rama Rama Rama Hare Hare",
         keywords: ["hare krishna", "krishna krishna", "rama rama", "hare hare"],
-        audio: "audio/hare_krishna_mahamantra.mp3",
-        speechText: "Hare Krishna Hare Krishna, Krishna Krishna Hare Hare. Hare Rama Hare Rama, Rama Rama Hare Hare",
-        image: "images/krishna.jpg"
+        speechText: "Haa-ray Krish-nah, Haa-ray Krish-nah, Krish-nah Krish-nah, Haa-ray Haa-ray. Haa-ray Raa-mah, Haa-ray Raa-mah, Raa-mah Raa-mah, Haa-ray Haa-ray.",
+        image: "images/krishna.svg",
+        audio: "https://archive.org/download/BestOfHareKrishnaKirtans/42%20TKP_Vrindavan_Melodies_01_Sweet_Maha_Mantra.mp3"
     },
     {
-        hi: "ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्",
-        kn: "ಓಂ ಭೂರ್ಭುವಃ ಸ್ವಃ ತತ್ಸವಿತುರ್ವರೇಣ್ಯಂ ಭರ್ಗೋ ದೇವಸ್ಯ ಧೀಮಹಿ ಧಿಯೋ ಯೋ ನಃ ಪ್ರಚೋದಯಾತ್",
-        en: "Om Bhur Bhuvah Svah Tat Savitur Varenyam Bhargo Devasya Dhimahi Dhiyo Yo Nah Prachodayat",
-        speechText: "Om Bhoor Bhoovuh Suvuh, Tut Su-vi-toor Vu-reyn-yum, Bhur-go Dey-vus-ya Dhee-mu-hee, Dhi-yo Yo Nuh Pru-cho-du-yaat",
-        keywords: ["gayatri", "savitur"],
-        label: "Gayatri Mantra",
-        image: "images/gayatri.jpg"
-    },
-    {
-        hi: "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम् उर्वारुकमिव बन्धनान् मृत्योर्मुक्षीय मामृतात्",
-        kn: "ಓಂ ತ್ರ್ಯಂಬಕಂ ಯಜಾಮಹೇ ಸುಗಂಧಿಂ ಪುಷ್ಟಿವರ್ಧನಮ್ ಉರ್ವಾರುಕಮಿವ ಬಂಧನಾನ್ ಮೃತ್ಯೋರ್ಮುಕ್ಷೀಯ ಮಾಮೃತಾತ್",
-        en: "Om Tryambakam Yajamahe Sugandhim Pushti Vardhanam Urvarukamiva Bandhanat Mrityor Mukshiya Mamritat",
-        speechText: "Om Try-um-bu-kum Yu-jaa-mu-hey, Soo-gun-dhim Poosh-ti-vur-dhu-num, Oor-vaa-roo-ku-mi-vuh Bun-dhu-naat, Mrit-yor Mook-shee-yu Maa-mri-taat",
-        keywords: ["mahamrityunjaya", "tryambakam", "shiva"],
-        label: "Mahamrityunjaya Mantra",
-        image: "images/shiva_mahadev.jpg"
+        hi: "ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः",
+        en: "Om Praam Preem Proum Sah Shanaishcharaya Namah",
+        keywords: ["shani", "shanaishcharaya", "shany", "shani dev"],
+        audio: "audio/shani_mantra.mp3",
+        speechText: "Ohm, Praam Preem Proum Su-ha. Shu-na-ish-chu-raa-ya Na-mu-ha.",
+        image: "images/shani.svg"
     }
 ];
 
@@ -121,12 +111,11 @@ let state = {
 };
 
 // DOM Elements
-const counterBtn = document.getElementById('counter-btn');
+const counterBtn = document.getElementById('orb-display');
 const currentCountEl = document.getElementById('current-count');
 const progressRing = document.getElementById('progress-ring');
 const rippleContainer = document.getElementById('ripple-container');
 const dailyTotalEl = document.getElementById('daily-total');
-const malaCountEl = document.getElementById('mala-count');
 const lifetimeTotalEl = document.getElementById('lifetime-total');
 const hindiMantraEl = document.getElementById('hindi-mantra');
 const deityImageEl = document.getElementById('deity-image');
@@ -136,13 +125,23 @@ const nextBtn = document.getElementById('next-mantra');
 const resetBtn = document.getElementById('reset-btn');
 const clearAllBtn = document.getElementById('clear-all-btn');
 const langSelect = document.getElementById('lang-select');
-const sessionGoalSelect = document.getElementById('session-goal'); // New Element
+const sessionGoalSelect = document.getElementById('session-goal');
+const playPauseBtn = document.getElementById('play-pause-btn');
+const playIcon = document.getElementById('play-icon');
+const pauseIcon = document.getElementById('pause-icon');
+const playStatus = document.getElementById('play-status');
+const sessionTimeEl = document.getElementById('session-time');
+const mantraListGrid = document.getElementById('mantra-list-container');
+const openSettingsBtn = document.getElementById('open-settings');
+const closeSettingsBtn = document.getElementById('close-voice-settings');
+const saveSettingsBtn = document.getElementById('save-voice-settings');
 
 // Labels
 const lblToday = document.getElementById('lbl-today');
-const lblMalas = document.getElementById('lbl-malas');
 const lblLifetime = document.getElementById('lbl-lifetime');
-const lblChants = document.getElementById('lbl-chants');
+const lblFocus = document.getElementById('lbl-session-time');
+const lblChants = document.getElementById('lbl-chants'); // This might be null in generic stats bar
+const malaCountEl = document.getElementById('mala-count'); // This might be null too
 
 // Voice Settings Elements
 const voiceSettingsModal = document.getElementById('voice-settings-modal');
@@ -152,9 +151,17 @@ const voicePitch = document.getElementById('voice-pitch');
 const rateVal = document.getElementById('rate-val');
 const pitchVal = document.getElementById('pitch-val');
 const pronunciationMode = document.getElementById('pronunciation-mode');
-const openSettingsBtn = document.getElementById('open-settings');
-const closeSettingsBtn = document.getElementById('close-voice-settings');
-const saveSettingsBtn = document.getElementById('save-voice-settings');
+
+// --- 🛠️ UTILITIES ---
+function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('active');
+}
+
+function openModal(modal) {
+    if (!modal) return;
+    modal.classList.add('active');
+}
 
 // Constants & Audio
 const MALA_SIZE = 108;
@@ -177,30 +184,59 @@ let timerInterval = null;
 const PLAY_ICON = `<path d="M8 5v14l11-7z"/>`;
 const PAUSE_ICON = `<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>`;
 
-const playPauseBtn = document.getElementById('play-pause-btn');
-const playIcon = document.getElementById('play-icon');
-const pauseIcon = document.getElementById('pause-icon');
-const playStatus = document.getElementById('play-status');
-
 
 function initAudio() {
     mantraAudio.addEventListener('ended', () => {
         if (isPlaying) {
             handleIncrement();
-            setTimeout(() => {
-                if (isPlaying) nextChant();
-            }, 800);
+            // Reduced delay for smoother transitions
+            if (isPlaying) nextChant();
         }
     });
 
     mantraAudio.addEventListener('error', (e) => {
-        console.warn("Audio failed, switching to Speech mode");
         if (isPlaying) {
+            console.warn("Audio error, falling back to speech");
             speakMantra();
         }
     });
 }
 
+function updateMantraList() {
+    if (!mantraListGrid) return;
+
+    mantraListGrid.innerHTML = '';
+    mantras.forEach((m, index) => {
+        const item = document.createElement('div');
+        item.className = `mantra-selection-item ${state.currentIndex === index ? 'active' : ''}`;
+
+        // Show icon/image if available
+        const iconSrc = m.image || 'images/default_mantra.svg';
+
+        item.innerHTML = `
+            <div class="mantra-item-icon">
+                <img src="${iconSrc}" alt="${m.en}" onerror="this.src='images/shiva.svg'; this.onerror=null;">
+            </div>
+            <div class="mantra-item-info">
+                <div class="mantra-item-name">${m.label || m.en}</div>
+                <div class="mantra-item-count">${m.hi.substring(0, 15)}...</div>
+            </div>
+        `;
+
+        item.onclick = () => {
+            state.currentIndex = index;
+            saveState();
+            updateUI();
+            closeModal(document.getElementById('mantra-modal'));
+
+            // Subtle feedback
+            document.querySelector('.mantra-card')?.classList.add('pop-animation');
+            setTimeout(() => document.querySelector('.mantra-card')?.classList.remove('pop-animation'), 600);
+        };
+
+        mantraListGrid.appendChild(item);
+    });
+}
 function speakMantra() {
     if (!isPlaying) return;
 
@@ -221,49 +257,52 @@ function speakMantra() {
 
     // Fallback to automatic selection if no manual selection or voice not found
     if (!selectedVoice) {
-        const langMap = {
-            'hi': ['hi-IN', 'hi'],
-            'kn': ['kn-IN', 'kn'],
-            'or': ['or-IN', 'or'],
-            'ta': ['ta-IN', 'ta'],
-            'ml': ['ml-IN', 'ml'],
-            'mr': ['mr-IN', 'mr'],
-            'te': ['te-IN', 'te'],
-            'en': ['en-IN', 'en-US', 'en-GB', 'en']
-        };
-        const preferredLangs = langMap[state.language] || ['en-IN', 'en'];
-        for (const langCode of preferredLangs) {
-            selectedVoice = voices.find(v => v.lang.startsWith(langCode));
-            if (selectedVoice) break;
+        // --- 🇮🇳 Realistic Indian Voice Prioritization 🇮🇳 ---
+        // Prioritize "Google" voices as they are high-quality Neural/HTS voices
+        const highQualityVoices = voices.filter(v =>
+            (v.name.includes('Google') || v.name.includes('Neural') || v.name.includes('Natural')) &&
+            (v.lang.startsWith('hi') || v.lang.startsWith('mr') || v.lang.includes('-IN'))
+        );
+
+        if (highQualityVoices.length > 0) {
+            // Prefer Hindi Google voice if possible for Devanagari
+            selectedVoice = highQualityVoices.find(v => v.lang.startsWith('hi')) || highQualityVoices[0];
         }
-        if (!selectedVoice) selectedVoice = voices.find(v => v.lang.includes('-IN'));
-        if (!selectedVoice && (state.language === 'hi' || state.language === 'mr')) {
-            selectedVoice = voices.find(v => v.lang.includes('hi'));
+
+        if (!selectedVoice) {
+            const langMap = {
+                'hi': ['hi-IN', 'hi'],
+                'kn': ['kn-IN', 'kn'],
+                'or': ['or-IN', 'or'],
+                'ta': ['ta-IN', 'ta'],
+                'ml': ['ml-IN', 'ml'],
+                'mr': ['mr-IN', 'mr'],
+                'te': ['te-IN', 'te'],
+                'en': ['en-IN', 'en-US', 'en-GB', 'en']
+            };
+            const preferredLangs = langMap[state.language] || ['en-IN', 'en'];
+            for (const langCode of preferredLangs) {
+                selectedVoice = voices.find(v => v.lang.startsWith(langCode));
+                if (selectedVoice) break;
+            }
+            if (!selectedVoice) selectedVoice = voices.find(v => v.lang.includes('-IN'));
+            if (!selectedVoice && (state.language === 'hi' || state.language === 'mr')) {
+                selectedVoice = voices.find(v => v.lang.includes('hi'));
+            }
         }
     }
 
     // 🕉️ AUTHENTIC SCRIPT SELECTION 🕉️
     let textToSpeak;
     const voiceLang = selectedVoice ? selectedVoice.lang.toLowerCase() : '';
-    const isPhoneticMode = state.voiceSettings && state.voiceSettings.mode === 'phonetic';
 
-    if (!isPhoneticMode) {
-        if (voiceLang.startsWith('hi') || voiceLang.startsWith('mr')) {
-            textToSpeak = currentMantra.hi;
-        } else if (voiceLang.startsWith('kn')) {
-            textToSpeak = currentMantra.kn;
-        } else if (voiceLang.startsWith('or')) {
-            textToSpeak = currentMantra.or;
-        } else if (voiceLang.startsWith('ta')) {
-            textToSpeak = currentMantra.ta;
-        } else if (voiceLang.startsWith('ml')) {
-            textToSpeak = currentMantra.ml;
-        } else if (voiceLang.startsWith('te')) {
-            textToSpeak = currentMantra.te;
-        }
-    }
+    // Check if the selected voice is actually a "real" Indian voice/neural voice
+    const isAuthenticIndianVoice = voiceLang.startsWith('hi') || voiceLang.startsWith('mr') || voiceLang.includes('-in');
 
-    if (!textToSpeak) {
+    // Priority: If authentic voice exists, ALWAYS prefer the native script unless strictly forced otherwise
+    if (isAuthenticIndianVoice) {
+        textToSpeak = currentMantra.hi || currentMantra.speechText;
+    } else {
         textToSpeak = currentMantra.speechText || currentMantra.en;
     }
 
@@ -275,9 +314,11 @@ function speakMantra() {
         console.log(`🕉️ Chanting: ${selectedVoice.name} speaking [${textToSpeak}]`);
     }
 
-    // Apply User Parameters
-    speechUtterance.rate = state.voiceSettings?.rate || 0.75;
-    speechUtterance.pitch = state.voiceSettings?.pitch || 0.85;
+    // Apply User Parameters with Realistic Indian Calibration
+    // Rate: 0.7-0.8 (Slower, weightier delivery)
+    // Pitch: 0.85-0.95 (Slightly deeper, more resonant)
+    speechUtterance.rate = state.voiceSettings?.rate || 0.8;
+    speechUtterance.pitch = state.voiceSettings?.pitch || 0.9;
     speechUtterance.volume = 1.0;
 
     // Add natural pauses for breath and contemplation
@@ -288,11 +329,18 @@ function speakMantra() {
     if (speechWatchdog) clearTimeout(speechWatchdog);
     speechWatchdog = setTimeout(() => {
         if (isPlaying && speechSynth.speaking) {
-            console.warn("Speech watchdog triggered - restarting engine");
-            resetSpeechSynthesis();
-            speakMantra();
+            console.warn("Speech engine timed out, attempting recovery...");
+            speechSynth.cancel();
+
+            // Wait a moment and retry once or reset
+            setTimeout(() => {
+                if (isPlaying) {
+                    resetSpeechSynthesis();
+                    speakMantra();
+                }
+            }, 500);
         }
-    }, 10000); // 10 second safety net
+    }, 15000); // 15 second safety net for slower voices
 
     speechUtterance.onstart = () => {
         // Some browsers need a resume() call to actually start
@@ -303,9 +351,8 @@ function speakMantra() {
         if (speechWatchdog) clearTimeout(speechWatchdog);
         if (isPlaying) {
             handleIncrement();
-            setTimeout(() => {
-                if (isPlaying) nextChant();
-            }, 800);
+            // Faster transition for speech too
+            if (isPlaying) nextChant();
         }
     };
 
@@ -323,8 +370,18 @@ function speakMantra() {
     setTimeout(() => {
         speechSynth.resume();
         speechSynth.speak(speechUtterance);
+        console.log("🕉️ Chanting active");
     }, 50);
 }
+
+// --- 💎 Chrome/Mobile TTS Stability Hack 💎 ---
+// Periodically toggle pause/resume to prevent engine from "timing out" or going silent
+setInterval(() => {
+    if (isPlaying && window.speechSynthesis.speaking) {
+        window.speechSynthesis.pause();
+        window.speechSynthesis.resume();
+    }
+}, 5000);
 
 function resetSpeechSynthesis() {
     console.log("Resetting Speech Engine...");
@@ -344,8 +401,15 @@ function nextChant() {
 
     // Priority 1: High quality looping audio if available
     if (currentMantra.audio) {
-        // Check if file exists (simple way: just try to play)
-        mantraAudio.src = currentMantra.audio;
+        // Pre-stop speech for clarity
+        if (speechSynth.speaking) speechSynth.cancel();
+
+        // Fast switch for audio
+        if (mantraAudio.src !== currentMantra.audio) {
+            mantraAudio.src = currentMantra.audio;
+            mantraAudio.load();
+        }
+
         mantraAudio.play().catch(err => {
             console.warn("Audio file playback blocked or missing:", currentMantra.audio);
             speakMantra(); // Fallback to speech
@@ -563,6 +627,11 @@ function updateUI(silent = false) {
     const t = translations[state.language] || translations['en']; // Fallback
     const mantra = mantras[state.currentIndex];
 
+    // --- ✨ REAL-TIME STATS UPDATES ✨ ---
+    if (sessionTimeEl && state.sessionStartTime) {
+        const diff = Math.floor((Date.now() - state.sessionStartTime) / 60000);
+        sessionTimeEl.textContent = `${diff}m`;
+    }
     // Update mantra text in selected language
     const mantraText = mantra[state.language] || mantra.hi || mantra.en;
     hindiMantraEl.textContent = mantraText;
@@ -572,21 +641,21 @@ function updateUI(silent = false) {
         deityImageEl.alt = mantra.label || mantra.en;
     }
 
-    animateValue(currentCountEl, state.sessionCount);
-    dailyTotalEl.textContent = state.dailyTotal;
+    if (currentCountEl) animateValue(currentCountEl, state.sessionCount);
+    if (dailyTotalEl) dailyTotalEl.textContent = state.dailyTotal;
 
     const totalMalas = Math.floor(state.lifetimeTotal / MALA_SIZE);
-    malaCountEl.textContent = `${totalMalas} (${state.sessionRound})`;
-    lifetimeTotalEl.textContent = state.lifetimeTotal;
+    if (malaCountEl) malaCountEl.textContent = `${totalMalas} (${state.sessionRound})`;
+    if (lifetimeTotalEl) lifetimeTotalEl.textContent = state.lifetimeTotal;
 
-    lblToday.textContent = t.today;
-    lblMalas.textContent = `${t.malas} (${t.session})`;
-    lblLifetime.textContent = t.lifetime;
-    lblChants.textContent = t.chats || "Chants";
+    if (lblToday) lblToday.textContent = t.today;
+    if (lblLifetime) lblLifetime.textContent = t.lifetime;
+    if (lblFocus) lblFocus.textContent = state.language === 'en' ? 'Focus' : (state.language === 'hi' ? 'सत्र' : 'Focus'); // Simplified translate for Focus
+    if (lblChants) lblChants.textContent = t.chats || "Chants";
 
     const progress = (state.sessionCount % MALA_SIZE) / MALA_SIZE;
     const offset = CIRCUMFERENCE - (progress * CIRCUMFERENCE);
-    progressRing.style.strokeDashoffset = offset;
+    if (progressRing) progressRing.style.strokeDashoffset = offset;
 
     if (!silent) {
         mantraDisplay.style.animation = 'none';
@@ -637,21 +706,22 @@ function createMalaBlast() {
     }
 }
 
+function handleSessionReset() {
+    if (confirm("Reset current session count?")) {
+        state.sessionCount = 0;
+        state.sessionStartTime = Date.now(); // Restart session timer if reset
+        saveState();
+        updateUI(true);
+    }
+}
+
 function handleReset() {
     if (confirm(translations[state.language].resetConfirm)) {
         state.sessionCount = 0;
         state.sessionRound = 0;
-        state.sessionStartTime = null;
+        state.sessionStartTime = Date.now();
         saveState();
         updateUI();
-    }
-}
-
-function handleSessionReset() {
-    if (confirm("Reset current session count?")) {
-        state.sessionCount = 0;
-        saveState();
-        updateUI(true);
     }
 }
 
@@ -700,6 +770,10 @@ function handleZenSkip() {
 // Visibility API for Interruption Handling (Calls/App Switch) - Already defined above at line 240
 
 function setupEventListeners() {
+    if (counterBtn) {
+        counterBtn.addEventListener('click', handleIncrement);
+    }
+
     playPauseBtn.addEventListener('click', () => {
         if (!isPlaying) {
             // Trying to play
@@ -904,41 +978,39 @@ function setupEventListeners() {
     const closeMantraBtn = document.getElementById('close-mantra-list');
     const mantraListContainer = document.getElementById('mantra-list-container');
 
-    function openMantraSelection() {
-        if (!mantraListContainer) return;
-        mantraListContainer.innerHTML = ''; // Clear existing
-
-        mantras.forEach((m, index) => {
-            const div = document.createElement('div');
-            div.className = `mantra-option ${index === state.currentIndex ? 'selected' : ''}`;
-            const title = m.label || m.en.split(' ').slice(0, 3).join(' ') + '...';
-
-            div.innerHTML = `
-                <div>
-                    <div class="mantra-option-title">${title}</div>
-                    <div class="mantra-option-hindi">${(m.hi || m.en).substring(0, 40)}...</div>
-                </div>
-                ${index === state.currentIndex ? '<span style="color:var(--accent-primary)">✓ Active</span>' : ''}
-            `;
-
-            div.addEventListener('click', () => {
-                state.currentIndex = index;
-                saveState();
-                updateUI();
-                if (isPlaying) togglePlay(false); // Stop if playing
-                if (mantraModal) mantraModal.classList.remove('active');
-            });
-
-            mantraListContainer.appendChild(div);
+    if (openMantraBtn) {
+        openMantraBtn.addEventListener('click', () => {
+            updateMantraList();
+            mantraModal.classList.add('active');
         });
-
-        if (mantraModal) mantraModal.classList.add('active');
     }
 
-    if (openMantraBtn) openMantraBtn.addEventListener('click', openMantraSelection);
-    if (closeMantraBtn) closeMantraBtn.addEventListener('click', () => mantraModal.classList.remove('active'));
-    if (mantraModal) mantraModal.addEventListener('click', (e) => { if (e.target === mantraModal) mantraModal.classList.remove('active'); });
+    if (closeMantraBtn) {
+        closeMantraBtn.addEventListener('click', () => {
+            mantraModal.classList.remove('active');
+        });
+    }
 
+    if (mantraModal) {
+        mantraModal.addEventListener('click', (e) => {
+            if (e.target === mantraModal) mantraModal.classList.remove('active');
+        });
+    }
+    // --- 🌍 GLOBAL MODAL CONTROLS 🌍 ---
+    // ESC Key to close any active modal
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const activeModal = document.querySelector('.modal-overlay.active');
+            if (activeModal) closeModal(activeModal);
+        }
+    });
+
+    // Ensure all overlays close on background click (Standardization)
+    document.querySelectorAll('.modal-overlay').forEach(modal => {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal(modal);
+        });
+    });
 
     document.addEventListener('keydown', (e) => {
         if (e.code === 'Space' || e.code === 'Enter') {
@@ -947,7 +1019,6 @@ function setupEventListeners() {
         }
     });
 
-    // --- Voice Settings Listeners ---
     if (openSettingsBtn) openSettingsBtn.addEventListener('click', () => {
         populateVoices();
         updateSettingsUI();
@@ -974,13 +1045,13 @@ function setupEventListeners() {
         };
         saveState();
         voiceSettingsModal.classList.remove('active');
-        // Restart speech if playing to apply immediately
         if (isPlaying) {
             speechSynth.cancel();
             speakMantra();
         }
     });
 }
+
 
 function populateVoices() {
     if (!voiceSelect) return;
@@ -1090,12 +1161,11 @@ function init() {
     if (speechSynthesis.onvoiceschanged !== undefined) {
         speechSynthesis.onvoiceschanged = () => {
             window.speechSynthesis.getVoices();
-            logAvailableVoices(); // Log voices when they're loaded
         };
     }
 
-    // Log available voices on init
-    setTimeout(() => logAvailableVoices(), 500);
+    // Silence voice logging in production
+    // logAvailableVoices();
 
     // Show initial language selection if first time
     showInitialLanguageSelection();
