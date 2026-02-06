@@ -894,6 +894,7 @@ function setupEventListeners() {
     const menuAbout = document.getElementById('menu-about');
     const menuTheme = document.getElementById('menu-theme');
     const menuLanguage = document.getElementById('menu-language');
+    const menuShare = document.getElementById('menu-share');
     const aboutModal = document.getElementById('about-modal');
     const themeModal = document.getElementById('theme-modal');
     const languageModal = document.getElementById('language-modal');
@@ -921,6 +922,13 @@ function setupEventListeners() {
     if (menuLanguage && languageModal) {
         menuLanguage.addEventListener('click', () => {
             languageModal.classList.add('active');
+            closeDropdown();
+        });
+    }
+
+    if (menuShare) {
+        menuShare.addEventListener('click', () => {
+            handleShare();
             closeDropdown();
         });
     }
@@ -1141,6 +1149,27 @@ function logAvailableVoices() {
 
     console.log('\nAll voices:', voices.map(v => `${v.name} (${v.lang})`).join(', '));
     console.log('======================');
+}
+
+async function handleShare() {
+    const shareData = {
+        title: 'Smaranam | Meditative Chanting',
+        text: 'Experience premium meditative chanting with Smaranam.',
+        url: window.location.href
+    };
+
+    try {
+        if (navigator.share) {
+            await navigator.share(shareData);
+        } else {
+            await navigator.clipboard.writeText(window.location.href);
+            alert('App link copied to clipboard! Share it with your friends.');
+        }
+    } catch (err) {
+        if (err.name !== 'AbortError') {
+            console.warn('Sharing failed:', err);
+        }
+    }
 }
 
 // Initialize the app
