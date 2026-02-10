@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://indiemusicbox.s3.amazonaws.com; media-src 'self' https://indiemusicbox.s3.amazonaws.com;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://indiemusicbox.s3.amazonaws.com https://api.emailjs.com; media-src 'self' https://indiemusicbox.s3.amazonaws.com;">
     <title>Smaranam | Kesari Global Edition</title>
     <meta name="description" content="Premium voice-activated meditative chanting.">
 
@@ -17,6 +17,15 @@
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#FF7722">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            // PLACHOLDER - User must replace with their Public Key
+            // https://dashboard.emailjs.com/admin/account
+            emailjs.init("ntt6ei0ERTjtHrZoV");
+        })();
+    </script>
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
@@ -278,8 +287,8 @@
     <div class="modal-overlay" id="payment-modal">
         <div class="subs-card payment-details-card">
             <button class="close-modal" id="close-payment">&times;</button>
-            <h2 class="modal-title">Payment Details</h2>
-            <p class="modal-desc">Complete your transfer using UPI or Bank details below.</p>
+            <h2 class="modal-title">Unlock Premium Trial</h2>
+            <p class="modal-desc">Enter your UPI ID or Bank Reference to activate your free trial.</p>
 
             <div class="payment-sections">
                 <div class="payment-section">
@@ -288,10 +297,24 @@
                         <img src="upi_payment_qr.jpg" alt="UPI QR Code" class="payment-qr">
                     </div>
                     <div class="payment-field">
-                        <span class="field-label">UPI ID</span>
+                        <span class="field-label">Our UPI ID</span>
                         <div class="copy-field">
                             <span class="field-value">9916990577@kotak811</span>
                         </div>
+                    </div>
+
+                    <div class="user-input-section"
+                        style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+                        <label for="user-upi-id" class="field-label" style="display:block; margin-bottom:5px;">Enter
+                            YOUR UPI ID / PhonePe / GPay Number:</label>
+                        <input type="text" id="user-upi-id" placeholder="e.g. 9876543210@ybl" class="dark-input"
+                            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #444; background: #222; color: #fff;">
+
+                        <label for="user-email" class="field-label"
+                            style="display:block; margin-top:10px; margin-bottom:5px;">Want a confirmation email? Enter
+                            your address:</label>
+                        <input type="email" id="user-email" placeholder="you@example.com" class="dark-input"
+                            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #444; background: #222; color: #fff;">
                     </div>
                 </div>
 
@@ -314,8 +337,12 @@
                 </div>
             </div>
 
-            <p class="payment-footer">After payment, please take a screenshot and share it with support to activate your
-                premium access.</p>
+            <button class="plan-btn" id="confirm-payment-btn"
+                style="width: 100%; margin-top: 20px; background: #28a745;">Activate Free Trial</button>
+
+            <p class="payment-footer">
+                <small>By clicking Activate, you agree to auto-debit terms after the trial period ends.</small>
+            </p>
         </div>
     </div>
 

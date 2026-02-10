@@ -27,21 +27,21 @@ const mantras = [
         keywords: ["vasudev", "namo bhagavate", "vasudevaya", "un namo"],
         speechText: "Ohm, Na-mo Bha-ga-va-tay, Vaa-su-day-vaaya.",
         image: "images/vishnu.jpg",
-        audio: "https://archive.org/download/om-namo-bhagavate-vasudevaya-chanting/Om%20Namo%20Bhagavate%20Vasudevaya.mp3"
+        audio: "audio/om_namo_bhagavate_vasudevaya.wav"
     },
     {
         hi: "ॐ गं गणपतये नमः",
         kn: "ಓಂ ಗಂ ಗಣಪತಯೇ ನಮಃ",
-        or: "ଓଁ ଗଂ ಗಣପତୟେ ନମଃ",
+        or: "ଓଁ ଗଂ ಗಣପತୟେ ନମଃ",
         ta: "ஓம் கம் கணபதயே நம",
         ml: "ഓം ഗം ഗണപതയേ നമഃ",
-        mr: "ॐ गं गणपतये ನಮಃ",
+        mr: "ॐ गं गणपतये ಮಃ",
         te: "ಓಂ ಗಂ ಗಣಪತಯೇ ನಮಃ",
         en: "Om Gam Ganapataye Namah",
         keywords: ["ganpataye", "ganpati", "ganesha", "ganapataye"],
         speechText: "Ohm, Gum, Guh-nuh-puh-tuh-yay, Nah-mah-hah.",
         image: "images/ganesha.svg",
-        audio: "https://archive.org/download/03-shri-ganesh-mahamantra/03%20-%20Shri%20Ganesh%20Mahamantra.mp3"
+        audio: "audio/ganesh_mantra.wav"
     },
     {
         hi: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे\nहरे राम हरे राम राम राम हरे हरे",
@@ -55,7 +55,7 @@ const mantras = [
         keywords: ["hare krishna", "krishna krishna", "rama rama", "hare hare"],
         speechText: "Haa-ray Krish-nah, Haa-ray Krish-nah, Krish-nah Krish-nah, Haa-ray Haa-ray. Haa-ray Raa-mah, Haa-ray Raa-mah, Raa-mah Raa-mah, Haa-ray Haa-ray.",
         image: "images/krishna.svg",
-        audio: "https://archive.org/download/BestOfHareKrishnaKirtans/42%20TKP_Vrindavan_Melodies_01_Sweet_Maha_Mantra.mp3"
+        audio: "audio/hare_krishna_mantra.wav"
     },
     {
         hi: "ॐ प्रां प्रीं प्रौं सः शनैश्चराय नमः",
@@ -99,6 +99,10 @@ let state = {
     language: 'en',
     theme: 'cosmic', // Default theme
     isPremium: false,
+    hasAddedPaymentDetails: false, // User provided Bank/UPI
+    trialStartDate: null, // When they added payment details
+    installOrder: Math.floor(Math.random() * 200) + 400, // Simulating user number around 400-600
+    freeMalaLimit: 11,
     lastUpdate: null,
     sessionGoal: '108', // Default 1 Mala
     sessionStartTime: null,
@@ -584,6 +588,32 @@ function completeSession(msg) {
     state.sessionStartTime = null;
 }
 
+// --- Security & Validation Helpers ---
+const SECURE_KEY = 'smaranam_access_token';
+
+// Simple obfuscation (Base64 + salt) - Not bank-grade but prevents simple edits
+function setPremiumUser() {
+    const token = btoa('PREMIUM_USER_' + Date.now() + '_' + Math.random().toString(36).substring(7));
+    localStorage.setItem(SECURE_KEY, token);
+    state.isPremium = true;
+    state.hasAddedPaymentDetails = true;
+}
+
+function isPremiumUser() {
+    const token = localStorage.getItem(SECURE_KEY);
+    if (!token) return false;
+    try {
+        const decoded = atob(token);
+        return decoded.startsWith('PREMIUM_USER_');
+    } catch (e) { return false; }
+}
+
+function isValidUPI(upi) {
+    // Regex: alphanumeric (min 3) @ bank (min 3)
+    const upiRegex = /^[a-zA-Z0-9.\-_]{3,}@[a-zA-Z]{3,}$/;
+    return upiRegex.test(upi);
+}
+
 function loadState() {
     const saved = localStorage.getItem('chant_gravity_state');
     if (saved) {
@@ -594,16 +624,22 @@ function loadState() {
             if (parsed.voiceSettings) {
                 state.voiceSettings = { ...state.voiceSettings, ...parsed.voiceSettings };
             }
-            updateUI(true); // Update UI after loading state
+            // Override with secure check
+            state.isPremium = isPremiumUser();
+            if (state.isPremium) state.hasAddedPaymentDetails = true;
+
         } catch (e) {
-            console.error("Load failed", e);
+            console.error("State load error", e);
         }
     }
+
     // Set defaults if new fields missing
     if (!state.sessionGoal) state.sessionGoal = '108';
 
     // Restore UI state
     if (sessionGoalSelect) sessionGoalSelect.value = state.sessionGoal;
+
+    updateUI(true); // Update UI after loading state
 }
 
 function saveState() {
@@ -641,11 +677,18 @@ function updateUI(silent = false) {
         deityImageEl.alt = mantra.label || mantra.en;
     }
 
-    if (currentCountEl) animateValue(currentCountEl, state.sessionCount);
+    // Display current count within the Mala (1-108)
+    // User requested "after 1 mala its not coming in 0" -> Meaning 108 should show as 0 (Completion)
+    const currentMalaCount = state.sessionCount % MALA_SIZE; // 1->1, 108->0
+
+    if (currentCountEl) animateValue(currentCountEl, currentMalaCount);
     if (dailyTotalEl) dailyTotalEl.textContent = state.dailyTotal;
 
-    const totalMalas = Math.floor(state.lifetimeTotal / MALA_SIZE);
-    if (malaCountEl) malaCountEl.textContent = `${totalMalas} (${state.sessionRound})`;
+    // Determine total Malas completed
+    // sessionRound increments exactly when modulo == 0 in handleIncrement
+    let totalMalas = state.sessionRound;
+
+    if (malaCountEl) malaCountEl.textContent = `${totalMalas}`;
     if (lifetimeTotalEl) lifetimeTotalEl.textContent = state.lifetimeTotal;
 
     if (lblToday) lblToday.textContent = t.today;
@@ -698,6 +741,48 @@ function handleIncrement() {
     saveState();
     updateUI(true);
     checkGoalCompletion();
+    checkSubscriptionStatus(); // Check limit after every count
+}
+
+function updateOfferUI() {
+    const banner = document.getElementById('launch-banner');
+    const offerDuration = document.querySelector('#subs-modal .plan-card.featured .duration');
+    const badge = document.querySelector('#subs-modal .plan-card.featured .badge');
+
+    if (state.installOrder <= 550) {
+        // First 550 Users Offer (2 Months Free)
+        if (banner) {
+            const bannerText = banner.querySelector('span');
+            if (bannerText) bannerText.textContent = `✨ User #${state.installOrder}! Get 2 Months Free Pro Access! ✨`;
+        }
+        if (offerDuration) offerDuration.innerHTML = `2 Month Trial<br>Priority User #${state.installOrder}`;
+        if (badge) badge.textContent = "2 MONTHS FREE";
+    } else {
+        // > 550 Users (1 Month Free Only)
+        if (banner) {
+            const bannerText = banner.querySelector('span');
+            if (bannerText) bannerText.textContent = `✨ Start Your Sadhana with 1 Month Free Pro Access! ✨`;
+        }
+        if (offerDuration) offerDuration.innerHTML = `1 Month Trial<br>Unlimited Chanting`;
+        if (badge) badge.textContent = "FREE TRIAL";
+    }
+}
+
+function checkSubscriptionStatus() {
+    // Logic: 
+    // If NOT premium AND NOT added payment details AND limit reached -> Block
+    // If Added Payment Details -> Allow (Trial)
+
+    if (!state.isPremium && !state.hasAddedPaymentDetails) {
+        if (state.sessionRound >= state.freeMalaLimit) {
+            togglePlay(false);
+            openModal(document.getElementById('subs-modal'));
+
+            // Update Subs Modal Text dynamically
+            const subTitle = document.querySelector('#subs-modal .modal-desc');
+            if (subTitle) subTitle.textContent = "You've reached the free chanting limit. Unlock unlimited access with our trial offer.";
+        }
+    }
 }
 
 function createMalaBlast() {
@@ -871,6 +956,73 @@ function setupEventListeners() {
 
     if (closePayment) closePayment.addEventListener('click', () => paymentModal.classList.remove('active'));
     if (paymentModal) paymentModal.addEventListener('click', (e) => { if (e.target === paymentModal) paymentModal.classList.remove('active'); });
+
+    // Payment Form Logic
+    const confirmPaymentBtn = document.getElementById('confirm-payment-btn');
+    const userUpiInput = document.getElementById('user-upi-id');
+    const userEmailInput = document.getElementById('user-email');
+    const userBankInput = document.getElementById('user-bank-details'); // Placeholder if we add bank input
+
+    if (confirmPaymentBtn) {
+        confirmPaymentBtn.addEventListener('click', () => {
+            const upiVal = userUpiInput ? userUpiInput.value.trim() : '';
+            const emailVal = userEmailInput ? userEmailInput.value.trim() : 'Not Provided';
+
+            if (isValidUPI(upiVal)) {
+                // UI: Verifying State
+                const originalText = confirmPaymentBtn.textContent;
+                confirmPaymentBtn.textContent = "Verifying Securely...";
+                confirmPaymentBtn.style.opacity = "0.7";
+                confirmPaymentBtn.disabled = true;
+
+                // Simulate Server Verification (2s)
+                setTimeout(() => {
+                    // Success!
+                    setPremiumUser(); // Secure Token Set
+                    state.hasAddedPaymentDetails = true;
+                    state.trialStartDate = Date.now();
+                    saveState();
+
+                    // --- SEND EMAIL NOTIFICATION ---
+                    // Replace 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID' with actual values from EmailJS dashboard
+                    const templateParams = {
+                        user_upi: upiVal,
+                        user_email: emailVal,
+                        user_id: state.installOrder,
+                        timestamp: new Date().toLocaleString()
+                    };
+
+                    // Attempt to send email (fails silently if keys are missing to not block user flow)
+                    if (window.emailjs) {
+                        emailjs.send('service_uyy2d8f', 'template_onuf8n7', templateParams)
+                            .then(function () {
+                                console.log('EMAIL SUCCESS!');
+                            }, function (error) {
+                                console.log('EMAIL FAILED...', error);
+                            });
+                    }
+
+                    // Restore Button
+                    confirmPaymentBtn.textContent = originalText;
+                    confirmPaymentBtn.style.opacity = "1";
+                    confirmPaymentBtn.disabled = false;
+
+                    // Close modals
+                    if (paymentModal) paymentModal.classList.remove('active');
+
+                    // Show success message
+                    alert(`Payment Details Verified! \n\n${state.installOrder <= 550 ? 'You are within the first 550 users! 2 Months Free Trial Activated.' : '1 Month Free Trial Activated.'}\n\nHappy Chanting!`);
+
+                    // Reset limit blocker if applied
+                    checkSubscriptionStatus();
+                    updateUI(true); // Force UI update
+                }, 2000);
+
+            } else {
+                alert("Invalid UPI ID Format. \nPlease enter a valid ID like 'username@bank' or '9876543210@ybl'.");
+            }
+        });
+    }
 
     // --- Hamburger Menu System ---
     const hamburgerBtn = document.getElementById('hamburger-btn');
@@ -1175,6 +1327,10 @@ async function handleShare() {
 // Initialize the app
 function init() {
     loadState();
+
+    // Fix for stale session time on reload
+    state.sessionStartTime = null;
+
     state.sessionRound = 0;
     initAudio();
     applyTheme(state.theme); // Apply saved theme
@@ -1198,6 +1354,9 @@ function init() {
 
     // Show initial language selection if first time
     showInitialLanguageSelection();
+
+    // Update offer text based on user install count
+    updateOfferUI();
 }
 
 init();

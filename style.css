@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   --prime-bg: #0a0a0c;
   --accent-primary: #ff8c37;
   /* Vibrant Saffron */
@@ -476,6 +476,7 @@ main {
   backdrop-filter: blur(25px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 28px;
+  border-radius: 28px;
   text-align: center;
   animation: floatCard 6s infinite ease-in-out;
   position: relative;
@@ -487,6 +488,9 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 15px;
+  /* Fixed height to prevent layout jump on mantra change */
+  min-height: 280px;
+  justify-content: center;
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -643,7 +647,7 @@ main {
   }
 }
 
-/* --- ✨ PREMIUM STATS BAR ✨ --- */
+/* --- âœ¨ PREMIUM STATS BAR âœ¨ --- */
 .stats-bar {
   display: flex;
   justify-content: space-around;
@@ -704,7 +708,7 @@ main {
   transform: rotate(90deg);
 }
 
-/* --- ✨ MANTRA SELECTION GRID ✨ --- */
+/* --- âœ¨ MANTRA SELECTION GRID âœ¨ --- */
 .mantra-selection-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1718,7 +1722,7 @@ main {
   max-width: 420px;
 }
 
-/* --- ✨ PREMIUM STATS BAR ✨ --- */
+/* --- âœ¨ PREMIUM STATS BAR âœ¨ --- */
 .stats-bar {
   display: flex;
   justify-content: space-around;
@@ -1779,7 +1783,7 @@ main {
   transform: rotate(90deg);
 }
 
-/* --- ✨ MANTRA SELECTION GRID ✨ --- */
+/* --- âœ¨ MANTRA SELECTION GRID âœ¨ --- */
 .mantra-selection-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -1792,8 +1796,39 @@ main {
 }
 
 .mantra-selection-item {
-  background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+/* Payment Modal Styles */
+.payment-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 10px;
+}
+
+.payment-section h3 {
+  font-size: 1.1rem;
+  color: var(--accent-secondary);
+  margin-bottom: 15px;
+  font-family: var(--font-display);
+  text-align: center;
+}
+
+.user-input-section input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.user-input-section input:focus {
+  outline: none;
+  border-color: var(--accent-primary) !important;
+  background: #333 !important;
+}
+
+.qr-container {
   border-radius: 18px;
   padding: 12px;
   cursor: pointer;
@@ -1844,7 +1879,7 @@ main {
   font-style: italic;
 }
 
-/* --- ✨ ANIMATIONS ✨ --- */
+/* --- âœ¨ ANIMATIONS âœ¨ --- */
 .pop-animation {
   animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -1873,7 +1908,7 @@ main {
   }
 }
 
-/* --- ✨ PREMIUM SCROLLBAR ✨ --- */
+/* --- âœ¨ PREMIUM SCROLLBAR âœ¨ --- */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -1908,11 +1943,73 @@ main {
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
 }
 
+
 .modal-overlay.active .subs-card {
   transform: scale(1) translateY(0);
 }
 
-/* --- 📱 ULTRA-COMPACT MOBILE FIXES 📱 --- */
+/* User Request: Vertical and Bigger Language Buttons */
+.language-options {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 5px;
+  /* Space for scrollbar */
+}
+
+.language-option {
+  width: 100%;
+  padding: 18px 20px;
+  font-size: 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.language-option:hover {
+  background: rgba(255, 140, 55, 0.15);
+  border-color: var(--accent-primary);
+  transform: translateX(5px);
+}
+
+/* Add an arrow icon to indicate selection */
+.language-option::after {
+  content: '➔';
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s;
+  color: var(--accent-primary);
+}
+
+.language-option:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Make font slightly distinct for Indian languages if needed */
+.language-option[data-lang="hi"],
+.language-option[data-lang="kn"],
+.language-option[data-lang="or"],
+.language-option[data-lang="ta"],
+.language-option[data-lang="ml"],
+.language-option[data-lang="mr"],
+.language-option[data-lang="te"] {
+  font-family: 'Noto Serif Devanagari', serif;
+  /* Or appropriate font per language if loaded */
+  font-weight: 500;
+}
+
+/* --- ðŸ“± ULTRA-COMPACT MOBILE FIXES ðŸ“± --- */
 @media (max-height: 740px) {
   header {
     padding: 0.25rem 0;
@@ -1969,6 +2066,7 @@ main {
 
   /* Sacrificial lamb for extreme cases */
   .mantra-card {
+    min-height: 220px;
     gap: 5px;
   }
 }
