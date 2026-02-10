@@ -70,6 +70,14 @@
 
             <!-- Dropdown Menu -->
             <div class="dropdown-menu" id="dropdown-menu">
+                <button class="menu-item highlight" id="menu-premium" style="color: #FF7722; font-weight: bold;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z">
+                        </path>
+                    </svg>
+                    Join Premium
+                </button>
                 <button class="menu-item" id="menu-about">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"></circle>
@@ -119,7 +127,7 @@
             </div>
             <div class="stat-divider"></div>
             <div class="stat-item" title="Current Session Duration">
-                <span class="stat-label" id="lbl-session-time">Focus</span>
+                <span class="stat-label" id="lbl-session-time">Duration</span>
                 <span class="stat-value" id="session-time">0m</span>
             </div>
         </div>
@@ -293,8 +301,10 @@
             <div class="payment-sections">
                 <div class="payment-section">
                     <h3>Option 1: Scan & Pay (UPI)</h3>
-                    <div class="qr-container">
-                        <img src="upi_payment_qr.jpg" alt="UPI QR Code" class="payment-qr">
+                    <div class="qr-container" style="cursor: pointer;" onclick="openQRZoom()">
+                        <img src="upi_payment_qr.jpg" alt="UPI QR Code" class="payment-qr" id="payment-qr-img"
+                            title="Click to Zoom">
+                        <p style="text-align:center; font-size:0.8rem; opacity:0.7; margin-top:5px;">(Click to Zoom)</p>
                     </div>
                     <div class="payment-field">
                         <span class="field-label">Our UPI ID</span>
@@ -355,6 +365,30 @@
             </div>
             <div class="mantra-selection-grid" id="mantra-list-container">
                 <!-- Mantra items with icons will be injected here via JS -->
+            </div>
+
+            <!-- Custom Mantra & Contact Footer -->
+            <div
+                style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 12px; text-align: center;">
+                <p style="font-size: 0.9rem; margin-bottom: 10px; color: #ccc;">Want to chant something else?</p>
+
+                <button id="open-add-mantra" class="plan-btn secondary"
+                    style="width: 100%; margin-bottom: 15px; padding: 10px;">
+                    <span style="font-size: 1.2rem; margin-right: 5px;">+</span> Add Personal Mantra
+                    <div style="font-size: 0.7rem; opacity: 0.7; font-weight: normal;">(Visible only to you)</div>
+                </button>
+
+                <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; margin-top: 10px;">
+                    <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 5px;">Missing a popular mantra?</p>
+                    <a href="mailto:vikasgudarad09@gmail.com?subject=Request%20New%20Mantra%20Internal&body=Please%20add%20this%20mantra%20to%20the%20app:%0A%0AMantra%20Name:%0A"
+                        style="color: var(--accent-primary); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; justify-content: center;">
+                        <svg style="width:16px; height:16px; margin-right:5px;" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                        Email us to Request It
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -459,6 +493,63 @@
         </div>
     </div>
 
+    <!-- Add Mantra Modal -->
+    <div class="modal-overlay" id="add-mantra-modal">
+        <div class="subs-card">
+            <button class="close-modal" id="close-add-mantra">&times;</button>
+            <h2 class="modal-title">Add Your Mantra</h2>
+            <p class="modal-desc">This will be saved on your device only.</p>
+
+            <div class="user-input-section" style="margin-top: 15px;">
+                <label class="field-label" style="display:block; margin-bottom:5px;">Mantra Title (English):</label>
+                <input type="text" id="custom-mantra-title" placeholder="e.g. My Special Chant" class="dark-input"
+                    style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #444; background: #222; color: #fff; margin-bottom: 15px;">
+
+                <label class="field-label" style="display:block; margin-bottom:5px;">Mantra Text (Any Language):</label>
+                <textarea id="custom-mantra-text" placeholder="Paste your mantra text here..." class="dark-input"
+                    style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #444; background: #222; color: #fff; min-height: 80px; resize: vertical; margin-bottom: 20px;"></textarea>
+
+                <button id="save-custom-mantra" class="plan-btn">Save Mantra</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Modal -->
+    <div class="modal-overlay" id="about-modal">
+        <div class="subs-card">
+            <button class="close-modal" id="close-about-modal">&times;</button>
+            <h2 class="modal-title">About Smaranam</h2>
+
+            <div style="text-align: left; margin-top: 15px; line-height: 1.6; color: #eee;">
+                <p><strong>Our Motive:</strong><br>
+                    To provide a distraction-free, deeply spiritual digital space for your daily Sadhana, helping you
+                    stay focused and connected to the divine.</p>
+
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 15px 0;">
+
+                <p><strong>🐮 A Sacred Promise (Sankalpa):</strong><br>
+                    A portion of every subscription goes towards building a <b>Gowshala</b> (Cow Shelter). This has been
+                    a long-held dream that faced financial hurdles, but with your support, we are striving to make it a
+                    reality. We will personally update you when the construction work begins.</p>
+
+                <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 15px 0;">
+
+                <p><strong>Feedback & Suggestions:</strong><br>
+                    We are constantly improving. If you have any suggestions, feature requests, or need specific
+                    changes, we'd love to hear from you.</p>
+
+                <a href="mailto:vikasgudarad09@gmail.com?subject=Smaranam%20App%20Feedback" class="plan-btn secondary"
+                    style="display: block; text-align: center; margin-top: 15px; text-decoration: none;">
+                    📩 Send Feedback / Suggestions
+                </a>
+
+                <p style="text-align: center; margin-top: 20px; font-size: 0.8rem; opacity: 0.5;">
+                    Version 1.2
+                </p>
+            </div>
+        </div>
+    </div>
+
     <!-- Voice Settings Modal -->
     <div class="modal-overlay" id="voice-settings-modal">
         <div class="subs-card voice-settings-card">
@@ -514,6 +605,16 @@
                 </div>
             </div>
             <p class="payment-footer">Transforming technology into a tool for spiritual growth.</p>
+        </div>
+    </div>
+
+    <!-- QR Zoom Modal -->
+    <div class="modal-overlay" id="qr-zoom-modal" onclick="closeQRZoom()">
+        <div class="subs-card" style="background: transparent; box-shadow: none; padding: 0;">
+            <button class="close-modal" onclick="closeQRZoom()"
+                style="background: rgba(0,0,0,0.5); border-radius: 50%; width: 40px; height: 40px; color: white;">&times;</button>
+            <img src="upi_payment_qr.jpg" alt="UPI QR Zoom"
+                style="width: 100%; max-width: 500px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
         </div>
     </div>
 

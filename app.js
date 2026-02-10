@@ -693,7 +693,7 @@ function updateUI(silent = false) {
 
     if (lblToday) lblToday.textContent = t.today;
     if (lblLifetime) lblLifetime.textContent = t.lifetime;
-    if (lblFocus) lblFocus.textContent = state.language === 'en' ? 'Focus' : (state.language === 'hi' ? 'सत्र' : 'Focus'); // Simplified translate for Focus
+    if (lblFocus) lblFocus.textContent = state.language === 'en' ? 'Duration' : (state.language === 'hi' ? 'समय' : 'Duration'); // Simplified translate for Duration
     if (lblChants) lblChants.textContent = t.chats || "Chants";
 
     const progress = (state.sessionCount % MALA_SIZE) / MALA_SIZE;
@@ -945,7 +945,8 @@ function setupEventListeners() {
     // Payment modals
     const paymentModal = document.getElementById('payment-modal');
     const closePayment = document.getElementById('close-payment');
-    const planBtns = document.querySelectorAll('.plan-btn');
+    // detailed-selector to avoid selecting "Add Mantra" button which shares the class
+    const planBtns = document.querySelectorAll('.plans-grid .plan-btn');
 
     planBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -1050,7 +1051,7 @@ function setupEventListeners() {
     const aboutModal = document.getElementById('about-modal');
     const themeModal = document.getElementById('theme-modal');
     const languageModal = document.getElementById('language-modal');
-    const closeAbout = document.getElementById('close-about');
+    const closeAbout = document.getElementById('close-about-modal');
 
     function closeDropdown() {
         if (dropdownMenu) dropdownMenu.classList.remove('active');
@@ -1060,6 +1061,24 @@ function setupEventListeners() {
     if (menuAbout && aboutModal) {
         menuAbout.addEventListener('click', () => {
             aboutModal.classList.add('active');
+            closeDropdown();
+        });
+    }
+
+    if (closeAbout && aboutModal) {
+        closeAbout.addEventListener('click', () => aboutModal.classList.remove('active'));
+    }
+    if (aboutModal) {
+        aboutModal.addEventListener('click', (e) => {
+            if (e.target === aboutModal) aboutModal.classList.remove('active');
+        });
+    }
+
+    // New Premium Menu Item
+    const menuPremium = document.getElementById('menu-premium');
+    if (menuPremium && subsModal) {
+        menuPremium.addEventListener('click', () => {
+            subsModal.classList.add('active');
             closeDropdown();
         });
     }
@@ -1360,3 +1379,108 @@ function init() {
 }
 
 init();
+
+// --- Custom Mantra Logic ---
+const openAddMantra = document.getElementById('open-add-mantra');
+const closeAddMantra = document.getElementById('close-add-mantra');
+const addMantraModal = document.getElementById('add-mantra-modal');
+const saveCustomMantraBtn = document.getElementById('save-custom-mantra');
+const customMantraTitle = document.getElementById('custom-mantra-title');
+const customMantraText = document.getElementById('custom-mantra-text');
+
+if (openAddMantra) {
+    openAddMantra.addEventListener('click', () => {
+        // Close mantra list first
+        const mantraModal = document.getElementById('mantra-modal');
+        if (mantraModal) mantraModal.classList.remove('active');
+        if (addMantraModal) addMantraModal.classList.add('active');
+    });
+}
+if (closeAddMantra) closeAddMantra.addEventListener('click', () => addMantraModal.classList.remove('active'));
+if (addMantraModal) addMantraModal.addEventListener('click', (e) => {
+    if (e.target === addMantraModal) addMantraModal.classList.remove('active');
+});
+
+function loadCustomMantras() {
+    const saved = localStorage.getItem('smaranam_custom_mantras');
+    if (saved) {
+        try {
+            const custom = JSON.parse(saved);
+            custom.forEach(m => {
+                // Check if already exists to prevent dupes on re-run
+                const exists = mantras.some(ex => ex.en === m.en);
+                if (!exists) mantras.push(m);
+            });
+        } catch (e) {
+            console.error("Error loading custom mantras", e);
+        }
+    }
+}
+
+if (saveCustomMantraBtn) {
+    saveCustomMantraBtn.addEventListener('click', () => {
+        const title = customMantraTitle.value.trim();
+        const text = customMantraText.value.trim();
+
+        if (!title || !text) {
+            alert("Please enter both a Title and the Mantra text.");
+            return;
+        }
+
+        const newMantra = {
+            en: title,
+            hi: text, // Using 'hi' slot for generic text display
+            keywords: [title.toLowerCase()],
+            speechText: text, // For TTS
+            image: "images/om.png", // Default icon
+            audio: null, // No audio file
+            isCustom: true // Flag
+        };
+
+        // Add to global list
+        mantras.push(newMantra);
+
+        // Save to LocalStorage
+        const saved = localStorage.getItem('smaranam_custom_mantras');
+        let custom = saved ? JSON.parse(saved) : [];
+        custom.push(newMantra);
+        localStorage.setItem('smaranam_custom_mantras', JSON.stringify(custom));
+
+        // Reset UI
+        // customMantraTitle.value = ''; // Keep content for now or clear? Clear is better.
+        customMantraTitle.value = '';
+        customMantraText.value = '';
+        if (addMantraModal) addMantraModal.classList.remove('active');
+
+        // Select the new mantra
+        state.currentIndex = mantras.length - 1;
+        state.sessionCount = 0; // Reset session for new mantra
+        saveState();
+        updateUI(true); // Force UI update
+        alert("Your personal mantra has been added!");
+    });
+}
+// Load customs on startup
+loadCustomMantras();
+
+// --- QR Image Zoom Logic ---
+function openQRZoom() {
+    const modal = document.getElementById('qr-zoom-modal');
+    if (modal) modal.classList.add('active');
+}
+
+function closeQRZoom() {
+    const modal = document.getElementById('qr-zoom-modal');
+    if (modal) modal.classList.remove('active');
+}
+
+// Prevent modal close when clicking on the zoomed image itself
+// We wait for DOM to be safe, though script is at end of body
+document.addEventListener('DOMContentLoaded', () => {
+    const qrModalCard = document.querySelector('#qr-zoom-modal .subs-card');
+    if (qrModalCard) {
+        qrModalCard.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+    }
+});
