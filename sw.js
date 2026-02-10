@@ -1,4 +1,4 @@
-const CACHE_NAME = 'smaranam-v2';
+const CACHE_NAME = 'smaranam-v3';
 const ASSETS = [
     './',
     './index.html',
@@ -12,7 +12,12 @@ const ASSETS = [
     './images/ganesha.svg',
     './images/krishna.svg',
     './images/shani.svg',
-    './images/shiva_mahadev.svg'
+    './images/shiva_mahadev.svg',
+    './audio/om_namah_shivaya.mp3',
+    './audio/om_namo_bhagavate_vasudevaya.wav',
+    './audio/ganesh_mantra.wav',
+    './audio/hare_krishna_mantra.wav',
+    './audio/shani_mantra.mp3'
 ];
 
 // Install Event
