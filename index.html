@@ -47,8 +47,8 @@
 
     <!-- Launch Offer Banner -->
     <div class="launch-banner" id="launch-banner">
-        <span>✨ Special Offer: 1 Month Free for the first 550 Subscribers!</span>
-        <button class="banner-btn" id="open-subs">Claim Now</button>
+        <span>✨ Smaranam is now 100% FREE! Support our mission if you like.</span>
+        <button class="banner-btn" id="open-subs">Donate</button>
     </div>
 
     <div class="app-container">
@@ -258,34 +258,22 @@
     <div class="modal-overlay" id="subs-modal">
         <div class="subs-card">
             <button class="close-modal" id="close-subs">&times;</button>
-            <h2 class="modal-title">Join Smaranam Premium</h2>
-            <p class="modal-desc">Elevate your spiritual practice with exclusive features.</p>
+            <h2 class="modal-title">Support Our Mission</h2>
+            <p class="modal-desc">Smaranam is completely free. Your donations help us maintain the app and support Gow
+                Seva (Cow Service).</p>
 
-            <div class="plans-grid">
-                <div class="plan-card featured">
-                    <div class="badge">Limited Offer</div>
-                    <h3>Launch Offer</h3>
-                    <div class="price">FREE</div>
-                    <div class="duration">1 Month Trial<br>For first 550 subscribers</div>
-                    <button class="plan-btn">Claim Now</button>
-                </div>
-                <div class="plan-card">
-                    <h3>Monthly</h3>
-                    <div class="price">₹49</div>
-                    <div class="duration">Billed Monthly</div>
-                    <button class="plan-btn secondary">Select</button>
-                </div>
-                <div class="plan-card">
-                    <h3>Quarterly</h3>
-                    <div class="price">₹129</div>
-                    <div class="duration">Billed every 3 months</div>
-                    <button class="plan-btn secondary">Select</button>
-                </div>
-                <div class="plan-card">
-                    <h3>Yearly</h3>
-                    <div class="price">₹399</div>
-                    <div class="duration">Billed Annually</div>
-                    <button class="plan-btn secondary">Select</button>
+            <div class="plans-grid" style="grid-template-columns: 1fr; gap: 15px;">
+                <div class="plan-card featured"
+                    style="background: rgba(255, 119, 34, 0.15); border: 1px solid rgba(255, 119, 34, 0.3);">
+                    <div class="badge">Satvik Karma</div>
+                    <h3>Donate & Support</h3>
+                    <div class="price">₹ Any</div>
+                    <div class="duration">
+                        • Help maintain this Ad-Free App<br>
+                        • Support Gowshala (Cow Shelter) Construction<br>
+                        • Contribute to Sanatana Dharma
+                    </div>
+                    <button class="plan-btn">Donate Now</button>
                 </div>
             </div>
         </div>
@@ -295,8 +283,8 @@
     <div class="modal-overlay" id="payment-modal">
         <div class="subs-card payment-details-card">
             <button class="close-modal" id="close-payment">&times;</button>
-            <h2 class="modal-title">Unlock Premium Trial</h2>
-            <p class="modal-desc">Enter your UPI ID or Bank Reference to activate your free trial.</p>
+            <h2 class="modal-title">Donate via UPI</h2>
+            <p class="modal-desc">Scan the QR code to contribute. Use your favorite UPI app.</p>
 
             <div class="payment-sections">
                 <div class="payment-section">
@@ -315,15 +303,12 @@
 
                     <div class="user-input-section"
                         style="margin-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
-                        <label for="user-upi-id" class="field-label" style="display:block; margin-bottom:5px;">Enter
-                            YOUR UPI ID / PhonePe / GPay Number:</label>
-                        <input type="text" id="user-upi-id" placeholder="e.g. 9876543210@ybl" class="dark-input"
-                            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #444; background: #222; color: #fff;">
+                        <p style="color: #aaa; font-size: 0.9rem; margin-bottom: 10px;">(Optional) Enter details for
+                            acknowledgment:</p>
+                        <input type="text" id="user-upi-id" placeholder="Your Name or UPI ID" class="dark-input"
+                            style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #444; background: #222; color: #fff; margin-bottom: 10px;">
 
-                        <label for="user-email" class="field-label"
-                            style="display:block; margin-top:10px; margin-bottom:5px;">Want a confirmation email? Enter
-                            your address:</label>
-                        <input type="email" id="user-email" placeholder="you@example.com" class="dark-input"
+                        <input type="email" id="user-email" placeholder="Your Email (for receipt)" class="dark-input"
                             style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #444; background: #222; color: #fff;">
                     </div>
                 </div>
@@ -348,10 +333,10 @@
             </div>
 
             <button class="plan-btn" id="confirm-payment-btn"
-                style="width: 100%; margin-top: 20px; background: #28a745;">Activate Free Trial</button>
+                style="width: 100%; margin-top: 20px; background: #28a745;">I Have Donated (Complete)</button>
 
             <p class="payment-footer">
-                <small>By clicking Activate, you agree to auto-debit terms after the trial period ends.</small>
+                <small>Thank you for your generous support!</small>
             </p>
         </div>
     </div>

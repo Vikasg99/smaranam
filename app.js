@@ -98,11 +98,11 @@ let state = {
     sessionRound: 0,
     language: 'en',
     theme: 'cosmic', // Default theme
-    isPremium: false,
-    hasAddedPaymentDetails: false, // User provided Bank/UPI
-    trialStartDate: null, // When they added payment details
-    installOrder: Math.floor(Math.random() * 200) + 400, // Simulating user number around 400-600
-    freeMalaLimit: 11,
+    isPremium: true, // App is now FREE
+    hasAddedPaymentDetails: true, // Unlocked for everyone
+    trialStartDate: Date.now(),
+    installOrder: Math.floor(Math.random() * 200) + 400,
+    freeMalaLimit: 999999, // Effectively unlimited
     lastUpdate: null,
     sessionGoal: '108', // Default 1 Mala
     sessionStartTime: null,
@@ -745,44 +745,14 @@ function handleIncrement() {
 }
 
 function updateOfferUI() {
-    const banner = document.getElementById('launch-banner');
-    const offerDuration = document.querySelector('#subs-modal .plan-card.featured .duration');
-    const badge = document.querySelector('#subs-modal .plan-card.featured .badge');
-
-    if (state.installOrder <= 550) {
-        // First 550 Users Offer (2 Months Free)
-        if (banner) {
-            const bannerText = banner.querySelector('span');
-            if (bannerText) bannerText.textContent = `✨ User #${state.installOrder}! Get 2 Months Free Pro Access! ✨`;
-        }
-        if (offerDuration) offerDuration.innerHTML = `2 Month Trial<br>Priority User #${state.installOrder}`;
-        if (badge) badge.textContent = "2 MONTHS FREE";
-    } else {
-        // > 550 Users (1 Month Free Only)
-        if (banner) {
-            const bannerText = banner.querySelector('span');
-            if (bannerText) bannerText.textContent = `✨ Start Your Sadhana with 1 Month Free Pro Access! ✨`;
-        }
-        if (offerDuration) offerDuration.innerHTML = `1 Month Trial<br>Unlimited Chanting`;
-        if (badge) badge.textContent = "FREE TRIAL";
-    }
+    // Feature disabled: App is free.
+    // We let the hardcoded HTML banner stay as is.
+    return;
 }
 
 function checkSubscriptionStatus() {
-    // Logic: 
-    // If NOT premium AND NOT added payment details AND limit reached -> Block
-    // If Added Payment Details -> Allow (Trial)
-
-    if (!state.isPremium && !state.hasAddedPaymentDetails) {
-        if (state.sessionRound >= state.freeMalaLimit) {
-            togglePlay(false);
-            openModal(document.getElementById('subs-modal'));
-
-            // Update Subs Modal Text dynamically
-            const subTitle = document.querySelector('#subs-modal .modal-desc');
-            if (subTitle) subTitle.textContent = "You've reached the free chanting limit. Unlock unlimited access with our trial offer.";
-        }
-    }
+    // App is free. No restrictions.
+    return;
 }
 
 function createMalaBlast() {
@@ -967,61 +937,39 @@ function setupEventListeners() {
     if (confirmPaymentBtn) {
         confirmPaymentBtn.addEventListener('click', () => {
             const upiVal = userUpiInput ? userUpiInput.value.trim() : '';
-            const emailVal = userEmailInput ? userEmailInput.value.trim() : 'Not Provided';
+            const emailVal = userEmailInput ? userEmailInput.value.trim() : '';
 
-            if (isValidUPI(upiVal)) {
-                // UI: Verifying State
-                const originalText = confirmPaymentBtn.textContent;
-                confirmPaymentBtn.textContent = "Verifying Securely...";
-                confirmPaymentBtn.style.opacity = "0.7";
-                confirmPaymentBtn.disabled = true;
+            // Optional: Send email if provided, otherwise just close
+            const originalText = confirmPaymentBtn.textContent;
+            confirmPaymentBtn.textContent = "Processing...";
+            confirmPaymentBtn.style.opacity = "0.7";
+            confirmPaymentBtn.disabled = true;
 
-                // Simulate Server Verification (2s)
-                setTimeout(() => {
-                    // Success!
-                    setPremiumUser(); // Secure Token Set
-                    state.hasAddedPaymentDetails = true;
-                    state.trialStartDate = Date.now();
-                    saveState();
-
-                    // --- SEND EMAIL NOTIFICATION ---
-                    // Replace 'YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID' with actual values from EmailJS dashboard
+            setTimeout(() => {
+                // --- SEND EMAIL NOTIFICATION (Optional) ---
+                if (window.emailjs && (upiVal || emailVal)) {
                     const templateParams = {
-                        user_upi: upiVal,
-                        user_email: emailVal,
+                        user_upi: upiVal || "Anonymous",
+                        user_email: emailVal || "Not Provided",
                         user_id: state.installOrder,
                         timestamp: new Date().toLocaleString()
                     };
+                    emailjs.send('service_uyy2d8f', 'template_onuf8n7', templateParams)
+                        .catch(err => console.log('Email logging failed (benign)', err));
+                }
 
-                    // Attempt to send email (fails silently if keys are missing to not block user flow)
-                    if (window.emailjs) {
-                        emailjs.send('service_uyy2d8f', 'template_onuf8n7', templateParams)
-                            .then(function () {
-                                console.log('EMAIL SUCCESS!');
-                            }, function (error) {
-                                console.log('EMAIL FAILED...', error);
-                            });
-                    }
+                // Restore Button
+                confirmPaymentBtn.textContent = originalText;
+                confirmPaymentBtn.style.opacity = "1";
+                confirmPaymentBtn.disabled = false;
 
-                    // Restore Button
-                    confirmPaymentBtn.textContent = originalText;
-                    confirmPaymentBtn.style.opacity = "1";
-                    confirmPaymentBtn.disabled = false;
+                // Close modals
+                if (paymentModal) paymentModal.classList.remove('active');
 
-                    // Close modals
-                    if (paymentModal) paymentModal.classList.remove('active');
+                // Show success message
+                alert(`Thank you for your support! 🙏\n\nYour contribution helps us maintain Smaranam and supports the Gowshala initiative.`);
 
-                    // Show success message
-                    alert(`Payment Details Verified! \n\n${state.installOrder <= 550 ? 'You are within the first 550 users! 2 Months Free Trial Activated.' : '1 Month Free Trial Activated.'}\n\nHappy Chanting!`);
-
-                    // Reset limit blocker if applied
-                    checkSubscriptionStatus();
-                    updateUI(true); // Force UI update
-                }, 2000);
-
-            } else {
-                alert("Invalid UPI ID Format. \nPlease enter a valid ID like 'username@bank' or '9876543210@ybl'.");
-            }
+            }, 1000);
         });
     }
 
