@@ -938,6 +938,7 @@ function setupEventListeners() {
         confirmPaymentBtn.addEventListener('click', () => {
             const upiVal = userUpiInput ? userUpiInput.value.trim() : '';
             const emailVal = userEmailInput ? userEmailInput.value.trim() : '';
+            const amountVal = document.getElementById('user-amount').value || 'Unknown';
 
             // Optional: Send email if provided, otherwise just close
             const originalText = confirmPaymentBtn.textContent;
@@ -947,10 +948,11 @@ function setupEventListeners() {
 
             setTimeout(() => {
                 // --- SEND EMAIL NOTIFICATION (Optional) ---
-                if (window.emailjs && (upiVal || emailVal)) {
+                if (window.emailjs && (upiVal || emailVal || amountVal !== 'Unknown')) {
                     const templateParams = {
                         user_upi: upiVal || "Anonymous",
                         user_email: emailVal || "Not Provided",
+                        user_amount: amountVal,
                         user_id: state.installOrder,
                         timestamp: new Date().toLocaleString()
                     };
@@ -967,7 +969,7 @@ function setupEventListeners() {
                 if (paymentModal) paymentModal.classList.remove('active');
 
                 // Show success message
-                alert(`Thank you for your support! 🙏\n\nYour contribution helps us maintain Smaranam and supports the Gowshala initiative.`);
+                alert(`Thank you for your generous contribution of ₹${amountVal}! 🙏\n\nYour support helps us maintain Smaranam and the Gowshala initiative.`);
 
             }, 1000);
         });
